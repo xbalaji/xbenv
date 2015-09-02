@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.dotfiles/cp.sh.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+.Special { color: #ff6060; font-weight: normal; }
+.Statement { color: #ffff00; font-weight: normal; }
+.PreProc { color: #8080ff; font-weight: normal; }
+.Constant { color: #ff40ff; font-weight: normal; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+.Identifier { color: #00ffff; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment">#!/bin/bash</span>
+<span class="Comment"># /* vim: set filetype=sh : */</span>
+
+<span class="Identifier">USER_HOME</span>=<span class="Statement">&quot;</span><span class="PreProc">$HOME</span><span class="Statement">&quot;</span>
+<span class="Identifier">DOTFILES_DIR</span>=<span class="Statement">&quot;</span><span class="PreProc">$HOME</span><span class="Constant">/.dotfiles</span><span class="Statement">&quot;</span>
+<span class="Identifier">DOTFILES_BKUP</span>=<span class="Statement">&quot;</span><span class="PreProc">$HOME</span><span class="Constant">/dotfiles-backup</span><span class="Statement">&quot;</span>
+
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.<span class="Statement">alias</span>-sh
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.bash_profile
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.bashrc
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.bashremote
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.env-sh
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.<span class="Statement">functions</span>-sh
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.fvwm2rc
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.fvwm2rc.others
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.gvimrc
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.vim
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.vimrc
+<span class="Statement">rm</span> <span class="Special">-fr</span> <span class="PreProc">$USER_HOME</span>/.pinerc
+
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/<span class="Statement">alias</span>-sh        <span class="PreProc">$USER_HOME</span>/.<span class="Statement">alias</span>-sh
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/bash_profile    <span class="PreProc">$USER_HOME</span>/.bash_profile
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/bashrc          <span class="PreProc">$USER_HOME</span>/.bashrc
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/bashremote      <span class="PreProc">$USER_HOME</span>/.bashremote
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/env-sh          <span class="PreProc">$USER_HOME</span>/.env-sh
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/<span class="Statement">functions</span>-sh    <span class="PreProc">$USER_HOME</span>/.<span class="Statement">functions</span>-sh
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/fvwm2rc         <span class="PreProc">$USER_HOME</span>/.fvwm2rc
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/fvwm2rc.others  <span class="PreProc">$USER_HOME</span>/.fvwm2rc.others
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/gvimrc          <span class="PreProc">$USER_HOME</span>/.gvimrc
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/vim             <span class="PreProc">$USER_HOME</span>/.vim
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/vimrc           <span class="PreProc">$USER_HOME</span>/.vimrc
+ln <span class="Special">-s</span> <span class="PreProc">$DOTFILES_DIR</span>/pinerc          <span class="PreProc">$USER_HOME</span>/.pinerc
+
+<span class="Statement">find</span> <span class="PreProc">$DOTFILES_DIR</span>/ <span class="Special">-type</span> f <span class="Special">-exec</span> <span class="Statement">chmod</span> <span class="Constant">644</span> <span class="Special">{}</span> \;
+<span class="Statement">find</span> <span class="PreProc">$DOTFILES_DIR</span>/ <span class="Special">-type</span> d <span class="Special">-exec</span> <span class="Statement">chmod</span> <span class="Constant">755</span> <span class="Special">{}</span> \;
+
+<span class="Comment">#cp -R $DOTFILES_DIR/alias-sh        $USER_HOME/.alias-sh       </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/bash_profile    $USER_HOME/.bash_profile   </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/bashrc          $USER_HOME/.bashrc         </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/bashremote      $USER_HOME/.bashremote     </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/env-sh          $USER_HOME/.env-sh         </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/functions-sh    $USER_HOME/.functions-sh   </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/fvwm2rc         $USER_HOME/.fvwm2rc        </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/fvwm2rc.others  $USER_HOME/.fvwm2rc.others </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/gvimrc          $USER_HOME/.gvimrc         </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/vim             $USER_HOME/.vim            </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/vimrc           $USER_HOME/.vimrc          </span>
+<span class="Comment">#cp -R $DOTFILES_DIR/pinerc          $USER_HOME/.pinerc         </span>
+
+<span class="Comment"># cp2.sh</span>
+<span class="Comment">#rm -fr $DOTFILES_BKUP</span>
+<span class="Comment">#mkdir  $DOTFILES_BKUP</span>
+<span class="Comment">#cp -R $USER_HOME/.alias-sh       $DOTFILES_BKUP/alias-sh       </span>
+<span class="Comment">#cp -R $USER_HOME/.bash_profile   $DOTFILES_BKUP/bash_profile   </span>
+<span class="Comment">#cp -R $USER_HOME/.bashrc         $DOTFILES_BKUP/bashrc         </span>
+<span class="Comment">#cp -R $USER_HOME/.bashremote     $DOTFILES_BKUP/bashremote     </span>
+<span class="Comment">#cp -R $USER_HOME/.env-sh         $DOTFILES_BKUP/env-sh         </span>
+<span class="Comment">#cp -R $USER_HOME/.functions-sh   $DOTFILES_BKUP/functions-sh   </span>
+<span class="Comment">#cp -R $USER_HOME/.fvwm2rc        $DOTFILES_BKUP/fvwm2rc        </span>
+<span class="Comment">#cp -R $USER_HOME/.fvwm2rc.others $DOTFILES_BKUP/fvwm2rc.others </span>
+<span class="Comment">#cp -R $USER_HOME/.gvimrc         $DOTFILES_BKUP/gvimrc         </span>
+<span class="Comment">#cp -R $USER_HOME/.vim            $DOTFILES_BKUP/vim            </span>
+<span class="Comment">#cp -R $USER_HOME/.vimrc          $DOTFILES_BKUP/vimrc          </span>
+<span class="Comment">#cp -R $USER_HOME/.pinerc         $DOTFILES_BKUP/pinerc         </span>
+
+</pre>
+</body>
+</html>
