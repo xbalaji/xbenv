@@ -1,0 +1,612 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.functions-sh.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+.PreProc { color: #8080ff; font-weight: normal; }
+.Error { color: #ffffff; background-color: #ff6060; font-weight: normal; }
+.Special { color: #ff6060; font-weight: normal; }
+.Statement { color: #ffff00; font-weight: normal; }
+.Constant { color: #ff40ff; font-weight: normal; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+.Identifier { color: #00ffff; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment"># /* vim: set filetype=sh : */</span>
+<span class="Comment">###############################################################</span>
+<span class="Comment"># bash environment functions                                   #</span>
+<span class="Comment">#                   Balaji Venkataraman -    xbalaji@cisco.com #</span>
+<span class="Comment">################################################################</span>
+
+<span class="Comment"># find pattern</span>
+<span class="Identifier">fpn ()  </span>
+<span class="Identifier">{</span>
+grep -l <span class="PreProc">$1</span> <span class="Error">$(</span><span class="Special">find . -name </span><span class="Statement">&quot;</span><span class="Constant">*.[ch]</span><span class="Statement">&quot;</span><span class="Special"> -print</span><span class="Error">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># get user</span>
+<span class="Identifier">guser ()</span>
+<span class="Identifier">{</span>
+grep <span class="PreProc">$1</span> /usr/local/etc/phonebook.lst <span class="Statement">|</span> tr <span class="Statement">'</span><span class="Constant">~</span><span class="Statement">'</span> <span class="Statement">'</span><span class="Constant">  </span><span class="Statement">'|</span>cut -c1<span class="Constant">-70</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># kill all processes except the current one</span>
+<span class="Identifier">killme ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">kill</span> <span class="Constant">-9</span> <span class="Error">$(</span><span class="Special">ps </span><span class="Statement">|</span><span class="Special"> grep -v </span><span class="PreProc">$$</span><span class="Special"> </span><span class="Statement">|</span><span class="Special"> grep -v grep </span><span class="Statement">|</span><span class="Special"> cut -c1</span><span class="Constant">-6</span><span class="Special"> </span><span class="Statement">|</span><span class="Special"> tr </span><span class="Statement">'</span><span class="Constant">\n</span><span class="Statement">'</span><span class="Special"> </span><span class="Statement">'</span><span class="Constant"> </span><span class="Statement">'</span><span class="Error">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># kill the pine process</span>
+<span class="Identifier">killpine ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">kill</span> <span class="Constant">-9</span> <span class="Error">$(</span><span class="Special">psme </span><span class="Statement">|</span><span class="Special"> grep pine </span><span class="Statement">|</span><span class="Special"> grep -v grep </span><span class="Statement">|</span><span class="Special"> cut -c10</span><span class="Constant">-15</span><span class="Error">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># grep in history</span>
+<span class="Identifier">hg ()</span>
+<span class="Identifier">{</span>
+history <span class="Statement">|</span> egrep <span class="PreProc">$1</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># find the files which has the said pattern($1), uses gid</span>
+<span class="Identifier">files()</span>
+<span class="Identifier">{</span>
+<span class="Statement">(</span>gid32 <span class="PreProc">$1</span> <span class="Statement">|</span> cut -d <span class="Statement">&quot;</span><span class="Constant">:</span><span class="Statement">&quot;</span> -f1<span class="Constant">-1</span> <span class="Statement">|</span> uniq<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># search and edit the files which has the said pattern($1), uses gid</span>
+<span class="Identifier">vid () </span>
+<span class="Identifier">{</span>
+    vim +/<span class="PreProc">$1</span> <span class="Error">$(</span><span class="Special">files </span><span class="PreProc">$1</span><span class="Error">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">mkid()</span>
+<span class="Identifier">{</span>
+    pushd .<span class="Statement">;</span> <span class="Statement">cd</span> source<span class="Statement">;</span>
+    find <span class="Special">`</span><span class="Statement">pwd</span><span class="Special">`</span> -type f  -name <span class="Statement">&quot;</span><span class="Constant">*.[chC]</span><span class="Statement">&quot;</span> -o -name <span class="Statement">&quot;</span><span class="Constant">*.cpp</span><span class="Statement">&quot;</span>  <span class="Statement">&gt;</span> /tmp/flist.txt
+<span class="Comment">#    find /home/xbalaji/main/source  -type f &gt; /tmp/flist.txt</span>
+    mkid32 -dC++ -f/tmp/flist.txt -o ID
+    <span class="Special">\r</span>m -f /tmp/flist.txt
+    popd
+<span class="Identifier">}</span>
+
+<span class="Identifier">lid () </span>
+<span class="Identifier">{</span>
+lid32 <span class="PreProc">$1</span> <span class="Statement">|</span> tr <span class="Statement">'</span><span class="Constant"> </span><span class="Statement">'</span> <span class="Statement">'</span><span class="Constant">\n</span><span class="Statement">'</span>
+<span class="Identifier">}</span>
+
+
+<span class="Comment"># find commits in the branch($1) today</span>
+<span class="Identifier">committoday ()</span>
+<span class="Identifier">{</span>
+<span class="Identifier">thisday</span>=<span class="Error">$(</span><span class="Special">date </span><span class="Statement">'</span><span class="Constant">+%Y%m%d</span><span class="Statement">'</span><span class="Error">)</span>
+recent <span class="PreProc">$1</span> <span class="PreProc">$thisday</span> <span class="PreProc">$thisday</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># list the files in the /tftpboot/xbalaji/$1 directory</span>
+<span class="Identifier">lsdtftp ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">(</span><span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span> ls -1dLrt <span class="PreProc">$2</span> xbalaji/<span class="PreProc">$1</span><span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">lsltftp ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">(</span><span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span> ls -l1dLrt xbalaji/<span class="PreProc">$1</span>/bin/* <span class="Statement">|</span> cut -c1<span class="Constant">-12</span>,<span class="Constant">54</span>- <span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># list the files in the /tftpboot/xbalaji/$1/bin directory</span>
+<span class="Comment">#lsdtftpb ()</span>
+<span class="Comment">#{</span>
+<span class="Comment">#(cd /tftpboot/; ls -1dLrt $2 xbalaji/$1/bin/*)</span>
+<span class="Comment">#}</span>
+
+<span class="Identifier">lsdtftpb ()</span>
+<span class="Identifier">{</span>
+<span class="Identifier">dir</span>=<span class="PreProc">${</span><span class="PreProc">1</span><span class="Statement">:-</span><span class="PreProc">$</span><span class="Error">(basename  </span><span class="PreProc">$CLEARCASE_ROOT</span><span class="Error"> | sed -e 's/xbalaji-//')</span><span class="PreProc">}</span>
+<span class="Statement">(</span><span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span> ls -1dLrt <span class="PreProc">$2</span> xbalaji/<span class="PreProc">$dir</span>/bin/*<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">lsdtftpbl ()</span>
+<span class="Identifier">{</span>
+<span class="Identifier">dir</span>=<span class="PreProc">${</span><span class="PreProc">1</span><span class="Statement">:-</span><span class="PreProc">$</span><span class="Error">(basename  </span><span class="PreProc">$CLEARCASE_ROOT</span><span class="Error"> | sed -e 's/xbalaji-//')</span><span class="PreProc">}</span>
+<span class="Statement">(</span><span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span> ls -1ldLrt xbalaji/<span class="PreProc">$dir</span>/bin/*<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment">#lsdtftpba ()</span>
+<span class="Comment">#{</span>
+<span class="Comment">#(lsdtftpb $1 $2 | sed -e 's/$/ 223.255.254.254/g')</span>
+<span class="Comment">#}</span>
+
+<span class="Comment">#lsdtftpba () </span>
+<span class="Comment">#{ </span>
+<span class="Comment">#    dir=`basename  $CLEARCASE_ROOT | sed -e 's/xbalaji-//'`;</span>
+<span class="Comment">#    ( cd /tftpboot/;</span>
+<span class="Comment">#    ls -1dLrt xbalaji/$dir/bin/* | sed -e 's/$/ 223.255.254.254/g') </span>
+<span class="Comment">#}</span>
+
+<span class="Identifier">lsftftpa () </span>
+<span class="Identifier">{</span>
+    <span class="Statement">(</span>ls -1dLrt <span class="PreProc">$PWD</span>/<span class="PreProc">$1</span> <span class="Statement">|</span> sed -e <span class="Statement">'</span><span class="Constant">s/$/ 223.255.254.254/g</span><span class="Statement">'</span><span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+
+<span class="Identifier">lsdtftpba () </span>
+<span class="Identifier">{</span>
+    <span class="Identifier">dir</span>=<span class="PreProc">${</span><span class="PreProc">1</span><span class="Statement">:-</span><span class="PreProc">$</span><span class="Error">(basename  </span><span class="PreProc">$CLEARCASE_ROOT</span><span class="Error"> | sed -e 's/xbalaji-//')</span><span class="PreProc">}</span>
+    <span class="Statement">(</span> <span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span>
+    ls -1dLrt xbalaji/<span class="PreProc">$dir</span>/bin/* <span class="Statement">|</span> sed -e <span class="Statement">'</span><span class="Constant">s/$/ 223.255.254.254/g</span><span class="Statement">'</span><span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">lsa ()</span>
+<span class="Identifier">{</span>
+    <span class="Special">\l</span>s <span class="PreProc">$1</span> <span class="Statement">|</span> perl -e <span class="Statement">'</span><span class="Constant">my $curdir = `pwd`; chomp $curdir; while(&lt;&gt;) { chomp; printf(&quot;%s/%s 223.255.254.254\n&quot;, $curdir, $_); }</span><span class="Statement">'</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># link the file from the directory to the base...</span>
+<span class="Identifier">lslndtftpb ()</span>
+<span class="Identifier">{</span>
+<span class="Identifier">dir</span>=<span class="PreProc">${</span><span class="PreProc">1</span><span class="Statement">:-</span><span class="PreProc">$</span><span class="Error">(basename  </span><span class="PreProc">$CLEARCASE_ROOT</span><span class="Error"> | sed -e 's/xbalaji-//')</span><span class="PreProc">}</span>
+<span class="Statement">(</span><span class="Statement">cd</span> /tftpboot/xbalaji<span class="Statement">;</span> ls -1dLrt <span class="PreProc">$2</span> <span class="PreProc">$dir</span>/bin/*<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+
+<span class="Comment"># list the files in the /tftpboot/xbalaji/$1 directory</span>
+<span class="Identifier">lsdtftps ()</span>
+<span class="Identifier">{</span>
+<span class="Identifier">dir</span>=<span class="PreProc">${</span><span class="PreProc">1</span><span class="Statement">:-</span><span class="PreProc">$</span><span class="Error">(basename  </span><span class="PreProc">$CLEARCASE_ROOT</span><span class="Error"> | sed -e 's/xbalaji-//')</span><span class="PreProc">}</span>
+<span class="Statement">(</span><span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span> ls -1dLrt <span class="PreProc">$2</span> xbalaji/<span class="PreProc">$dir</span>/s*/*<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">ls120tftp ()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">(</span> <span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span>
+    ls -1dLrt <span class="PreProc">$3</span> xbalaji/archive/<span class="Constant">120</span>-bin/<span class="PreProc">$1</span>/<span class="PreProc">$2</span>* <span class="PreProc">$3</span> <span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">ls121tftp ()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">(</span> <span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span>
+    ls -1dLrt <span class="PreProc">$3</span> xbalaji/archive/<span class="Constant">121</span>-bin/<span class="PreProc">$1</span>/<span class="PreProc">$2</span>* <span class="PreProc">$3</span> <span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">ls122tftp ()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">(</span> <span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span>
+    ls -1dLrt <span class="PreProc">$3</span> xbalaji/archive/<span class="Constant">122</span>-bin/<span class="PreProc">$1</span>/<span class="PreProc">$2</span>* <span class="PreProc">$3</span> <span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">ls123tftp ()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">(</span> <span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span>
+    ls -1dLrt <span class="PreProc">$3</span> xbalaji/archive/<span class="Constant">123</span>-bin/<span class="PreProc">$1</span>/<span class="PreProc">$2</span>* <span class="PreProc">$3</span> <span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">lsdjb2800 ()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">(</span> <span class="Statement">cd</span> /tftpboot/<span class="Statement">;</span>
+    find jebbin/<span class="PreProc">$1</span>/bin/ -follow -type f -name <span class="Statement">&quot;</span><span class="Constant">*2800nm*</span><span class="Statement">&quot;</span> <span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">lsjebbin()</span>
+<span class="Identifier">{</span>
+<span class="Statement">(</span><span class="Statement">cd</span> /tftpboot<span class="Statement">;</span>
+find jebbin -follow -path <span class="Statement">'</span><span class="Constant">*/bin/*</span><span class="Statement">'</span> <span class="Special">\(</span> -regex <span class="Statement">&quot;</span><span class="Constant">.*c38[24]5-ipbase-mz.*</span><span class="Statement">&quot;</span> -o -regex <span class="Statement">&quot;</span><span class="Constant">.*c2800nm-ipbase-mz.*</span><span class="Statement">&quot;</span> <span class="Special">\)</span> -printf <span class="Statement">&quot;</span><span class="Constant">%CY%Cm%Cd%CH%CM%CS %p</span><span class="Special">\n</span><span class="Statement">&quot;</span> <span class="Constant">2</span><span class="Statement">&gt;</span>/dev/null <span class="Statement">|</span> sort <span class="Statement">|</span> cut -d <span class="Statement">&quot;</span><span class="Constant"> </span><span class="Statement">&quot;</span> -f2-<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment">#lsjebbin()</span>
+<span class="Comment">#{</span>
+<span class="Comment">#(cd /tftpboot; </span>
+<span class="Comment">#find jebbin -follow -path '*/bin/*' -name &quot;*-ipbase-*&quot; -printf &quot;%CY%Cm%Cd%CH%CM%CS %p\n&quot; 2&gt;/dev/null | sort | cut -d &quot; &quot; -f2-)</span>
+<span class="Comment">#}</span>
+
+<span class="Comment"># remote list the files in the globe:/export/home3/xbalaji/$1 directory</span>
+<span class="Identifier">rlsdtftp ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">(</span>rsh globe ls -1dLrt <span class="PreProc">$2</span> /export/home3/xbalaji/<span class="PreProc">$1</span>/*<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># list the files in the  globe:/export/home3/xbalaji/$1/bin directory</span>
+<span class="Identifier">rlsdtftpb ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">(</span>rsh globe ls -1dLrt <span class="PreProc">$2</span> /export/home3/xbalaji/<span class="PreProc">$1</span>/bin/*<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># remote list the files in the globe:/export/home3/xbalaji/$1 directory</span>
+<span class="Identifier">rlsdtftps ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">(</span>rsh ls -1dLrt <span class="PreProc">$2</span> /export/home3/xbalaji/<span class="PreProc">$1</span>/s*/*<span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">rlsltftp ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">(</span>rsh globe ls -l1dLrt /export/home3/xbalaji/<span class="PreProc">$1</span>/bin/* <span class="Statement">|</span> cut -c1<span class="Constant">-12</span>,<span class="Constant">54</span>- <span class="Statement">)</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># grep users clearcase views in the directory</span>
+<span class="Identifier">cthview ()</span>
+<span class="Identifier">{</span>
+cleartool lsview <span class="Statement">|</span> grep <span class="PreProc">$1</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># get the path of the files if multiple - use type</span>
+<span class="Identifier">tf()</span>
+<span class="Identifier">{</span>
+type -a <span class="PreProc">$1</span> <span class="Statement">|</span> grep -v aliased <span class="Statement">|</span> grep -v builtin <span class="Statement">|</span> cut -d <span class="Statement">&quot;</span><span class="Constant"> </span><span class="Statement">&quot;</span> -f3-
+<span class="Identifier">}</span>
+
+
+<span class="Comment"># format man pages from source - xbalaji@cisco.com</span>
+<span class="Identifier">myman()</span>
+<span class="Identifier">{</span>
+    nroff -man <span class="PreProc">$*</span> <span class="Statement">|</span> less
+<span class="Identifier">}</span>
+
+<span class="Comment"># copy to my tftp boot directory</span>
+<span class="Identifier">cptftp()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">for </span>files <span class="Statement">in</span> <span class="PreProc">$*</span>
+    <span class="Statement">do</span>
+    cp <span class="PreProc">$files</span> /tftpboot/xbalaji<span class="Statement">;</span> chmod <span class="Constant">755</span> /tftpboot/xbalaji/<span class="Error">$(</span><span class="Special">basename </span><span class="PreProc">$files</span><span class="Error">)</span>
+    <span class="Statement">done</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">cpftpeng()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">for </span>files <span class="Statement">in</span> <span class="PreProc">$*</span>
+    <span class="Statement">do</span>
+    cp <span class="PreProc">$files</span> /ftp/xbalaji<span class="Statement">;</span> chmod <span class="Constant">755</span> /ftp/xbalaji/<span class="Error">$(</span><span class="Special">basename </span><span class="PreProc">$files</span><span class="Error">)</span>
+    <span class="Statement">done</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># copy to my tftp projects directory</span>
+<span class="Identifier">cpproj()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">for </span>files <span class="Statement">in</span> <span class="PreProc">$*</span>
+    <span class="Statement">do</span>
+    cp <span class="PreProc">$files</span> /tftpboot/xbalaji-projects<span class="Statement">;</span>
+    chmod <span class="Constant">755</span> /tftpboot/xbalaji-projects/<span class="Error">$(</span><span class="Special">basename </span><span class="PreProc">$files</span><span class="Error">)</span>
+    <span class="Statement">done</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># dumpbug from the DDTS ascii text base</span>
+
+<span class="Identifier">dbug() </span>
+<span class="Identifier">{</span>
+    <span class="Identifier">no</span>=<span class="Error">$(</span><span class="Special">echo </span><span class="PreProc">$1</span><span class="Special"> </span><span class="Statement">|</span><span class="Special"> cut -c9-</span><span class="Error">)</span><span class="Statement">;</span>
+    less /ddts/ddtshome/allbugs/<span class="PreProc">$no</span>/<span class="PreProc">$1</span>
+<span class="Identifier">}</span>
+
+
+<span class="Identifier">pview()</span>
+<span class="Identifier">{</span>
+<span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">View server : </span><span class="PreProc">$HOST</span><span class="Statement">&quot;</span>
+<span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">View name   : </span><span class="Error">$(</span><span class="Special">basename </span><span class="PreProc">$CLEAR_CASE_PREFIX</span><span class="Error">)</span><span class="Statement">&quot;</span>
+<span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant"> </span><span class="Statement">&quot;</span>
+<span class="Comment">#echo &quot;Checked out file(s) list:&quot;</span>
+<span class="Comment">#echo &quot;-------------------------&quot;</span>
+
+<span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">File(s) checked out: </span><span class="Special">`ctmyco </span><span class="Statement">|</span><span class="Special"> wc -l`</span><span class="Constant"> </span><span class="Statement">&quot;</span>
+
+<span class="Statement">for </span>files <span class="Statement">in</span> <span class="Error">$(</span><span class="Special">ctmyco</span><span class="Error">)</span>
+<span class="Statement">do</span>
+    <span class="Statement">echo</span><span class="Constant"> </span><span class="PreProc">$files</span>
+<span class="Statement">done</span>
+
+<span class="Identifier">}</span>
+
+<span class="Identifier">ctlsview ()</span>
+<span class="Identifier">{</span>
+ls -lrt <span class="Error">$(</span><span class="Special">ctmyco</span><span class="Error">)</span> <span class="Statement">|</span> gawk <span class="Statement">'</span><span class="Constant">{ printf &quot;%-11s%-4s%2s %-6s %s\n&quot;,$1,$6,$7,$8,$9 }</span><span class="Statement">'</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">ctmydoto ()</span>
+<span class="Identifier">{</span>
+<span class="Statement">for </span>files <span class="Statement">in</span> <span class="Error">$(</span><span class="Special">ctmyco</span><span class="Error">)</span><span class="Statement">;</span> <span class="Statement">do</span> basename <span class="PreProc">$files</span><span class="Statement">;</span> <span class="Statement">done</span> <span class="Statement">|</span> grep -v <span class="Statement">&quot;</span><span class="Constant">h$</span><span class="Statement">&quot;|</span> \
+sed -e <span class="Statement">'</span><span class="Constant">s/.$/o/</span><span class="Statement">'</span> <span class="Statement">|</span> tr <span class="Statement">'</span><span class="Constant">\n</span><span class="Statement">'</span> <span class="Statement">'</span><span class="Constant"> </span><span class="Statement">';</span> <span class="Statement">echo</span>
+<span class="Identifier">}</span>
+
+<span class="Comment"># rchain functions to find tech-leads, engineers, managers etc...</span>
+r-all<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+
+<span class="Comment"># display employee with their id</span>
+r-srt<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -heR <span class="PreProc">$1</span> <span class="Statement">|</span> gawk <span class="Statement">'</span><span class="Constant">{ printf(&quot;%8s %s\n&quot;, $2, $1); }</span><span class="Statement">'</span> <span class="Statement">|</span> sort -n <span class="Statement">|</span> nl<span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-mgr<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Mgr</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-tech<span class="PreProc">()</span>
+<span class="Special">{</span>
+   rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Technical Leader</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-sw-eng<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> egrep <span class="Statement">&quot;</span><span class="Constant">Software|Technical Leader</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-hw-eng<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> egrep <span class="Statement">&quot;</span><span class="Constant">Hardware|Technical Leader</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-sw-mgr<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Mgr.*Software</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-hw-mgr<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> egrep <span class="Statement">&quot;</span><span class="Constant">Mgr.*Hardware|Mgr.*Engineering</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-tst<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Product</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-mktg<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Mktg</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-con<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Consultant</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+
+r-admin<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Admin Assistant</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-pm<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Program</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+r-prod<span class="PreProc">()</span>
+<span class="Special">{</span>
+    rchain -Rht <span class="PreProc">$1</span> <span class="Statement">|</span> grep <span class="Statement">&quot;</span><span class="Constant">Product</span><span class="Statement">&quot;</span> <span class="Statement">|</span> nl <span class="Statement">|</span> less
+<span class="Special">}</span>
+
+
+<span class="Identifier">convch2htmlusegvim()</span>
+<span class="Identifier">{</span>
+<span class="Comment"># see :help convert-to-HTML for the script and explanation...</span>
+
+<span class="Comment">#    for f in *.[ch];                            \</span>
+<span class="Comment">#    do                                          \</span>
+<span class="Comment">#        gvim -f                                 \</span>
+<span class="Comment">#         vim -f                                 \</span>
+<span class="Comment">#                +&quot;syn on&quot;                       \</span>
+<span class="Comment">#                +&quot;let html_number_lines = 1&quot;    \</span>
+<span class="Comment">#                +&quot;run! syntax/2html.vim&quot;        \</span>
+<span class="Comment">#                +&quot;wq&quot;                           \</span>
+<span class="Comment">#                +&quot;q&quot;                            \</span>
+<span class="Comment">#                $f;                             \</span>
+<span class="Comment">#    done</span>
+
+
+<span class="Comment">#    for f in *.[ch];                   \</span>
+    <span class="Statement">for </span>f <span class="Statement">in</span> <span class="PreProc">$*</span><span class="Statement">;</span>                        \
+    <span class="Statement">do</span>                                  \
+        gvim <span class="Statement">-f</span>                         \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">syn on</span><span class="Statement">&quot;</span>                     \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">let html_number_lines = 1</span><span class="Statement">&quot;</span>  \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">run! syntax/2html.vim</span><span class="Statement">&quot;</span>      \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">wq</span><span class="Statement">&quot;</span>                         \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">q</span><span class="Statement">&quot;</span>                          \
+        <span class="PreProc">$f</span><span class="Statement">;</span>                             \
+    <span class="Statement">done</span>
+
+
+<span class="Comment">#        -c &quot;hi Normal ctermfg=white ctermbg=black&quot; \</span>
+
+
+<span class="Identifier">}</span>
+
+
+<span class="Identifier">convch2htmlusevim()</span>
+<span class="Identifier">{</span>
+<span class="Comment"># see :help convert-to-HTML for the script and explanation...</span>
+
+<span class="Comment">#    for f in *.[ch];                   \</span>
+    <span class="Statement">for </span>f <span class="Statement">in</span> <span class="PreProc">$*</span><span class="Statement">;</span>                        \
+    <span class="Statement">do</span>                                  \
+         vim <span class="Statement">-f</span>                         \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">syn on</span><span class="Statement">&quot;</span>                     \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">let html_number_lines = 1</span><span class="Statement">&quot;</span>  \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">run! syntax/2html.vim</span><span class="Statement">&quot;</span>      \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">wq</span><span class="Statement">&quot;</span>                         \
+        <span class="Statement">-c</span> <span class="Statement">&quot;</span><span class="Constant">q</span><span class="Statement">&quot;</span>                          \
+        <span class="PreProc">$f</span><span class="Statement">;</span>                             \
+    <span class="Statement">done</span>
+
+
+<span class="Comment">#        -c &quot;hi Normal ctermfg=white ctermbg=black&quot; \</span>
+
+
+<span class="Identifier">}</span>
+
+<span class="Identifier">listviews ()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">for </span>files <span class="Statement">in</span> <span class="Error">$(</span><span class="Special">\l</span><span class="Special">s </span><span class="Constant">-1</span><span class="Special"> /ws/xbalaji-sjc/*/.hostname</span><span class="Error">)</span><span class="Statement">;</span>     \
+    <span class="Statement">do</span>                                                  \
+        <span class="Statement">echo</span><span class="Constant"> -n </span><span class="Statement">&quot;</span><span class="PreProc">$files</span><span class="Constant">: </span><span class="Statement">&quot;;</span>                             \
+        cat <span class="PreProc">$files</span><span class="Statement">;</span>                                     \
+    <span class="Statement">done</span>
+<span class="Identifier">}</span>
+
+
+<span class="Identifier">svnsv () </span>
+<span class="Identifier">{</span>
+    <span class="Statement">export</span><span class="Identifier"> SVNVIEW_ROOT</span><span class="Statement">=</span><span class="PreProc">$1</span><span class="Statement">;</span>
+    <span class="Statement">export</span><span class="Identifier"> DEBUG_PROFILE</span><span class="Statement">=</span><span class="Constant">1</span><span class="Statement">;</span>
+    <span class="Statement">cd</span> /home/xbalaji/<span class="PreProc">$SVNVIEW_ROOT</span><span class="Statement">;</span>
+    bash<span class="Statement">;</span>
+    <span class="Statement">cd</span> -
+<span class="Identifier">}</span>
+
+<span class="Identifier">svncancel ()</span>
+<span class="Identifier">{</span>
+    svn revert <span class="Error">$(</span><span class="Special">svn status  </span><span class="Statement">|</span><span class="Special"> grep </span><span class="Statement">&quot;</span><span class="Constant">^M</span><span class="Statement">&quot;</span><span class="Special"> </span><span class="Statement">|</span><span class="Special"> gawk </span><span class="Statement">'</span><span class="Constant">{ printf &quot;%s &quot;, $2  }</span><span class="Statement">'</span><span class="Error">)</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">umask_public()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">umask</span> <span class="Identifier">u</span>=<span class="Identifier">rwx,g</span>=<span class="Identifier">rx,o</span>=rx
+<span class="Identifier">}</span>
+
+<span class="Identifier">umask_private()</span>
+<span class="Identifier">{</span>
+    <span class="Statement">umask</span> <span class="Identifier">u</span>=rwx
+<span class="Identifier">}</span>
+
+
+<span class="Comment"># small command line perl script to check the working directory</span>
+<span class="Comment"># /usr/local/bin/perl -e                        \</span>
+<span class="Comment">#   'my $curdir=`pwd`;                          \</span>
+<span class="Comment">#   chomp $curdir;                              \</span>
+<span class="Comment">#   if ($curdir =~ &quot;/users/xbalaji&quot; ) {         \</span>
+<span class="Comment">#       exit 1;                                 \</span>
+<span class="Comment">#   } elsif ($curdir =~ &quot;/home/xbalaji/&quot; ) {    \</span>
+<span class="Comment">#       exit 2;                                 \</span>
+<span class="Comment">#   } else {                                    \</span>
+<span class="Comment">#       exit 3;                                 \</span>
+<span class="Comment">#   }'</span>
+
+<span class="Comment">#set_window_title()</span>
+<span class="Comment">#{</span>
+<span class="Comment">#    /usr/local/bin/perl -e 'chomp(my $curdir=`pwd`); chomp(my $host=`hostname`); $curdir =~ s,/.*?/xbalaji/,,g;print &quot;^[]2;$host:$curdir^G&quot;;'</span>
+<span class="Comment">#}</span>
+
+<span class="Identifier">set_window_title()</span>
+<span class="Identifier">{</span>
+    <span class="Identifier">__WIN_DIR</span>=<span class="Error">$(</span><span class="Statement">pwd</span><span class="Special"> </span><span class="Statement">|</span><span class="Special"> sed -e </span><span class="Statement">'</span><span class="Constant">s,/home/xbalaji,,g;s,/ws/xbalaji-sjc,,g;s,/users/xbalaji,,g;s,^/,,g</span><span class="Statement">'</span><span class="Error">)</span><span class="Statement">;</span>
+    <span class="Identifier">__WIN_HOST</span>=<span class="Error">$(</span><span class="Special">hostname </span><span class="Statement">|</span><span class="Special"> sed -e </span><span class="Statement">'</span><span class="Constant">s,.cisco.com,,g</span><span class="Statement">'</span><span class="Error">)</span><span class="Statement">;</span>
+    <span class="Statement">echo</span><span class="Constant"> -n </span><span class="Statement">&quot;</span><span class="Special">^[</span><span class="Constant">]2;</span><span class="PreProc">$__WIN_HOST</span><span class="Constant">@</span><span class="PreProc">$__WIN_DIR</span><span class="Special">^G</span><span class="Statement">&quot;</span><span class="Constant"> </span>
+<span class="Identifier">}</span>
+
+<span class="Comment">#</span>
+<span class="Comment"># pwd | sed -e 's,/home/xbalaji,,g;s,/ws/xbalaji-sjc,,g;s,/users/xbalaji,,g;s,\(^/\)\(.*\)/\(.*\),\2,g'</span>
+<span class="Comment">#</span>
+<span class="Comment">#    ssh tsbu-lnx-3 &quot;/usr/local/bin/runctms ctms-hp9 enable_ctms_root&quot; 2&gt;/dev/null</span>
+
+<span class="Identifier">scphints()</span>
+<span class="Identifier">{</span>
+    <span class="Identifier">__SCP_HOST_NAME__</span>=<span class="PreProc">$1</span><span class="Statement">;</span>
+    <span class="Identifier">__SCP_HOST_NAME__</span>=<span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="Statement">:=</span><span class="Error">ctms-hp9</span><span class="PreProc">}</span><span class="Statement">;</span>
+    <span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">scp /users/xbalaji/pub/wed-ctms/hints/ctms-hints.txt root@</span><span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="PreProc">}</span><span class="Constant">:</span><span class="Statement">&quot;</span>
+    scp /users/xbalaji/pub/wed-ctms/hints/ctms-hints.txt root@<span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="PreProc">}</span>:
+<span class="Identifier">}</span>
+
+setupauto-access<span class="PreProc">()</span>
+<span class="Special">{</span>
+    <span class="Identifier">__SSH_HOST_NAME__</span>=<span class="PreProc">$1</span><span class="Statement">;</span>
+    <span class="Identifier">__SSH_HOST_NAME__</span>=<span class="PreProc">${</span><span class="PreProc">__SSH_HOST_NAME__</span><span class="Statement">:=</span><span class="Error">ctms-hp9</span><span class="PreProc">}</span><span class="Statement">;</span>
+    ssh root@<span class="PreProc">$__SSH_HOST_NAME__</span> <span class="Statement">'</span><span class="Constant">mkdir .ssh</span><span class="Statement">'</span>
+    scp  /users/xbalaji/.ssh/id_rsa.pub root@<span class="PreProc">${</span><span class="PreProc">__SSH_HOST_NAME__</span><span class="PreProc">}</span>:/root/.ssh/authorized_keys
+    scphints <span class="PreProc">$1</span>
+<span class="Special">}</span>
+
+ctms-start<span class="PreProc">()</span>
+<span class="Special">{</span>
+    <span class="Identifier">__SSH_HOST_NAME__</span>=<span class="PreProc">$1</span><span class="Statement">;</span>
+    <span class="Identifier">__SSH_HOST_NAME__</span>=<span class="PreProc">${</span><span class="PreProc">__SSH_HOST_NAME__</span><span class="Statement">:=</span><span class="Error">ctms-hp9</span><span class="PreProc">}</span><span class="Statement">;</span>
+    ssh root@<span class="PreProc">$__SSH_HOST_NAME__</span> <span class="Statement">'</span><span class="Constant">/usr/local/dh/bin/S90dh start</span><span class="Statement">'</span>
+<span class="Special">}</span>
+
+ctms-stop<span class="PreProc">()</span>
+<span class="Special">{</span>
+    <span class="Identifier">__SSH_HOST_NAME__</span>=<span class="PreProc">$1</span><span class="Statement">;</span>
+    <span class="Identifier">__SSH_HOST_NAME__</span>=<span class="PreProc">${</span><span class="PreProc">__SSH_HOST_NAME__</span><span class="Statement">:=</span><span class="Error">ctms-hp9</span><span class="PreProc">}</span><span class="Statement">;</span>
+    ssh root@<span class="PreProc">$__SSH_HOST_NAME__</span> <span class="Statement">'</span><span class="Constant">/usr/local/dh/bin/S90dh stop</span><span class="Statement">'</span>
+<span class="Special">}</span>
+
+
+<span class="Comment">#scpconfmgr()</span>
+<span class="Comment">#{</span>
+<span class="Comment">#    __SCP_FILE_NAME__=$USER.$(pwd | cut -d &quot;/&quot; -f4-4);</span>
+<span class="Comment">#    echo &quot;scp bin/confmgr root@ctms-hp9:/usr/local/dh/bin/confmgr.${__SCP_FILE_NAME__}&quot;</span>
+<span class="Comment">#    scp bin/confmgr root@ctms-hp9:/usr/local/dh/bin/confmgr.${__SCP_FILE_NAME__}</span>
+<span class="Comment">#}</span>
+
+<span class="Identifier">scpconfmgr()</span>
+<span class="Identifier">{</span>
+    <span class="Identifier">__SCP_FILE_NAME__</span>=<span class="PreProc">$USER</span>.<span class="Error">$(</span><span class="Statement">pwd</span><span class="Special"> </span><span class="Statement">|</span><span class="Special"> cut -d </span><span class="Statement">&quot;</span><span class="Constant">/</span><span class="Statement">&quot;</span><span class="Special"> -f4</span><span class="Constant">-4</span><span class="Error">)</span><span class="Statement">;</span>
+    <span class="Identifier">__SCP_HOST_NAME__</span>=<span class="PreProc">$1</span><span class="Statement">;</span>
+    <span class="Identifier">__SCP_HOST_NAME__</span>=<span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="Statement">:=</span><span class="Error">ctms-hp9</span><span class="PreProc">}</span><span class="Statement">;</span>
+    <span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">scp bin/confmgr root@</span><span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="PreProc">}</span><span class="Constant">:/usr/local/dh/bin/confmgr.</span><span class="PreProc">${</span><span class="PreProc">__SCP_FILE_NAME__</span><span class="PreProc">}</span><span class="Statement">&quot;</span>
+    scp bin/confmgr root@<span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="PreProc">}</span>:/usr/local/dh/bin/confmgr.<span class="PreProc">${</span><span class="PreProc">__SCP_FILE_NAME__</span><span class="PreProc">}</span>
+<span class="Identifier">}</span>
+
+<span class="Identifier">scptarget()</span>
+<span class="Identifier">{</span>
+    <span class="Identifier">__SCP_SRC_FILE__</span>=<span class="PreProc">$1</span><span class="Statement">;</span>
+    <span class="Identifier">__SCP_DST_FILE__</span>=<span class="Error">$(</span><span class="Special">basename </span><span class="PreProc">$1</span><span class="Error">)</span><span class="Statement">;</span>
+    <span class="Identifier">__SCP_FILE_EXT__</span>=<span class="PreProc">$USER</span>.<span class="Error">$(</span><span class="Statement">pwd</span><span class="Special"> </span><span class="Statement">|</span><span class="Special"> cut -d </span><span class="Statement">&quot;</span><span class="Constant">/</span><span class="Statement">&quot;</span><span class="Special"> -f4</span><span class="Constant">-4</span><span class="Error">)</span><span class="Statement">;</span>
+    <span class="Identifier">__SCP_HOST_NAME__</span>=<span class="PreProc">$2</span><span class="Statement">;</span>
+    <span class="Identifier">__SCP_HOST_NAME__</span>=<span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="Statement">:=</span><span class="Error">ctms-hp9</span><span class="PreProc">}</span><span class="Statement">;</span>
+    <span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">scp </span><span class="PreProc">${</span><span class="PreProc">__SCP_SRC_FILE__</span><span class="PreProc">}</span><span class="Constant"> root@</span><span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="PreProc">}</span><span class="Constant">:/usr/local/dh/bin/</span><span class="PreProc">${</span><span class="PreProc">__SCP_DST_FILE__</span><span class="PreProc">}</span><span class="Constant">.</span><span class="PreProc">${</span><span class="PreProc">__SCP_FILE_EXT__</span><span class="PreProc">}</span><span class="Statement">&quot;</span>
+    scp <span class="PreProc">${</span><span class="PreProc">__SCP_SRC_FILE__</span><span class="PreProc">}</span> root@<span class="PreProc">${</span><span class="PreProc">__SCP_HOST_NAME__</span><span class="PreProc">}</span>:/usr/local/dh/bin/<span class="PreProc">${</span><span class="PreProc">__SCP_DST_FILE__</span><span class="PreProc">}</span>.<span class="PreProc">${</span><span class="PreProc">__SCP_FILE_EXT__</span><span class="PreProc">}</span>
+<span class="Identifier">}</span>
+
+enable-ctms-root<span class="PreProc">()</span>
+<span class="Special">{</span>
+    <span class="Identifier">__SSH_HOST_NAME__</span>=<span class="PreProc">$1</span><span class="Statement">;</span>
+    <span class="Identifier">__SSH_HOST_NAME__</span>=<span class="PreProc">${</span><span class="PreProc">__SSH_HOST_NAME__</span><span class="Statement">:=</span><span class="Error">ctms-hp9</span><span class="PreProc">}</span><span class="Statement">;</span>
+    <span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">export CTMS_BASE=/users/xbalaji/pub/CtmsScripts/; export CTMS_PATCH_REPOSITORY=ctms-lnx6.cisco.com; /users/xbalaji/pub/CtmsScripts/runctms  </span><span class="PreProc">$__SSH_HOST_NAME__</span><span class="Constant"> enable_ctms_root</span><span class="Statement">&quot;</span>
+    <span class="Statement">export</span><span class="Identifier"> CTMS_BASE</span><span class="Statement">=</span>/users/xbalaji/pub/CtmsScripts/<span class="Statement">;</span> <span class="Statement">export</span><span class="Identifier"> CTMS_PATCH_REPOSITORY</span><span class="Statement">=</span>ctms-lnx6.cisco.com<span class="Statement">;</span> /users/xbalaji/pub/CtmsScripts/runctms  <span class="PreProc">$__SSH_HOST_NAME__</span> enable_ctms_root
+<span class="Special">}</span>
+
+cdets-add-bypass-ut<span class="PreProc">()</span>
+<span class="Special">{</span>
+    <span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">fixcr -N -i </span><span class="PreProc">$1</span><span class="Constant"> -n Unit-test -f /users/xbalaji/utils/dev/cdets/unit-test-bypass.txt</span><span class="Statement">&quot;</span>
+    fixcr -N -i <span class="PreProc">$1</span> -n Unit-<span class="Statement">test</span> -f /users/xbalaji/utils/dev/cdets/unit-<span class="Statement">test</span>-bypass.txt
+<span class="Special">}</span>
+
+cdets-add-bypass-sa<span class="PreProc">()</span>
+<span class="Special">{</span>
+    <span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">fixcr -N -i </span><span class="PreProc">$1</span><span class="Constant"> -n Static-Analysis  -f /users/xbalaji/utils/dev/cdets/static-analysis-bypass.txt</span><span class="Statement">&quot;</span>
+    fixcr -N -i <span class="PreProc">$1</span> -n Static-Analysis  -f /users/xbalaji/utils/dev/cdets/static-analysis-bypass.txt
+<span class="Special">}</span>
+
+cdets-add-bypass-cr<span class="PreProc">()</span>
+<span class="Special">{</span>
+    <span class="Statement">echo</span><span class="Constant"> </span><span class="Statement">&quot;</span><span class="Constant">fixcr -N -i </span><span class="PreProc">$1</span><span class="Constant"> -n Code-Review -f /users/xbalaji/utils/dev/cdets/code-review-bypass.txt</span><span class="Statement">&quot;</span>
+    fixcr -N -i <span class="PreProc">$1</span> -n Code-Review -f /users/xbalaji/utils/dev/cdets/code-review-bypass.txt
+<span class="Special">}</span>
+
+cdets-add-bypass<span class="PreProc">()</span>
+<span class="Special">{</span>
+    cdets-add-bypass-ut <span class="PreProc">$1</span>
+    cdets-add-bypass-sa <span class="PreProc">$1</span>
+    cdets-add-bypass-cr <span class="PreProc">$1</span>
+<span class="Special">}</span>
+
+<span class="Comment">#unalias mybugs</span>
+<span class="Comment">#mybugs()</span>
+<span class="Comment">#{</span>
+<span class="Comment">#    findcr -p CSC.general -s SNAOWHIPM  -o Severity -f \&quot;%-10.10s %1.1s %1.1s %1.1s %-63.63s\n\&quot; -w Identifier,Status,Severity,DE-priority,Headline \&quot;[Engineer] = \'&quot;$1&quot;\'\&quot;</span>
+<span class="Comment">#}</span>
+</pre>
+</body>
+</html>

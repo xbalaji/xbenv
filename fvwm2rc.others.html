@@ -1,0 +1,821 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.fvwm2rc.others.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+.Type { color: #00ff00; font-weight: normal; }
+.Constant { color: #ff40ff; font-weight: normal; }
+.Statement { color: #ffff00; font-weight: normal; }
+.Identifier { color: #00ffff; font-weight: normal; }
+.Special { color: #ff6060; font-weight: normal; }
+.PreProc { color: #8080ff; font-weight: normal; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment"># this is a bare bones sample .fvwm2rc/system.fvwm2rc file for fvwm-2.</span>
+<span class="Comment"># It should be customized before install.  See other sample .fvwm2rc files</span>
+<span class="Comment"># for hints, as well as pointers from the various links on the official</span>
+<span class="Comment"># fvwm web page (see the FAQ).</span>
+
+<span class="Comment"># play with the following options for ICONS : xbalaji@cisco.com</span>
+<span class="Comment"># Auto Place Icons is a nice feature....</span>
+IconBox -70 <span class="Constant">1</span> -1 -140
+
+<span class="Comment"># If you uncomment this, and make sure that the WindowList is bound to</span>
+<span class="Comment"># something, it works pretty much like an icon manager.</span>
+<span class="Comment">#SuppressIcons</span>
+
+<span class="Comment"># StubbornIcons makes icons de-iconify into their original position on the</span>
+<span class="Comment"># desktop, instead of on the current page.</span>
+StubbornIcons
+
+<span class="Comment"># With AutoPlacement, icons will normally place themselves underneath active</span>
+<span class="Comment"># windows. This option changes that.</span>
+StubbornIconPlacement
+
+<span class="Comment"># If you want ALL you icons to follow you around the desktop (Sticky), try</span>
+<span class="Comment"># this</span>
+<span class="Comment">#StickyIcons</span>
+
+<span class="Comment"># window placement options : Balaji Venkataraman (xbalaji@cisco.com)</span>
+<span class="Comment"># RandomPlacement prevents user interaction while placing windows:</span>
+<span class="Comment"># RandomPlacement</span>
+
+<span class="Comment"># SmartPlacement makes new windows pop-up in blank regions of screen </span>
+<span class="Comment"># if possible, or falls back to random or interactive placement.</span>
+SmartPlacement
+
+<span class="Comment"># With SmartPlacement, windows will normally place themselves over icons. </span>
+<span class="Comment"># Uncomment this to change that.</span>
+<span class="Comment">#StubbornPlacement</span>
+
+<span class="Comment"># NoPPosition instructs fvwm to ignore the PPosition field in window </span>
+<span class="Comment"># geometry hints. Emacs annoyingly sets PPosition to (0,0)!</span>
+NoPPosition
+
+<span class="Comment"># Edge</span>
+<span class="Statement">EdgeResistance</span>  <span class="Constant">250</span>  <span class="Constant">50</span>
+<span class="Statement">EdgeScroll</span>        <span class="Constant">0</span>   <span class="Constant">0</span>
+<span class="Statement">ClickTime</span>       <span class="Constant">750</span>
+
+<span class="Comment"># make sure these fonts exist on your system:</span>
+<span class="Statement">WindowFont</span> -adobe-times-bold-r-*-*-18-*-*-*-*-*-*-*
+<span class="Statement">WindowFont</span> -adobe-times-bold-r-*-*-14-*-*-*-*-*-*-*
+<span class="Statement">IconFont</span> -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+
+<span class="Comment"># change the color </span>
+<span class="Statement">HilightColor</span> black palevioletred
+
+<span class="Comment">### Start ###  --- Balaji Venkataraman ---    *** xbalaji@cisco.com *** ###</span>
+<span class="Statement">DeskTopSize</span>     4x3
+DeskTopScale     <span class="Constant">32</span>
+<span class="Statement">MenuStyle</span>   maroon grey60 grey40 -adobe-times-bold-r-*-*-14-*-*-*-*-*-*-* <span class="Identifier">fvwm</span>
+
+
+<span class="Comment"># default Styles:</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;*</span><span class="Special">&quot;</span>           <span class="Identifier">BorderWidth</span> <span class="Constant">3</span>, <span class="Identifier">HandleWidth</span> <span class="Constant">3</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;*</span><span class="Special">&quot;</span>           <span class="Identifier">Icon</span> unknown1.xpm, <span class="Identifier">Color</span> lightgrey/dimgrey
+<span class="Statement">Style</span> <span class="Constant">&quot;*</span><span class="Special">&quot;</span>           <span class="Identifier">MWMFunctions</span>, <span class="Identifier">MWMDecor</span>, <span class="Identifier">HintOverride</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;*</span><span class="Special">&quot;</span>           <span class="Identifier">DecorateTransient</span>, <span class="Identifier">NoPPosition</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;*</span><span class="Special">&quot;</span>           <span class="Identifier">IconBox</span> <span class="Constant">0</span> -10 -280 -1
+<span class="Statement">Style</span> <span class="Constant">&quot;*</span><span class="Special">&quot;</span>           <span class="Identifier">ClickToFocus</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;*</span><span class="Special">&quot;</span>           RandomPlacement, SmartPlacement
+<span class="Statement">Style</span> <span class="Constant">&quot;xclock</span><span class="Special">&quot;</span>      <span class="Identifier">NoTitle</span>, <span class="Identifier">CirculateSkip</span>, <span class="Identifier">WindowListSkip</span>, <span class="Identifier">NeverFocus</span>
+
+<span class="Comment"># Styles for various Fvwm modules:</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;Fvwm*</span><span class="Special">&quot;</span>           <span class="Identifier">NoTitle</span>,  <span class="Identifier">Sticky</span>, <span class="Identifier">WindowListSkip</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;Fvwm*</span><span class="Special">&quot;</span>           <span class="Identifier">BorderWidth</span> <span class="Constant">2</span>, CirculateSkipIcon, <span class="Identifier">CirculateSkip</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;FvwmPager</span><span class="Special">&quot;</span>       <span class="Identifier">NoHandles</span>, CirculateSkipIcon, NoFocus, <span class="Identifier">StaysOnTop</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;FvwmPager</span><span class="Special">&quot;</span>       <span class="Identifier">CirculateSkip</span>, <span class="Identifier">WindowListSkip</span>, <span class="Identifier">NeverFocus</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;MyFvwmTalk</span><span class="Special">&quot;</span>      <span class="Identifier">Sticky</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;MyFvwmTalk</span><span class="Special">&quot;</span>      <span class="Identifier">NoTitle</span>,<span class="Identifier">NoHandles</span>, <span class="Identifier">BorderWidth</span> <span class="Constant">2</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;MyRouterForm</span><span class="Special">&quot;</span>    <span class="Identifier">Sticky</span>,<span class="Identifier">NoTitle</span>,<span class="Identifier">NoHandles</span>, <span class="Identifier">BorderWidth</span> <span class="Constant">2</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;FvwmBanner</span><span class="Special">&quot;</span>      <span class="Identifier">StaysOnTop</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;FvwmButtons</span><span class="Special">&quot;</span>     <span class="Identifier">Icon</span> toolbox.xpm, <span class="Identifier">ClickToFocus</span>
+
+<span class="Comment"># Styles for your common terminal emulator programs:</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;XTerm</span><span class="Special">&quot;</span>           <span class="Identifier">Icon</span> xterm.xpm, <span class="Identifier">SloppyFocus</span>, <span class="Identifier">IconBox</span> -70 <span class="Constant">1</span> -1 -140
+<span class="Statement">Style</span> <span class="Constant">&quot;rxvt</span><span class="Special">&quot;</span>            <span class="Identifier">Icon</span> term.xpm, <span class="Identifier">SloppyFocus</span>, <span class="Identifier">IconBox</span> -70 <span class="Constant">1</span> -1 -140
+<span class="Statement">Style</span> <span class="Constant">&quot;rxvt</span><span class="Special">&quot;</span>            <span class="Identifier">MWMBorder</span>, <span class="Identifier">MWMButtons</span>
+
+<span class="Comment"># Styles for various common programs:</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;*lock</span><span class="Special">&quot;</span>           <span class="Identifier">NoTitle</span>, <span class="Identifier">NoHandles</span>, <span class="Identifier">Sticky</span>, <span class="Identifier">WindowListSkip</span>, <span class="Identifier">ClickToFocus</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;xbiff</span><span class="Special">&quot;</span>           <span class="Identifier">NoTitle</span>, <span class="Identifier">Sticky</span>, <span class="Identifier">WindowListSkip</span>, <span class="Identifier">ClickToFocus</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;xcalc</span><span class="Special">&quot;</span>           <span class="Identifier">Icon</span> xcalc.xpm, <span class="Identifier">NoButton</span> <span class="Constant">2</span>,RandomPlacement,<span class="Identifier">ClickToFocus</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;xmh</span><span class="Special">&quot;</span>             <span class="Identifier">Icon</span> mail1.xpm, <span class="Identifier">NoIconTitle</span>,<span class="Identifier">StickyIcon</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;xmh</span><span class="Special">&quot;</span>             RandomPlacement, <span class="Identifier">NoButton</span> <span class="Constant">2</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;xman</span><span class="Special">&quot;</span>            <span class="Identifier">Icon</span> xman.xpm, RandomPlacement, <span class="Identifier">ClickToFocus</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;xmag</span><span class="Special">&quot;</span>            <span class="Identifier">Icon</span> mag_glass.xpm, RandomPlacement, <span class="Identifier">ClickToFocus</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;xgraph</span><span class="Special">&quot;</span>          <span class="Identifier">Icon</span> graphs.xpm, RandomPlacement, <span class="Identifier">ClickToFocus</span>
+<span class="Statement">Style</span> <span class="Constant">&quot;xmosaic</span><span class="Special">&quot;</span>         <span class="Identifier">Color</span> Green/Yellow, <span class="Identifier">ClickToFocus</span>
+
+<span class="Comment"># functions to move to next (window, page, desk)</span>
+<span class="Statement">AddToFunc</span>  next-dsk-raise   I Desk  -1  <span class="Constant">0</span>  <span class="Constant">0</span>  <span class="Constant">4</span>
+<span class="Statement">AddToFunc</span>  prev-dsk-raise   I Desk   <span class="Constant">1</span>  <span class="Constant">0</span>  <span class="Constant">0</span>  <span class="Constant">4</span>
+
+<span class="Statement">AddToFunc</span>  next-pg-raise    I <span class="Statement">Scroll</span>  +100000 +0
+<span class="Statement">AddToFunc</span>  prev-pg-raise    I <span class="Statement">Scroll</span>  -100000 +0
+
+<span class="Statement">AddToFunc</span>  next-win-raise   I <span class="Statement">Next</span> [CurrentPage  !iconic] <span class="Statement">Focus</span>
++                           I <span class="Statement">Current</span> <span class="Statement">Raise</span>
++                           I <span class="Statement">Current</span> <span class="Statement">WarpToWindow</span> <span class="Constant">20</span> <span class="Constant">20</span>
+
+<span class="Statement">AddToFunc</span>  prev-win-raise   I <span class="Statement">Prev</span> [CurrentPage  !iconic] <span class="Statement">Focus</span>
++                           I <span class="Statement">Current</span> <span class="Statement">Raise</span>
++                           I <span class="Statement">Current</span> <span class="Statement">WarpToWindow</span> <span class="Constant">20</span> <span class="Constant">20</span>
+
+<span class="Statement">AddToFunc</span>  next-win-raise-icon  I <span class="Statement">Next</span> [CurrentPage] <span class="Statement">Focus</span>
++                               I <span class="Statement">Current</span> <span class="Statement">Iconify</span> -1
++                               I <span class="Statement">Current</span> <span class="Statement">Raise</span>
++                               I <span class="Statement">Current</span> <span class="Statement">WarpToWindow</span> 5p 5p
+
+<span class="Statement">AddToFunc</span>  prev-win-raise-icon  I <span class="Statement">Prev</span> [CurrentPage] <span class="Statement">Focus</span>
++                               I <span class="Statement">Current</span> <span class="Statement">Iconify</span> -1
++                               I <span class="Statement">Current</span> <span class="Statement">Raise</span>
++                               I <span class="Statement">Current</span> <span class="Statement">WarpToWindow</span> 5p 5p
+
+<span class="Statement">AddToFunc</span>  next-and-raise       I <span class="Statement">Next</span> [CurrentPage !iconic] <span class="Statement">Focus</span>
++                               I <span class="Statement">Current</span> <span class="Statement">Raise</span>
++                               I <span class="Statement">Current</span> <span class="Statement">WarpToWindow</span> 5p 5p
+
+<span class="Statement">AddToFunc</span>  previous-and-raise   I <span class="Statement">Prev</span> [CurrentPage !iconic] <span class="Statement">Focus</span>
++                               I <span class="Statement">Current</span> <span class="Statement">Raise</span>
++                               I <span class="Statement">Current</span> <span class="Statement">WarpToWindow</span> 5p 5p
+
+<span class="Comment"># move to the page of interest, count everything from 0,1,...</span>
+<span class="Statement">AddToFunc</span> FocusDeskAndPage      I   Desk <span class="Constant">0</span> <span class="PreProc">$0</span>
++                               I   <span class="Statement">GotoPage</span> <span class="PreProc">$1</span> <span class="PreProc">$2</span>
+
+
+
+<span class="Comment"># some simple default key bindings:</span>
+<span class="Statement">Key</span> <span class="Special">Next</span>         <span class="Special">A</span>       <span class="Special">SCM</span>     <span class="Statement">Next</span> [*] <span class="Statement">Focus</span>
+<span class="Statement">Key</span> <span class="Special">Prior</span>        <span class="Special">A</span>       <span class="Special">SCM</span>     <span class="Statement">Prev</span> [*] <span class="Statement">Focus</span>
+<span class="Statement">Key</span> <span class="Special">F1</span>           <span class="Special">A</span>       <span class="Special">N</span>       <span class="Statement">Popup</span> RootMenu
+<span class="Statement">Key</span> <span class="Special">F2</span>           <span class="Special">A</span>       <span class="Special">N</span>       <span class="Statement">Popup</span> Window-Ops
+<span class="Statement">Key</span> <span class="Special">F3</span>           <span class="Special">A</span>       <span class="Special">N</span>       <span class="Statement">WindowList</span> <span class="Identifier">CurrentDesk</span> <span class="Identifier">NoGeometry</span>
+<span class="Statement">Key</span> <span class="Special">F4</span>           <span class="Special">A</span>       <span class="Special">N</span>       <span class="Statement">Popup</span> Applications
+<span class="Statement">Key</span> <span class="Special">F5</span>           <span class="Special">A</span>       <span class="Special">N</span>       <span class="Statement">Next</span> [*] <span class="Statement">Focus</span>
+<span class="Statement">Key</span> <span class="Special">F6</span>           <span class="Special">A</span>       <span class="Special">N</span>       <span class="Statement">Prev</span> [*] <span class="Statement">Focus</span>
+<span class="Statement">Key</span> <span class="Special">F7</span>           <span class="Special">A</span>       <span class="Special">N</span>       <span class="Statement">Raise</span>
+<span class="Statement">Key</span> <span class="Special">F11</span>          <span class="Special">A</span>       <span class="Special">SCM</span>     <span class="Statement">WindowList</span>
+<span class="Statement">Key</span> <span class="Special">F12</span>          <span class="Special">A</span>       <span class="Special">C</span>       <span class="Statement">Restart</span> fvwm2
+
+<span class="Comment"># press CTRL+cursor keys to move between Desks...</span>
+<span class="Statement">Key</span>  <span class="Special">Down</span>         <span class="Special">A</span>       <span class="Special">C</span>       Desk   <span class="Constant">1</span>  <span class="Constant">0</span>  <span class="Constant">0</span>  <span class="Constant">4</span>
+<span class="Statement">Key</span>  <span class="Special">Up</span>           <span class="Special">A</span>       <span class="Special">C</span>       Desk  -1  <span class="Constant">0</span>  <span class="Constant">0</span>  <span class="Constant">4</span>
+<span class="Statement">Key</span>  <span class="Special">Left</span>         <span class="Special">A</span>       <span class="Special">C</span>       <span class="Statement">GotoPage</span> -1 <span class="Constant">0</span>
+<span class="Statement">Key</span>  <span class="Special">Right</span>        <span class="Special">A</span>       <span class="Special">C</span>       <span class="Statement">GotoPage</span> +1 <span class="Constant">0</span>
+
+<span class="Statement">Key</span>  <span class="Special">Up</span>           <span class="Special">A</span>       <span class="Special">SM</span>      <span class="Statement">CursorMove</span>   +0 -100
+<span class="Statement">Key</span>  <span class="Special">Down</span>         <span class="Special">A</span>       <span class="Special">SM</span>      <span class="Statement">CursorMove</span>   +0 +100
+<span class="Statement">Key</span>  <span class="Special">Left</span>         <span class="Special">A</span>       <span class="Special">SM</span>      <span class="Statement">CursorMove</span> -100   +0
+<span class="Statement">Key</span>  <span class="Special">Right</span>        <span class="Special">A</span>       <span class="Special">SM</span>      <span class="Statement">CursorMove</span> +100   +0
+
+<span class="Statement">Key</span>  <span class="Special">Up</span>           <span class="Special">A</span>       <span class="Special">M</span>       <span class="Statement">CursorMove</span>   +0 -100
+<span class="Statement">Key</span>  <span class="Special">Down</span>         <span class="Special">A</span>       <span class="Special">M</span>       <span class="Statement">CursorMove</span>   +0 +100
+<span class="Statement">Key</span>  <span class="Special">Left</span>         <span class="Special">A</span>       <span class="Special">M</span>       <span class="Statement">CursorMove</span> -100   +0
+<span class="Statement">Key</span>  <span class="Special">Right</span>        <span class="Special">A</span>       <span class="Special">M</span>       <span class="Statement">CursorMove</span> +100   +0
+
+
+<span class="Comment">##### Circulate windows: #####</span>
+<span class="Comment"># 1. &lt;alt&gt;&lt;tab&gt;                 next window on current page</span>
+<span class="Comment"># 2. &lt;alt&gt;&lt;shift&gt;&lt;tab&gt;          previous window on current page</span>
+<span class="Comment"># 3. &lt;ctrl&gt;&lt;alt&gt;&lt;tab&gt;           next window (will de-iconify) on cur page</span>
+<span class="Comment"># 4. &lt;ctrl&gt;&lt;alt&gt;&lt;shift&gt;&lt;tab&gt;    previous window (will de-iconify) on cur pg</span>
+<span class="Comment"># 9. &lt;alt&gt;&lt;click-3&gt; or &lt;F12&gt;    Raise-lower the window at current </span>
+<span class="Comment">#                               cursor-position, like Sun's &quot;Front&quot; key.</span>
+
+<span class="Statement">Key</span> <span class="Special">Tab</span> <span class="Special">A</span> <span class="Special">MC</span>    <span class="Statement">Function</span> next-win-raise-icon
+<span class="Statement">Key</span> <span class="Special">Tab</span> <span class="Special">A</span> <span class="Special">SMC</span>   <span class="Statement">Function</span> prev-win-raise-icon
+
+<span class="Statement">Key</span> <span class="Special">Tab</span> <span class="Special">A</span> <span class="Special">C</span>     <span class="Statement">Function</span> next-and-raise
+<span class="Statement">Key</span> <span class="Special">Tab</span> <span class="Special">A</span> <span class="Special">SC</span>    <span class="Statement">Function</span> previous-and-raise
+
+<span class="Comment"># add key bindings to F9</span>
+<span class="Comment"># 1. &lt;F9&gt;             : go to the next window in the page</span>
+<span class="Comment"># 2. &lt;shift&gt;&lt;F9&gt;      : go to the prev window in the page</span>
+<span class="Comment"># 3. &lt;alt&gt;&lt;F9&gt;        : go to the next page in the desk</span>
+<span class="Comment"># 4. &lt;shift&gt;&lt;alt&gt;&lt;F9&gt; : go to the prev page in the desk</span>
+<span class="Comment"># 5. &lt;ctrl&gt;&lt;F9&gt;       : go to the next desk</span>
+<span class="Comment"># 6. &lt;shift&gt;&lt;ctrl&gt;&lt;F9&gt;: go to the prev desk</span>
+
+<span class="Statement">Key</span> <span class="Special">F9</span>           <span class="Special">A</span>        <span class="Special">N</span>      <span class="Statement">Function</span> next-win-raise
+<span class="Statement">Key</span> <span class="Special">F9</span>           <span class="Special">A</span>       <span class="Special">SN</span>      <span class="Statement">Function</span> prev-win-raise
+<span class="Statement">Key</span> <span class="Special">F9</span>           <span class="Special">A</span>        <span class="Special">M</span>      <span class="Statement">Function</span> next-pg-raise
+<span class="Statement">Key</span> <span class="Special">F9</span>           <span class="Special">A</span>       <span class="Special">SM</span>      <span class="Statement">Function</span> prev-pg-raise
+<span class="Statement">Key</span> <span class="Special">F9</span>           <span class="Special">A</span>        <span class="Special">C</span>      <span class="Statement">Function</span> next-dsk-raise
+<span class="Statement">Key</span> <span class="Special">F9</span>           <span class="Special">A</span>       <span class="Special">SC</span>      <span class="Statement">Function</span> prev-dsk-raise
+
+<span class="Comment"># add key bindings to F11</span>
+<span class="Statement">Key</span> <span class="Special">F11</span>          <span class="Special">A</span>        <span class="Special">C</span>      FocusDeskAndPage <span class="Constant">3</span> <span class="Constant">1</span> <span class="Constant">1</span>
+
+
+<span class="Comment"># some simple default mouse bindings:</span>
+<span class="Comment">#   for the root window:</span>
+<span class="Statement">Mouse</span> <span class="Special">1</span>     <span class="Special">R</span>       <span class="Special">A</span>       <span class="Statement">Menu</span> RootMenu      <span class="Statement">Nop</span>
+<span class="Statement">Mouse</span> <span class="Special">2</span>     <span class="Special">R</span>       <span class="Special">A</span>       <span class="Statement">Menu</span> Window-Ops    <span class="Statement">Nop</span>
+<span class="Statement">Mouse</span> <span class="Special">3</span>     <span class="Special">R</span>       <span class="Special">A</span>       <span class="Statement">Menu</span> Applications  <span class="Statement">Nop</span>
+
+<span class="Comment">#   for the title bar buttons:</span>
+<span class="Statement">Mouse</span> <span class="Special">0</span>     <span class="Special">1</span>       <span class="Special">A</span>       <span class="Statement">Menu</span> Window-Ops2 <span class="Statement">Close</span>
+<span class="Statement">Mouse</span> <span class="Special">0</span>     <span class="Special">2</span>       <span class="Special">A</span>       Maximize-Func
+<span class="Statement">Mouse</span> <span class="Special">0</span>     <span class="Special">4</span>       <span class="Special">A</span>       <span class="Statement">Iconify</span>
+
+<span class="Comment"># Goto FvwmTalk and type </span>
+<span class="Comment"># &quot;Resize 58 34&quot; for xterms click on the window to resize to standard size</span>
+<span class="Comment"># &quot;Resize 40 40&quot; for meeting maker</span>
+
+<span class="Comment"># Then type &quot;Move 200p 100p&quot; to move the window at the correct postion</span>
+<span class="Comment"># refer bin/rterms1 for exact pixel mapping</span>
+
+<span class="Comment">#   for other parts of the window/borders/icons:</span>
+<span class="Statement">Mouse</span> <span class="Special">1</span>     <span class="Special">F</span>       <span class="Special">A</span>       Resize-or-Raise
+<span class="Statement">Mouse</span> <span class="Special">1</span>     <span class="Special">TS</span>      <span class="Special">A</span>       Move-or-Raise
+<span class="Statement">Mouse</span> <span class="Special">1</span>     <span class="Special">I</span>       <span class="Special">A</span>       Move-or-Iconify
+<span class="Statement">Mouse</span> <span class="Special">2</span>     <span class="Special">I</span>       <span class="Special">A</span>       <span class="Statement">Iconify</span>
+<span class="Statement">Mouse</span> <span class="Special">2</span>     <span class="Special">FST</span>     <span class="Special">A</span>       <span class="Statement">Menu</span> Window-Ops2 <span class="Statement">Nop</span>
+<span class="Statement">Mouse</span> <span class="Special">3</span>     <span class="Special">TSIF</span>    <span class="Special">A</span>       <span class="Statement">RaiseLower</span>
+
+<span class="Comment"># Init Functions: Changed the Init and Restart for Pager</span>
+<span class="Comment">#                              Balaji  30 Jan 2000</span>
+
+<span class="Statement">AddToFunc</span> <span class="Type">InitFunction</span>          I <span class="Statement">Module</span>  <span class="Identifier">FvwmPager</span> <span class="Constant">0</span> <span class="Constant">1</span>
++   I   <span class="Statement">exec</span> xsetroot -solid SteelBlue4 -fg Black -bg NavyBlue
++   I   <span class="Statement">exec</span> xclock -digital -geometry -0+0 -update <span class="Constant">1</span> -bg black -fg green -fn -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1  &amp;
++   I   ChangeDefaultFocus ClickToFocus
+
+
+<span class="Statement">AddToFunc</span> <span class="Type">RestartFunction</span>       I <span class="Statement">Module</span>  <span class="Identifier">FvwmPager</span> <span class="Constant">0</span> <span class="Constant">1</span>
++   I   <span class="Statement">exec</span> xsetroot -solid SteelBlue4 -fg Black -bg NavyBlue
++   I   <span class="Statement">exec</span> xclock -digital -geometry -0+0 -update <span class="Constant">1</span> -bg black -fg green -fn -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1  &amp;
++   I   ChangeDefaultFocus ClickToFocus
+
+
+
+
+<span class="Comment">######################## Menus ###################</span>
+<span class="Statement">AddToMenu</span> RootMenu      <span class="Constant">&quot;Root Menu</span><span class="Special">&quot;</span>     <span class="Statement">Title</span>
++   <span class="Constant">&quot;Xterm-1&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -sb -sl <span class="Constant">40000</span> -bg white -fg black -bd red -fn -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1 -T <span class="Constant">&quot;  Balaji Venkataraman's    --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Special">&quot;</span>
++   <span class="Constant">&quot;Xterm-R&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -sb -sl <span class="Constant">40000</span> -bg black -fg white -bd red -fn -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1 -T <span class="Constant">&quot;  Balaji Venkataraman's    --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Special">&quot;</span>
++   <span class="Constant">&quot;&quot;</span>              <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Xterm-2&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -sb -sl <span class="Constant">40000</span> -bg white -fg black -bd red -fn -adobe-courier-medium-r-normal--0-0-75-75-m-0-iso8859-1 -T <span class="Constant">&quot;  Balaji Venkataraman's    --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Special">&quot;</span>
++   <span class="Constant">&quot;Xterm-R&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -sb -sl <span class="Constant">40000</span> -bg black -fg white -bd red -fn -adobe-courier-medium-r-normal--0-0-75-75-m-0-iso8859-1 -T <span class="Constant">&quot;  Balaji Venkataraman's    --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Special">&quot;</span>
++   <span class="Constant">&quot;&quot;</span>                  <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Xddts&quot;</span>             <span class="Statement">Exec</span> <span class="Statement">exec</span> xddts
++   <span class="Constant">&quot;&quot;</span>                  <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Firefox  &quot;</span>         <span class="Statement">Exec</span> <span class="Statement">exec</span> /usr/local/bin/firefox &amp;
++   <span class="Constant">&quot;&quot;</span>                  <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Utilities&quot;</span>         <span class="Statement">Popup</span>       Utilities
++   <span class="Constant">&quot;&quot;</span>                  <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Fvwm Modules&quot;</span>      <span class="Statement">Popup</span>       Module-Popup
++   <span class="Constant">&quot;Fvwm Window Ops&quot;</span>   <span class="Statement">Popup</span>       Window-Ops
++   <span class="Constant">&quot;Fvwm Simple Cfg&quot;</span>   <span class="Statement">Popup</span>       Misc-Ops
++   <span class="Constant">&quot;&quot;</span>                  <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Exit Fvwm&quot;</span>         <span class="Statement">Popup</span>       Quit-Verify
+
+<span class="Statement">AddToMenu</span> Xbalaji   <span class="Constant">&quot;xbalaji</span><span class="Special">&quot;</span> <span class="Statement">Title</span>
++   <span class="Constant">&quot;BXTerm-n1&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -sb -sl <span class="Constant">40000</span> -bg black -fg white -bd red -fn -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1 -T <span class="Constant">&quot;  Balaji Venkataraman's    --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Special">&quot;</span>
++   <span class="Constant">&quot;BXTerm-r1&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -sb -sl <span class="Constant">40000</span> -bg white -fg black -bd red -fn -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1 -T <span class="Constant">&quot;  Balaji Venkataraman's    --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Special">&quot;</span>
++   <span class="Constant">&quot;&quot;</span>              <span class="Statement">Nop</span>
++   <span class="Constant">&quot;BXTerm-n2&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -sb -sl <span class="Constant">40000</span> -bg black -fg white -bd red -fn -adobe-courier-medium-r-normal--0-0-75-75-m-0-iso8859-1 -T <span class="Constant">&quot;  Balaji Venkataraman's    --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Special">&quot;</span>
++   <span class="Constant">&quot;BXTerm-r2&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -sb -sl <span class="Constant">40000</span> -bg white -fg black -bd red -fn -adobe-courier-medium-r-normal--0-0-75-75-m-0-iso8859-1 -T <span class="Constant">&quot;  Balaji Venkataraman's    --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Special">&quot;</span>
+
+<span class="Statement">AddToMenu</span> Utilities <span class="Constant">&quot;Utilities</span><span class="Special">&quot;</span> <span class="Statement">Title</span>
++   <span class="Constant">&quot;Top&quot;</span>           <span class="Statement">Exec</span> <span class="Statement">exec</span> cxterm -T Top -n Top -e top
++   <span class="Constant">&quot;Calculator&quot;</span>    <span class="Statement">Exec</span> <span class="Statement">exec</span> xcalc
++   <span class="Constant">&quot;Xman&quot;</span>          <span class="Statement">Exec</span> <span class="Statement">exec</span> xman
++   <span class="Constant">&quot;Xmag&quot;</span>          <span class="Statement">Exec</span> <span class="Statement">exec</span> xmag
++   <span class="Constant">&quot;Editres&quot;</span>       <span class="Statement">Exec</span> <span class="Statement">exec</span> editres
++   <span class="Constant">&quot;&quot;</span>              <span class="Statement">Nop</span>
++   <span class="Constant">&quot;XEmacs&quot;</span>        <span class="Statement">Exec</span> <span class="Statement">exec</span> xemacs
++   <span class="Constant">&quot;Mail&quot;</span>          MailFunction xmh <span class="Constant">&quot;-font fixed</span><span class="Special">&quot;</span>
++   <span class="Constant">&quot;&quot;</span>              <span class="Statement">Nop</span>
++   <span class="Constant">&quot;XLock&quot;</span>         <span class="Statement">Exec</span> <span class="Statement">exec</span> xlock -mode random
++   <span class="Constant">&quot;&quot;</span>              <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Reset X def.&quot;</span>  <span class="Statement">Exec</span> xrdb -load <span class="PreProc">$HOME</span>/.Xdefaults
+
+<span class="Statement">AddToMenu</span> Misc-Ops <span class="Constant">&quot;Misc Config Opts</span><span class="Special">&quot;</span> <span class="Statement">Title</span>
++   <span class="Constant">&quot;Sloppy Focus&quot;</span>              ChangeDefaultFocus SloppyFocus
++   <span class="Constant">&quot;Click To Focus&quot;</span>            ChangeDefaultFocus ClickToFocus
++   <span class="Constant">&quot;Focus Follows Mouse&quot;</span>       ChangeDefaultFocus FocusFollowsMouse
++   <span class="Constant">&quot;&quot;</span>                          <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Colormap Follows Mouse&quot;</span>    <span class="Statement">ColormapFocus</span> FollowsMouse
++   <span class="Constant">&quot;Colormap Follows Focus&quot;</span>    <span class="Statement">ColormapFocus</span> FollowsFocus
++   <span class="Constant">&quot;&quot;</span>                          <span class="Statement">Nop</span>
++   <span class="Constant">&quot;Full Paging ON&quot;</span>            <span class="Statement">EdgeScroll</span> <span class="Constant">100</span> <span class="Constant">100</span>
++   <span class="Constant">&quot;All Paging OFF&quot;</span>            <span class="Statement">EdgeScroll</span> <span class="Constant">0</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Horizontal Paging Only&quot;</span>    <span class="Statement">EdgeScroll</span> <span class="Constant">100</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Vertical Paging Only&quot;</span>      <span class="Statement">EdgeScroll</span> <span class="Constant">0</span> <span class="Constant">100</span>
++   <span class="Constant">&quot;Partial Paging&quot;</span>            <span class="Statement">EdgeScroll</span> <span class="Constant">50</span> <span class="Constant">50</span>
++   <span class="Constant">&quot;Full Paging </span><span class="Special">&amp;&amp;</span><span class="Constant"> Edge Wrap&quot;</span>  <span class="Statement">EdgeScroll</span> <span class="Constant">100000</span> <span class="Constant">100000</span>
+
+<span class="Statement">AddToFunc</span> MoveToDeskAndPage
++   <span class="Constant">&quot;I&quot;</span>         <span class="Statement">MoveToDesk</span> <span class="Constant">0</span> <span class="PreProc">$0</span>
++   <span class="Constant">&quot;I&quot;</span>         <span class="Statement">MoveToPage</span> <span class="PreProc">$1</span> <span class="PreProc">$2</span>
+
+<span class="Statement">AddToMenu</span> D0Col0    <span class="Constant">&quot;Desk:0 Column0</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">0</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">0</span> <span class="Constant">1</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">0</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D0Col1    <span class="Constant">&quot;Desk:0 Column1</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">1</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">1</span> <span class="Constant">1</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">1</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D0Col2    <span class="Constant">&quot;Desk:0 Column2</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">2</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">2</span> <span class="Constant">1</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">2</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D0Col3    <span class="Constant">&quot;Desk:0 Column3</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">3</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">3</span> <span class="Constant">1</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">0</span> <span class="Constant">3</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D1Col0    <span class="Constant">&quot;Desk:1 Column0</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">1</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">0</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D1Col1    <span class="Constant">&quot;Desk:1 Column1</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">1</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">1</span> <span class="Constant">1</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">1</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D1Col2    <span class="Constant">&quot;Desk:1 Column2</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">2</span> <span class="Constant">0</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">2</span> <span class="Constant">1</span>
++   <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>     MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">2</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D1Col3    <span class="Constant">&quot;Desk:1 Column3</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">3</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">3</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">1</span> <span class="Constant">3</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D2Col0    <span class="Constant">&quot;Desk:2 Column0</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">0</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">0</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">0</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D2Col1    <span class="Constant">&quot;Desk:2 Column1</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">1</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">1</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">1</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D2Col2    <span class="Constant">&quot;Desk:2 Column2</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">2</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">2</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">2</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D2Col3    <span class="Constant">&quot;Desk:2 Column3</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">3</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">3</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">2</span> <span class="Constant">3</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D3Col0    <span class="Constant">&quot;Desk:3 Column0</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">0</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">0</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">0</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D3Col1    <span class="Constant">&quot;Desk:3 Column1</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">1</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">1</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">1</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D3Col2    <span class="Constant">&quot;Desk:3 Column2</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">2</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">2</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">2</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D3Col3    <span class="Constant">&quot;Desk:3 Column3</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">3</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">3</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">3</span> <span class="Constant">3</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D4Col0    <span class="Constant">&quot;Desk:4 Column0</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">0</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">0</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">0</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D4Col1    <span class="Constant">&quot;Desk:4 Column1</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">1</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">1</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">1</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D4Col2    <span class="Constant">&quot;Desk:4 Column2</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">2</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">2</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">2</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D4Col3    <span class="Constant">&quot;Desk:4 Column3</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">3</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">3</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;Row</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         MoveToDeskAndPage <span class="Constant">4</span> <span class="Constant">3</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> D0    <span class="Constant">&quot;Page:0</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D0Col0
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D0Col1
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D0Col2
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;3</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D0Col3
+
+<span class="Statement">AddToMenu</span> D1    <span class="Constant">&quot;Page:1</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D1Col0
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D1Col1
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D1Col2
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;3</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D1Col3
+
+<span class="Statement">AddToMenu</span> D2    <span class="Constant">&quot;Page:2</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D2Col0
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D2Col1
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D2Col2
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;3</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D2Col3
+
+<span class="Statement">AddToMenu</span> D3    <span class="Constant">&quot;Page:3</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D3Col0
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D3Col1
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D3Col2
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;3</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D3Col3
+
+<span class="Statement">AddToMenu</span> D4    <span class="Constant">&quot;Page:4</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D4Col0
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D4Col1
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D4Col2
++           <span class="Constant">&quot;Col</span><span class="Special">&amp;3</span><span class="Constant">&quot;</span>         <span class="Statement">Popup</span> D4Col3
+
+<span class="Statement">AddToMenu</span> GoTo  <span class="Constant">&quot;Desk(s)</span><span class="Special">&quot;</span>   <span class="Statement">Title</span>
++           <span class="Constant">&quot;Desk</span><span class="Special">&amp;0</span><span class="Constant">&quot;</span>        <span class="Statement">Popup</span> D0
++           <span class="Constant">&quot;Desk</span><span class="Special">&amp;1</span><span class="Constant">&quot;</span>        <span class="Statement">Popup</span> D1
++           <span class="Constant">&quot;Desk</span><span class="Special">&amp;2</span><span class="Constant">&quot;</span>        <span class="Statement">Popup</span> D2
++           <span class="Constant">&quot;Desk</span><span class="Special">&amp;3</span><span class="Constant">&quot;</span>        <span class="Statement">Popup</span> D3
++           <span class="Constant">&quot;Desk</span><span class="Special">&amp;4</span><span class="Constant">&quot;</span>        <span class="Statement">Popup</span> D4
+
+<span class="Statement">AddToFunc</span> GenPageColMenu
++ I <span class="Statement">Destroy</span> recreate GenPageColMenu
++ I <span class="Statement">AddToMenu</span> GenPageColMenu <span class="Constant">&quot;Page - cols</span><span class="Special">&quot;</span> <span class="Statement">title</span>
++ I MoveDeskAndPage <span class="PreProc">$0</span> <span class="PreProc">$1</span> <span class="PreProc">$2</span>
+
+<span class="Statement">AddToFunc</span> GenPageRowMenu
++ I <span class="Statement">Destroy</span> recreate GenPageRowMenu
++ I <span class="Statement">AddToMenu</span> GenPageRowMenu <span class="Constant">&quot;Page - rows</span><span class="Special">&quot;</span> <span class="Statement">title</span>
++ I DynamicPopupAction <span class="Statement">Function</span> GenPageColMenu <span class="PreProc">$0</span> <span class="PreProc">$1</span> <span class="Constant">0</span>
++ I DynamicPopupAction <span class="Statement">Function</span> GenPageColMenu <span class="PreProc">$0</span> <span class="PreProc">$1</span> <span class="Constant">1</span>
++ I DynamicPopupAction <span class="Statement">Function</span> GenPageColMenu <span class="PreProc">$0</span> <span class="PreProc">$1</span> <span class="Constant">2</span>
++ I DynamicPopupAction <span class="Statement">Function</span> GenPageColMenu <span class="PreProc">$0</span> <span class="PreProc">$1</span> <span class="Constant">3</span>
+
+<span class="Statement">AddToFunc</span> GenDeskMenu
++ I <span class="Statement">DestroyMenu</span> recreate GenDeskMenu
++ I <span class="Statement">AddToMenu</span> GenDeskMenu <span class="Constant">&quot;Desk(s)</span><span class="Special">&quot;</span> <span class="Statement">title</span>
++ I DynamicPopupAction <span class="Statement">Function</span> GenPageRowMenu <span class="PreProc">$0</span> <span class="Constant">0</span>
++ I DynamicPopupAction <span class="Statement">Function</span> GenPageRowMenu <span class="PreProc">$0</span> <span class="Constant">1</span>
++ I DynamicPopupAction <span class="Statement">Function</span> GenPageRowMenu <span class="PreProc">$0</span> <span class="Constant">2</span>
+
+<span class="Statement">AddToMenu</span> DeskMenu <span class="Constant">&quot;Desk(s)</span><span class="Special">&quot;</span> <span class="Statement">title</span>
++           DynamicPopupAction <span class="Statement">Function</span> GenDeskMenu <span class="Constant">0</span>
++           DynamicPopupAction <span class="Statement">Function</span> GenDeskMenu <span class="Constant">1</span>
++           DynamicPopupAction <span class="Statement">Function</span> GenDeskMenu <span class="Constant">2</span>
++           DynamicPopupAction <span class="Statement">Function</span> GenDeskMenu <span class="Constant">3</span>
++           DynamicPopupAction <span class="Statement">Function</span> GenDeskMenu <span class="Constant">4</span>
+
+<span class="Statement">AddToMenu</span> Window-Ops    <span class="Constant">&quot;Window Ops</span><span class="Special">&quot;</span>    <span class="Statement">Title</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;M</span><span class="Constant">ove&quot;</span>     <span class="Statement">Move</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;G</span><span class="Constant">oto Desk/Page&quot;</span>       <span class="Statement">Popup</span> GoTo
++           <span class="Constant">&quot;&quot;</span>          <span class="Statement">Nop</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;R</span><span class="Constant">esize&quot;</span>   Resize
++           <span class="Constant">&quot;R</span><span class="Special">&amp;a</span><span class="Constant">ise&quot;</span>        <span class="Statement">Raise</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;L</span><span class="Constant">ower&quot;</span>        <span class="Statement">Lower</span>
++           <span class="Constant">&quot;(De)</span><span class="Special">&amp;I</span><span class="Constant">conify&quot;</span>  <span class="Statement">Iconify</span>
++           <span class="Constant">&quot;(Un)</span><span class="Special">&amp;S</span><span class="Constant">tick&quot;</span>    <span class="Statement">Stick</span>
++           <span class="Constant">&quot;(Un)Ma</span><span class="Special">&amp;x</span><span class="Constant">imize&quot;</span> Maximize
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;D</span><span class="Constant">elete&quot;</span>   <span class="Statement">Delete</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;C</span><span class="Constant">lose&quot;</span>        <span class="Statement">Close</span>
++           <span class="Constant">&quot;Des</span><span class="Special">&amp;t</span><span class="Constant">roy&quot;</span>  <span class="Statement">Destroy</span>
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
++           <span class="Constant">&quot;Refresh </span><span class="Special">&amp;W</span><span class="Constant">indow&quot;</span> <span class="Statement">RefreshWindow</span>
+
+<span class="Statement">AddToMenu</span> Window-Ops2
++           <span class="Constant">&quot;</span><span class="Special">&amp;M</span><span class="Constant">ove&quot;</span>     <span class="Statement">Move</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;G</span><span class="Constant">oto Desk/Page&quot;</span>       <span class="Statement">Popup</span> GoTo
++           <span class="Constant">&quot;&quot;</span>          <span class="Statement">Nop</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;R</span><span class="Constant">esize&quot;</span>   Resize
++           <span class="Constant">&quot;R</span><span class="Special">&amp;a</span><span class="Constant">ise&quot;</span>    <span class="Statement">Raise</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;L</span><span class="Constant">ower&quot;</span>    <span class="Statement">Lower</span>
++           <span class="Constant">&quot;(De)</span><span class="Special">&amp;I</span><span class="Constant">conify&quot;</span>  <span class="Statement">Iconify</span>
++           <span class="Constant">&quot;(Un)</span><span class="Special">&amp;S</span><span class="Constant">tick&quot;</span>    <span class="Statement">Stick</span>
++                       <span class="Constant">&quot;(Un)Ma</span><span class="Special">&amp;x</span><span class="Constant">imize&quot;</span> Maximize
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;D</span><span class="Constant">elete&quot;</span>   <span class="Statement">Delete</span>
++           <span class="Constant">&quot;</span><span class="Special">&amp;C</span><span class="Constant">lose&quot;</span>    <span class="Statement">Close</span>
++           <span class="Constant">&quot;Destroy&quot;</span>   <span class="Statement">Destroy</span>
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
++           <span class="Constant">&quot;ScrollBar&quot;</span>     <span class="Statement">Module</span> <span class="Identifier">FvwmScroll</span> <span class="Constant">2</span> <span class="Constant">2</span>
++           <span class="Constant">&quot;Print&quot;</span>         PrintFunction
++                       <span class="Constant">&quot;Print Reverse&quot;</span> PrintReverseFunction
+
+<span class="Comment"># be sure to fill these in with your correct machine names:</span>
+<span class="Statement">AddToMenu</span> Remote-Logins <span class="Constant">&quot;dopey</span><span class="Special">&quot;</span>  <span class="Statement">Exec</span> rsh dopey rxvt &amp;
++           <span class="Constant">&quot;msabu-view1&quot;</span> <span class="Statement">Exec</span> rsh msabu-view1 rxvt &amp;
++           <span class="Constant">&quot;snoopy&quot;</span> <span class="Statement">Exec</span> rsh snoopy rxvt &amp;
++           <span class="Constant">&quot;grumpy&quot;</span> <span class="Statement">Exec</span> rsh grumpy rxvt &amp;
++           <span class="Constant">&quot;happy&quot;</span>  <span class="Statement">Exec</span> rsh happy rxvt &amp;
++           <span class="Constant">&quot;bailey&quot;</span> <span class="Statement">Exec</span> rsh bailey rxvt &amp;
++           <span class="Constant">&quot;barnum&quot;</span> <span class="Statement">Exec</span> rsh barnum rxvt &amp;
++           <span class="Constant">&quot;joker&quot;</span>  <span class="Statement">Exec</span> rsh joker rxvt &amp;
++           <span class="Constant">&quot;signal&quot;</span> <span class="Statement">Exec</span> rxterm signal
+
+<span class="Statement">AddToMenu</span> Module-Popup  <span class="Constant">&quot;FvwmModules</span><span class="Special">&quot;</span>   <span class="Statement">Title</span>
++           <span class="Constant">&quot;Identify&quot;</span>  <span class="Statement">Module</span>  <span class="Identifier">FvwmIdent</span>
++           <span class="Constant">&quot;Talk&quot;</span>      <span class="Statement">Module</span>  <span class="Identifier">FvwmTalk</span>
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
++           <span class="Constant">&quot;Button-Bar&quot;</span>    <span class="Statement">Module</span>  <span class="Identifier">FvwmButtons</span>
++           <span class="Constant">&quot;Pager&quot;</span>     <span class="Statement">Module</span>  <span class="Identifier">FvwmPager</span> <span class="Constant">0</span> <span class="Constant">0</span>
++           <span class="Constant">&quot;Pager (2 desks)&quot;</span> <span class="Statement">Module</span>  <span class="Identifier">FvwmPager</span> <span class="Constant">0</span> <span class="Constant">1</span>
++           <span class="Constant">&quot;WinList&quot;</span>   <span class="Statement">Module</span>  <span class="Identifier">FvwmWinList</span>
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
++           <span class="Constant">&quot;Banner&quot;</span>    <span class="Statement">Module</span>  <span class="Identifier">FvwmBanner</span>
++                       <span class="Constant">&quot;ScrollBar&quot;</span>     <span class="Statement">Module</span>  <span class="Identifier">FvwmScroll</span> <span class="Constant">50</span> <span class="Constant">50</span>
++           <span class="Constant">&quot;Background&quot;</span>    <span class="Statement">Module</span>  <span class="Identifier">FvwmBacker</span>
++                       <span class="Constant">&quot;AutoRaise&quot;</span>     <span class="Statement">Module</span>  <span class="Identifier">FvwmAuto</span> <span class="Constant">200</span> <span class="Statement">Raise</span> <span class="Statement">Nop</span>
++                       <span class="Constant">&quot;Stop AutoRaise&quot;</span> <span class="Statement">KillModule</span> <span class="Identifier">FvwmAuto</span>
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
++           <span class="Constant">&quot;IconBox&quot;</span>   <span class="Statement">Module</span>  <span class="Identifier">FvwmIconBox</span>
++                       <span class="Constant">&quot;IconMan&quot;</span>       <span class="Statement">Module</span>  <span class="Identifier">FvwmIconMan</span>
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
++                       <span class="Constant">&quot;Form - Rlogin&quot;</span>      <span class="Statement">Module</span> <span class="Identifier">FvwmForm</span> Rlogin
++                       <span class="Constant">&quot;Form - MyFvwmTalk&quot;</span>  <span class="Statement">Module</span> <span class="Identifier">FvwmForm</span> MyFvwmTalk
++                       <span class="Constant">&quot;Form - QuitVerify&quot;</span>  <span class="Statement">Module</span> <span class="Identifier">FvwmForm</span> QuitVerify
+
+<span class="Statement">AddToMenu</span> Quit-Verify    <span class="Constant">&quot;Really Quit Fvwm?</span><span class="Special">&quot;</span> <span class="Statement">Title</span>
++               <span class="Constant">&quot;Restart Fvwm2&quot;</span>     <span class="Statement">Restart</span> fvwm2
++               <span class="Constant">&quot;Restart Fvwm&quot;</span>      <span class="Statement">Restart</span> fvwm
++               <span class="Constant">&quot;&quot;</span>                  <span class="Statement">Nop</span>
+<span class="Comment">#+               &quot;Restart Kde&quot;       Exec /auto/usrlocal/contrib/packages/kde/1.1.1/bin/startkde.bak</span>
++               <span class="Constant">&quot;&quot;</span>                  <span class="Statement">Nop</span>
++               <span class="Constant">&quot;Start dummy&quot;</span>       <span class="Statement">Restart</span> xterm
++               <span class="Constant">&quot;&quot;</span>                  <span class="Statement">Nop</span>
++               <span class="Constant">&quot;Yes, Really Quit&quot;</span>  <span class="Statement">Quit</span>
++               <span class="Constant">&quot;No, Don't Quit&quot;</span>    <span class="Statement">Nop</span>
+
+<span class="Statement">AddToMenu</span> Screen-Savers <span class="Constant">&quot;Screen-Savers</span><span class="Special">&quot;</span> <span class="Statement">Title</span>
++   <span class="Constant">&quot;Hop&quot;</span>         <span class="Statement">Exec</span> xlock -mode hop    -remote -nolock
++   <span class="Constant">&quot;Life&quot;</span>        <span class="Statement">Exec</span> xlock -mode life   -remote -nolock
++   <span class="Constant">&quot;Qix&quot;</span>         <span class="Statement">Exec</span> xlock -mode qix    -remote -nolock
++   <span class="Constant">&quot;Image&quot;</span>       <span class="Statement">Exec</span> xlock -mode image  -remote -nolock
++   <span class="Constant">&quot;Swarm&quot;</span>       <span class="Statement">Exec</span> xlock -mode swarm  -remote -nolock
++   <span class="Constant">&quot;Rotor&quot;</span>       <span class="Statement">Exec</span> xlock -mode rotor  -remote -nolock
++   <span class="Constant">&quot;Pyro&quot;</span>        <span class="Statement">Exec</span> xlock -mode pyro   -remote -nolock
++   <span class="Constant">&quot;Flame&quot;</span>       <span class="Statement">Exec</span> xlock -mode flame  -remote -nolock
++   <span class="Constant">&quot;Blank&quot;</span>       <span class="Statement">Exec</span> xlock -mode blank  -remote -nolock
++   <span class="Constant">&quot;Random&quot;</span>      <span class="Statement">Exec</span> xlock -mode random -remote -nolock
+
+<span class="Statement">AddToMenu</span> Screen-Locks <span class="Constant">&quot;Screen-Locks</span><span class="Special">&quot;</span>   <span class="Statement">Title</span>
++   <span class="Constant">&quot;Hop&quot;</span>         <span class="Statement">Exec</span> xlock -mode hop    -remote
++   <span class="Constant">&quot;Life&quot;</span>        <span class="Statement">Exec</span> xlock -mode life   -remote
++   <span class="Constant">&quot;Qix&quot;</span>         <span class="Statement">Exec</span> xlock -mode qix    -remote
++   <span class="Constant">&quot;Image&quot;</span>       <span class="Statement">Exec</span> xlock -mode image  -remote
++   <span class="Constant">&quot;Swarm&quot;</span>       <span class="Statement">Exec</span> xlock -mode swarm  -remote
++   <span class="Constant">&quot;Rotor&quot;</span>       <span class="Statement">Exec</span> xlock -mode rotor  -remote
++   <span class="Constant">&quot;Pyro&quot;</span>        <span class="Statement">Exec</span> xlock -mode pyro   -remote
++   <span class="Constant">&quot;Flame&quot;</span>       <span class="Statement">Exec</span> xlock -mode flame  -remote
++   <span class="Constant">&quot;Blank&quot;</span>       <span class="Statement">Exec</span> xlock -mode blank  -remote
++   <span class="Constant">&quot;Random&quot;</span>      <span class="Statement">Exec</span> xlock -mode random -remote
+
+
+<span class="Comment">######################## Sample Functions ##########################</span>
+<span class="Statement">AddToFunc</span> MailFunction     <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Next</span> [<span class="PreProc">$0</span>] <span class="Statement">Iconify</span> -1
++   <span class="Constant">&quot;I&quot;</span> <span class="Statement">Next</span> [<span class="PreProc">$0</span>] <span class="Statement">Focus</span>
++   <span class="Constant">&quot;I&quot;</span> <span class="Statement">None</span> [<span class="PreProc">$0</span>] <span class="Statement">Exec</span> <span class="PreProc">$0</span> <span class="PreProc">$1</span>
+
+<span class="Statement">AddToFunc</span> Move-or-Raise     <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Raise</span>
++   <span class="Constant">&quot;M&quot;</span> <span class="Statement">Move</span>
++   <span class="Constant">&quot;D&quot;</span> <span class="Statement">Lower</span>
+
+<span class="Statement">AddToFunc</span> Move-or-Raise2    <span class="Constant">&quot;M</span><span class="Special">&quot;</span> <span class="Statement">Raise</span>
++   <span class="Constant">&quot;M&quot;</span> <span class="Statement">Move</span>
++   <span class="Constant">&quot;D&quot;</span> <span class="Statement">Lower</span>
+
+<span class="Statement">AddToFunc</span> Maximize-Func     <span class="Constant">&quot;M</span><span class="Special">&quot;</span> Maximize     <span class="Constant">0</span> <span class="Constant">100</span>
++   <span class="Constant">&quot;C&quot;</span> Maximize     <span class="Constant">0</span> <span class="Constant">80</span>
++   <span class="Constant">&quot;D&quot;</span> Maximize     <span class="Constant">100</span> <span class="Constant">100</span>
+
+<span class="Statement">AddToFunc</span> Move-or-Iconify   <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Raise</span>
++   <span class="Constant">&quot;M&quot;</span> <span class="Statement">Move</span>
++   <span class="Constant">&quot;D&quot;</span> <span class="Statement">Iconify</span>
+
+<span class="Statement">AddToFunc</span> Resize-or-Raise   <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Raise</span>
++   <span class="Constant">&quot;M&quot;</span> Resize
++   <span class="Constant">&quot;D&quot;</span> <span class="Statement">Lower</span>
+
+<span class="Statement">AddToFunc</span> Resize-or-Raise2  <span class="Constant">&quot;M</span><span class="Special">&quot;</span> <span class="Statement">Raise</span>
++   <span class="Constant">&quot;M&quot;</span> Resize
++   <span class="Constant">&quot;D&quot;</span> <span class="Statement">Lower</span>
+
+<span class="Statement">AddToFunc</span> PrintFunction     <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Raise</span>
++   <span class="Constant">&quot;I&quot;</span> <span class="Statement">Exec</span> xdpr -id <span class="PreProc">$w</span>
+
+<span class="Statement">AddToFunc</span> PrintReverseFunction  <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Raise</span>
++   <span class="Constant">&quot;I&quot;</span> <span class="Statement">Exec</span> xdpr <span class="Constant">1</span>/<span class="Constant">2</span> -h -rv -id <span class="PreProc">$w</span>
+
+<span class="Statement">AddToFunc</span> Iconify-and-Raise     <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Iconify</span>
++   <span class="Constant">&quot;I&quot;</span> <span class="Statement">Raise</span>
+
+<span class="Comment"># RLOGIN machine fg bg</span>
+<span class="Statement">AddToFunc</span> RLOGIN <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Exec</span> xterm -fg <span class="PreProc">$1</span> -bg <span class="PreProc">$2</span> -e rlogin <span class="PreProc">$0</span> -8
+
+<span class="Comment"># TELNET machine fg bg</span>
+<span class="Statement">AddToFunc</span> TELNET <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Exec</span> xterm -fg <span class="PreProc">$1</span> -bg <span class="PreProc">$2</span> -e telnet <span class="PreProc">$0</span>
+
+<span class="Statement">AddToFunc</span> FocusAndWarp <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Focus</span>
++   <span class="Constant">&quot;I&quot;</span> <span class="Statement">WarpToWindow</span> 2p 2p
+
+<span class="Statement">AddToFunc</span> DeiconifyFocusAndWarp <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Iconify</span> -1
++   <span class="Constant">&quot;I&quot;</span> FocusAndWarp
+
+<span class="Statement">AddToFunc</span> ChangeDefaultFocus <span class="Constant">&quot;I</span><span class="Special">&quot;</span> <span class="Statement">Style</span> <span class="Constant">&quot;*</span><span class="Special">&quot;</span> <span class="PreProc">$0</span>
++   <span class="Constant">&quot;I&quot;</span> <span class="Statement">Recapture</span>
+
+<span class="Comment">########################## Window-Identifier ###############################</span>
+<span class="Comment"># Just choose colors and a fonts</span>
+<span class="PreProc">*FvwmIdentBack</span> MidnightBlue
+<span class="PreProc">*FvwmIdentFore</span> Yellow
+<span class="PreProc">*FvwmIdentFont</span> -adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+
+<span class="Comment">########################### Pager #########################################</span>
+<span class="PreProc">*FvwmPagerBack</span> <span class="Constant">#908090</span>
+<span class="PreProc">*FvwmPagerFore</span> <span class="Constant">#484048</span>
+<span class="PreProc">*FvwmPagerFont</span> -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+<span class="PreProc">*FvwmPagerHilight</span> <span class="Constant">#cab3ca</span>
+<span class="PreProc">*FvwmPagerGeometry</span> -1-1
+<span class="PreProc">*FvwmPagerLabel</span> 0 Desk0
+<span class="PreProc">*FvwmPagerLabel</span> 1 Desk1
+<span class="Comment">#*FvwmPagerLabel 2 Desk2</span>
+<span class="Comment">#*FvwmPagerLabel 3 Desk3</span>
+<span class="Comment">#*FvwmPagerLabel 4 Desk4</span>
+<span class="Comment">#*FvwmPagerLabel 5 Desk5</span>
+<span class="PreProc">*FvwmPagerSmallFont</span> 5x8
+<span class="PreProc">*FvwmPagerBalloons</span> Pager
+<span class="PreProc">*FvwmPagerBalloonfore</span> white
+
+<span class="Comment"># following added by Balaji Venkataraman (xbalaji@cisco.com)</span>
+<span class="Comment"># use `man FvwmPager'</span>
+<span class="PreProc">*FvwmPagerRows</span>   2
+<span class="PreProc">*FvwmPagerMiniIcons</span>
+
+<span class="Comment">##########################FvwmWinList##################################</span>
+<span class="PreProc">*FvwmWinListBack</span> <span class="Constant">#908090</span>
+<span class="PreProc">*FvwmWinListFore</span> Black
+<span class="PreProc">*FvwmWinListFont</span> -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+<span class="PreProc">*FvwmWinListAction</span> Click1 Iconify -1,Focus
+<span class="PreProc">*FvwmWinListAction</span> Click2 Iconify
+<span class="PreProc">*FvwmWinListAction</span> Click3 Module <span class="Constant">&quot;FvwmIdent</span><span class="Special">&quot;</span> FvwmIdent
+<span class="PreProc">*FvwmWinListUseSkipList</span>
+<span class="PreProc">*FvwmWinListGeometry</span> +0-1
+
+
+<span class="PreProc">*FvwmBackerDesk</span> 0 -solid steelblue
+<span class="PreProc">*FvwmBackerDesk</span> 1 -solid midnightblue
+
+<span class="PreProc">*FvwmScrollBack</span> grey40
+<span class="PreProc">*FvwmScrollFore</span> green
+
+<span class="PreProc">*FvwmIconBoxIconBack</span>    <span class="Constant">#cfcfcf</span>
+<span class="PreProc">*FvwmIconBoxIconHiFore</span>  black
+<span class="PreProc">*FvwmIconBoxIconHiBack</span>  LightSkyBlue
+<span class="PreProc">*FvwmIconBoxBack</span>        <span class="Constant">#5f9ea0</span>
+<span class="PreProc">*FvwmIconBoxGeometry</span>    5x1+0+0
+<span class="PreProc">*FvwmIconBoxMaxIconSize</span> 64x38
+<span class="PreProc">*FvwmIconBoxFont</span>        -adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+<span class="PreProc">*FvwmIconBoxSortIcons</span>   IconName
+<span class="PreProc">*FvwmIconBoxPadding</span>     4
+<span class="PreProc">*FvwmIconBoxLines</span>       10
+<span class="PreProc">*FvwmIconBoxSBWidth</span>     11
+<span class="PreProc">*FvwmIconBoxPlacement</span>   Left Top
+<span class="PreProc">*FvwmIconBoxPixmap</span>      fvwm.xpm
+<span class="PreProc">*FvwmIconBoxSetWMIconSize</span>
+<span class="PreProc">*FvwmIconBoxHilightFocusWin</span>
+<span class="PreProc">*FvwmIconBoxMouse</span>       1       Click           RaiseLower
+<span class="PreProc">*FvwmIconBoxMouse</span>       1       DoubleClick     Iconify
+<span class="PreProc">*FvwmIconBoxMouse</span>       2       Click           Iconify -1, Focus
+<span class="PreProc">*FvwmIconBoxMouse</span>       3       Click           Module FvwmIdent
+<span class="PreProc">*FvwmIconBoxKey</span>         r       RaiseLower
+<span class="PreProc">*FvwmIconBoxKey</span>         space   Iconify
+<span class="PreProc">*FvwmIconBoxKey</span>         d       Close
+<span class="PreProc">*FvwmIconBoxKey</span>         n       Next
+<span class="PreProc">*FvwmIconBoxKey</span>         p       Prev
+<span class="PreProc">*FvwmIconBoxKey</span>         h       Left
+<span class="PreProc">*FvwmIconBoxKey</span>         j       Down
+<span class="PreProc">*FvwmIconBoxKey</span>         k       Up
+<span class="PreProc">*FvwmIconBoxKey</span>         l       Right
+
+<span class="Comment">#</span>
+<span class="Comment"># Icon file specifications</span>
+<span class="Comment">#</span>
+<span class="Comment"># Mostly, you don't have to specify icon files, as FvwmIconBox now</span>
+<span class="Comment"># reads icon files specified in Style commands.</span>
+<span class="Comment">#</span>
+<span class="PreProc">*FvwmIconBox</span>            <span class="Constant">&quot;Fvwm*</span><span class="Special">&quot;</span>         -
+
+<span class="Comment"># FvwmForm alias - rlogin or telnet to host via xterm</span>
+<span class="PreProc">*RloginWarpPointer</span>
+<span class="PreProc">*RloginFont</span>         *helvetica*m*r*n*12*
+<span class="PreProc">*RloginButtonFont</span>   *helvetica*m*o*n*12*
+<span class="PreProc">*RloginInputFont</span>    *cour*m*r*n*12*
+<span class="PreProc">*RloginFore</span>         Black
+<span class="PreProc">*RloginBack</span>         Light Gray
+<span class="PreProc">*RloginItemFore</span>          Wheat
+<span class="PreProc">*RloginItemBack</span>          Gray50
+<span class="Comment"># begin items</span>
+<span class="PreProc">*RloginLine</span>         center
+<span class="PreProc">*RloginText</span>         <span class="Constant">&quot;Login to Remote Host</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginLine</span>         center
+<span class="PreProc">*RloginText</span>         <span class="Constant">&quot;Host:</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginInput</span>        HostName  30   <span class="Constant">&quot;</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginLine</span>         center
+<span class="PreProc">*RloginSelection</span>    meth single
+<span class="PreProc">*RloginChoice</span>       TN TN off <span class="Constant">&quot;telnet</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginChoice</span>       RL RL on <span class="Constant">&quot;rlogin</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginSelection</span>    UserSel   single
+<span class="Comment">#*RloginChoice       Default   Default   on   &quot;same user&quot;</span>
+<span class="Comment">#*RloginChoice       Custom    Custom    off  &quot;user:&quot;</span>
+<span class="PreProc">*RloginText</span>         <span class="Constant">&quot;(Userid:</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginInput</span>        UserName  10   <span class="Constant">&quot;</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginText</span>         <span class="Constant">&quot;)</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginLine</span>         center
+<span class="PreProc">*RloginText</span>         <span class="Constant">&quot;FG:</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginInput</span>        FgColor 15 <span class="Constant">&quot;</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginText</span>         <span class="Constant">&quot;BG:</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginInput</span>        BgColor 15 <span class="Constant">&quot;</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginLine</span>         expand
+<span class="PreProc">*RloginButton</span>       quit <span class="Constant">&quot;Login</span><span class="Special">&quot;</span> ^M
+<span class="PreProc">*RloginCommand</span> Exec xterm  $(FgColor?-fg $(FgColor)) $(BgColor?-bg $(BgColor)) -T xterm@$(HostName) -e $(RL?rlogin) $(TN?telnet) $(HostName) $(RL?-8 $(UserName?-l $(UserName)))
+<span class="PreProc">*RloginButton</span>       restart   <span class="Constant">&quot;Clear</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginCommand</span> Beep
+<span class="PreProc">*RloginButton</span>       quit <span class="Constant">&quot;Cancel</span><span class="Special">&quot;</span>
+<span class="PreProc">*RloginCommand</span> Nop
+
+<span class="Comment"># FvwmForm alias - query exit ala mwm</span>
+<span class="PreProc">*QuitVerifyGrabServer</span>
+<span class="PreProc">*QuitVerifyWarpPointer</span>
+<span class="PreProc">*QuitVerifyFont</span>          *helvetica*m*r*n*14*
+<span class="Comment">#*QuitVerifyButtonFont    *helvetica*m*o*n*14*</span>
+<span class="PreProc">*QuitVerifyButtonFont</span>    7x13bold
+<span class="PreProc">*QuitVerifyFore</span>          Black
+<span class="PreProc">*QuitVerifyBack</span>          Light Gray
+<span class="PreProc">*QuitVerifyItemFore</span> Wheat
+<span class="PreProc">*QuitVerifyItemBack</span> Gray50
+<span class="Comment"># begin items</span>
+<span class="PreProc">*QuitVerifyLine</span>          center
+<span class="PreProc">*QuitVerifyText</span>          <span class="Constant">&quot;Do you really want to exit FVWM?</span><span class="Special">&quot;</span>
+<span class="PreProc">*QuitVerifyLine</span>          expand
+<span class="PreProc">*QuitVerifyButton</span>   quit      <span class="Constant">&quot; Exit </span><span class="Special">&quot;</span>
+<span class="PreProc">*QuitVerifyCommand</span>  Quit
+<span class="PreProc">*QuitVerifyButton</span>   quit      <span class="Constant">&quot;Cancel</span><span class="Special">&quot;</span>
+<span class="PreProc">*QuitVerifyCommand</span>  Nop
+
+
+<span class="Comment"># to change banner pixmap</span>
+<span class="Comment">#*FvwmBannerPixmap fvwm3.xpm</span>
+<span class="Comment">#*FvwmBannerTimeout 2</span>
+
+<span class="Comment">############################################################################</span>
+<span class="Comment"># This menu has some very common utilities - added from sharidas - xbalaji</span>
+<span class="Comment">############################################################################</span>
+<span class="Statement">AddToMenu</span> <span class="Constant">&quot;Applications</span><span class="Special">&quot;</span>
++         <span class="Constant">&quot;Applications&quot;</span>   <span class="Statement">Title</span>
++           <span class="Constant">&quot;Xbalaji logins&quot;</span>     <span class="Statement">Popup</span> Xbalaji
++           <span class="Constant">&quot;&quot;</span>      <span class="Statement">Nop</span>
+<span class="Comment">#+    &quot;Emacs&quot;      Popup EmacsHostMenu</span>
++     <span class="Constant">&quot;Locks&quot;</span>      <span class="Statement">Popup</span> LockHostMenu
++         <span class="Constant">&quot;&quot;</span>               <span class="Statement">Nop</span>
++     <span class="Constant">&quot;FrameMaker&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> /usr/local/bin/maker &amp;
++         <span class="Constant">&quot;Manual&quot;</span>         <span class="Statement">Exec</span> <span class="Statement">exec</span> xman -notopbox &amp;
++     <span class="Constant">&quot;Xddts&quot;</span>      <span class="Statement">Exec</span> <span class="Statement">exec</span> /usr/local/ddts/bin/xddts &amp;
+<span class="Comment">#+         &quot;Xmail&quot;     Exec exec xmail &amp;</span>
++         <span class="Constant">&quot;Mailtool&quot;</span>       <span class="Statement">Exec</span> <span class="Statement">exec</span> mailtool &amp;
++         <span class="Constant">&quot;Calculator&quot;</span>     <span class="Statement">Exec</span> <span class="Statement">exec</span> /usr/openwin/bin/calctool &amp;
+<span class="Comment">#+         &quot;Idraw&quot;          Exec exec idraw &amp;</span>
+<span class="Comment">#+         &quot;Calendar&quot;       Exec exec /usr/openwin/bin/cm &amp;</span>
+<span class="Comment">#+         &quot;Monitor Load&quot;   Exec exec /usr/openwin/bin/perfmeter &amp;</span>
++         <span class="Constant">&quot;Meeting  maker&quot;</span> <span class="Statement">Exec</span> <span class="Statement">exec</span> /usr/local/bin/mmxp &amp;
+<span class="Comment">#+    &quot;cscope&quot;             Exec exec cxterm -r -sb -sl 1024 -fn 8x13 -T cscope -n cscope -geometry 80x32 -e rlogin Kix &amp;</span>
++         <span class="Constant">&quot;&quot;</span>               <span class="Statement">Nop</span>
+
+<span class="Comment">#############################################################################</span>
+<span class="Comment">#  Lock Host List</span>
+<span class="Comment">#############################################################################</span>
+<span class="Statement">AddToMenu</span> <span class="Constant">&quot;LockHostMenu</span><span class="Special">&quot;</span>
++     <span class="Constant">&quot;Lock Machine&quot;</span>    <span class="Statement">Title</span>
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.alias-sh.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+.Error { color: #ffffff; background-color: #ff6060; font-weight: normal; }
+.Constant { color: #ff40ff; font-weight: normal; }
+.Special { color: #ff6060; font-weight: normal; }
+.Identifier { color: #00ffff; font-weight: normal; }
+.PreProc { color: #8080ff; font-weight: normal; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+.Statement { color: #ffff00; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment"># /* vim: set filetype=sh : */</span>
+
+<span class="Statement">if </span><span class="Statement">[</span> <span class="PreProc">$DEBUG_PROFILE</span> <span class="Statement">]</span>
+<span class="Statement">then</span>
+    printf <span class="Statement">&quot;</span><span class="Constant">################################################</span><span class="Special">\n</span><span class="Statement">&quot;</span>
+    printf <span class="Statement">&quot;</span><span class="Constant">reading alias-sh</span><span class="Special">\n</span><span class="Statement">&quot;</span>
+    env
+    printf <span class="Statement">&quot;</span><span class="Constant">################################################</span><span class="Special">\n</span><span class="Statement">&quot;</span>
+    set
+    printf <span class="Statement">&quot;</span><span class="Constant">################################################</span><span class="Special">\n</span><span class="Statement">&quot;</span>
+<span class="Statement">fi</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># skip non-terminals  - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+<span class="Statement">if </span><span class="Statement">[</span> <span class="Statement">!</span> <span class="Statement">&quot;</span><span class="PreProc">$PS1</span><span class="Statement">&quot;</span> <span class="Statement">]</span>
+<span class="Statement">then</span>
+    <span class="Statement">return</span>
+<span class="Statement">fi</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># Remove old aliases  - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+unalias <span class="Special">-a</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># Alias alias command - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+alias <span class="Identifier">a</span>=<span class="Statement">'</span><span class="Constant">alias</span><span class="Statement">'</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># General aliases     - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+a <span class="Identifier">al</span>=<span class="Statement">'</span><span class="Constant">a | less</span><span class="Statement">'</span>
+a <span class="Identifier">c</span>=<span class="Statement">'</span><span class="Constant">clear</span><span class="Statement">'</span>
+a <span class="Identifier">cls</span>=<span class="Statement">'</span><span class="Constant">clear</span><span class="Statement">'</span>
+
+a <span class="Identifier">ebash</span>=<span class="Statement">'</span><span class="Constant">exec bash</span><span class="Statement">'</span>
+a <span class="Identifier">ecsh</span>=<span class="Statement">'</span><span class="Constant">exec csh</span><span class="Statement">'</span>
+
+a <span class="Identifier">h</span>=<span class="Statement">'</span><span class="Constant">history</span><span class="Statement">'</span>
+
+a <span class="Identifier">l</span>=<span class="Statement">'</span><span class="Constant">ls -l</span><span class="Statement">'</span>
+a <span class="Identifier">ls</span>=<span class="Statement">'</span><span class="Constant">ls --color</span><span class="Statement">'</span>
+a <span class="Identifier">la</span>=<span class="Statement">'</span><span class="Constant">ls -a</span><span class="Statement">'</span>
+a <span class="Identifier">lal</span>=<span class="Statement">'</span><span class="Constant">ls -al</span><span class="Statement">'</span>
+a <span class="Identifier">lam</span>=<span class="Statement">'</span><span class="Constant">\ls -al|less</span><span class="Statement">'</span>
+a <span class="Identifier">lm</span>=<span class="Statement">'</span><span class="Constant">\ls -l|less</span><span class="Statement">'</span>
+a <span class="Identifier">lld</span>=<span class="Statement">'</span><span class="Constant">ls -l| grep ^d</span><span class="Statement">'</span>
+a <span class="Identifier">ldir</span>=<span class="Statement">'</span><span class="Constant">ls -rt1F | grep &quot;/&quot; </span><span class="Statement">'</span>
+a <span class="Identifier">lldm</span>=<span class="Statement">'</span><span class="Constant">ls -l| grep ^d | less</span><span class="Statement">'</span>
+
+
+a <span class="Identifier">lsrt</span>=<span class="Statement">'</span><span class="Constant">ls -Llrt</span><span class="Statement">'</span>
+a <span class="Identifier">lssize</span>=<span class="Statement">'</span><span class="Constant">ls -l | sort -t &quot; &quot; +7</span><span class="Statement">'</span>
+a <span class="Identifier">lssize2</span>=<span class="Statement">&quot;</span><span class="Constant">ls -l |  awk '{ printf </span><span class="Special">\&quot;</span><span class="Constant">%10s%9s %.70s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">, </span><span class="Special">\$</span><span class="Constant">1, </span><span class="Special">\$</span><span class="Constant">5, </span><span class="Special">\$</span><span class="Constant">9 }'</span><span class="Statement">&quot;</span>
+a <span class="Identifier">man</span>=<span class="Statement">'</span><span class="Constant">man -a</span><span class="Statement">'</span>
+a <span class="Identifier">bc</span>=<span class="Statement">'</span><span class="Constant">bc -l</span><span class="Statement">'</span>
+a <span class="Identifier">gid</span>=<span class="Statement">'</span><span class="Constant">gid32</span><span class="Statement">'</span>
+a <span class="Identifier">make</span>=<span class="Statement">'</span><span class="Constant">/usr/bin/make -k</span><span class="Statement">'</span>
+a <span class="Identifier">less</span>=<span class="Statement">'</span><span class="Constant">less -I -r -X</span><span class="Statement">'</span>
+a <span class="Identifier">perl</span>=<span class="Statement">'</span><span class="Constant">/usr/local/bin/perl</span><span class="Statement">'</span>
+a <span class="Identifier">python</span>=<span class="Statement">'</span><span class="Constant">/ws/xbalaji-sjc/python/bin/python</span><span class="Statement">'</span>
+a <span class="Identifier">idle</span>=<span class="Statement">'</span><span class="Constant">/router/bin/python-2.7.1 -m idlelib.idle</span><span class="Statement">'</span>
+a <span class="Identifier">swig</span>=<span class="Statement">'</span><span class="Constant">/ws/xbalaji-sjc/swig/bin/swig</span><span class="Statement">'</span>
+a <span class="Identifier">bvi</span>=<span class="Statement">'</span><span class="Constant">/users/yega/tools/bvi</span><span class="Statement">'</span>
+a <span class="Identifier">t</span>=<span class="Statement">'</span><span class="Constant">type -a</span><span class="Statement">'</span>
+a <span class="Identifier">nl</span>=<span class="Statement">'</span><span class="Constant">nl -ba</span><span class="Statement">'</span>
+a <span class="Identifier">rm</span>=<span class="Statement">'</span><span class="Constant">rm -i</span><span class="Statement">'</span>
+a <span class="Identifier">mv</span>=<span class="Statement">'</span><span class="Constant">mv -i</span><span class="Statement">'</span>
+a <span class="Identifier">myquota</span>=<span class="Statement">'</span><span class="Constant">quota.sh | egrep &quot;$USER|tftpboot-users|Filesystem|tftpboot-projects&quot;</span><span class="Statement">'</span>
+a <span class="Identifier">mydiff</span>=<span class="Statement">'</span><span class="Constant">diff -c3 -r -s -l </span><span class="Statement">'</span>
+a <span class="Identifier">hvi</span>=<span class="Statement">'</span><span class="Constant">h | grep vi</span><span class="Statement">'</span>
+a <span class="Identifier">hcd</span>=<span class="Statement">'</span><span class="Constant">h | grep cd</span><span class="Statement">'</span>
+a <span class="Identifier">hfind</span>=<span class="Statement">'</span><span class="Constant">h | grep find</span><span class="Statement">'</span>
+a <span class="Identifier">hmake</span>=<span class="Statement">'</span><span class="Constant">h | grep make</span><span class="Statement">'</span>
+
+a <span class="Identifier">so</span>=<span class="Statement">'</span><span class="Constant">source</span><span class="Statement">'</span>
+a <span class="Identifier">sob</span>=<span class="Statement">'</span><span class="Constant">so $HOME/.bashrc</span><span class="Statement">'</span>
+a <span class="Identifier">soa</span>=<span class="Statement">'</span><span class="Constant">so $HOME/.alias-sh</span><span class="Statement">'</span>
+a <span class="Identifier">soe</span>=<span class="Statement">'</span><span class="Constant">so $HOME/.env-sh</span><span class="Statement">'</span>
+a <span class="Identifier">sof</span>=<span class="Statement">'</span><span class="Constant">so $HOME/.functions-sh</span><span class="Statement">'</span>
+
+a <span class="Identifier">vim7</span>=<span class="Statement">'</span><span class="Constant">/usr/cisco/packages/vim/vim-7.2/bin/vim</span><span class="Statement">'</span>
+a <span class="Identifier">v</span>=<span class="Statement">'</span><span class="Constant">vim7 -R</span><span class="Statement">'</span>
+a <span class="Identifier">vi</span>=<span class="Statement">'</span><span class="Constant">vim7 -X</span><span class="Statement">'</span>
+<span class="Comment">#a vi='/usr/local/packages/vim/vim-7.2/bin/vim -X'</span>
+
+a <span class="Identifier">bvim</span>=<span class="Statement">'</span><span class="Constant">vim -g -bg black -fg white -fn user9x17 -sw 10 -mh 20</span><span class="Statement">'</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># setting display variable                 -  xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+a cre-<span class="Identifier">dis</span>=<span class="Statement">'</span><span class="Constant">echo $DISPLAY &gt; ~/.display-var</span><span class="Statement">'</span>
+a <span class="Statement">set</span><span class="Identifier">-dis</span><span class="Statement">='</span><span class="Constant">DISPLAY=$(cat ~/.display-var); export DISPLAY</span><span class="Statement">'</span>
+a <span class="Identifier">sdis</span>=<span class="Statement">'</span><span class="Constant">echo DISPLAY=$DISPLAY</span><span class="Statement">'</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># Cisco GDB related  - Balaji Venkataraman -  xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+a gdb-<span class="Identifier">c++</span>=<span class="Statement">'</span><span class="Constant">gdb -x $HOME/.gdb/gdbinit-common -x $HOME/.gdb/stl-views.gdb</span><span class="Statement">'</span>
+
+
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># OS specific aliases- Balaji Venkataraman -  xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+<span class="Identifier">OS</span>=<span class="Special">`uname -s`</span>
+<span class="Statement">if </span><span class="Statement">[</span> <span class="PreProc">$OS</span> <span class="Statement">=</span> <span class="Constant">&quot;SunOS&quot;</span> <span class="Statement">]</span><span class="Statement">;</span> <span class="Statement">then</span>
+<span class="Comment">#    echo &quot;Solaris ... environment &quot;</span>
+    a <span class="Identifier">pine</span>=<span class="Statement">'</span><span class="Constant">/usr/local/bin/pine</span><span class="Statement">'</span>
+    a <span class="Identifier">ls</span>=<span class="Statement">'</span><span class="Constant">/usr/cisco/packages/fileutils/current/bin/ls  --color</span><span class="Statement">'</span>
+    <span class="Identifier">PS1</span>=<span class="Statement">&quot;</span><span class="Constant">\d \@ [view:</span><span class="Error">$(</span><span class="Special">basename </span><span class="PreProc">$CLEARCASE_ROOT</span><span class="Error">)</span><span class="Constant">] [pwd:\w]</span><span class="Special">\n</span><span class="Constant">[\u@\H]</span><span class="Special">\$</span><span class="Statement">&quot;</span>
+<span class="Statement">elif</span> <span class="Statement">[</span> <span class="PreProc">$OS</span> <span class="Statement">=</span> <span class="Constant">&quot;Linux&quot;</span> <span class="Statement">]</span><span class="Statement">;</span> <span class="Statement">then</span>
+<span class="Comment">#    echo &quot;Linux ... environment &quot;</span>
+    a <span class="Identifier">pine</span>=<span class="Statement">'</span><span class="Constant">/auto/usrcisco-linux-rhel4.0-x86-32/packages/pine/current/bin/pine</span><span class="Statement">'</span>
+<span class="Statement">fi</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># Subversion aliases - Balaji Venkataraman -  xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+a <span class="Identifier">svnlsv</span>=<span class="Statement">'</span><span class="Constant">for files in $(ls -1d /home/xbalaji/*/.svn); do echo $files | cut -d &quot;/&quot; -f4-4; done</span><span class="Statement">'</span>
+a <span class="Identifier">svnco</span>=<span class="Statement">'</span><span class="Constant">svn status  | grep &quot;^M&quot;</span><span class="Statement">'</span>
+
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># change directory   - Balaji Venkataraman -  xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+a <span class="Identifier">gojebbin</span>=<span class="Statement">'</span><span class="Constant">cd /auto/cweb0/www-home/Eng/MCEBU/Projects/Jebbin/WWW</span><span class="Statement">'</span>
+a <span class="Identifier">gofpga</span>=<span class="Statement">'</span><span class="Constant">cd /auto/sp-hw/midrange/projects/jebbin/fpga</span><span class="Statement">'</span>
+a <span class="Identifier">goxhw</span>=<span class="Statement">'</span><span class="Constant">cd /auto/sp-hw/midrange/projects/xbalaji/</span><span class="Statement">'</span>
+a <span class="Identifier">gohome</span>=<span class="Statement">'</span><span class="Constant">cd /users/xbalaji/utils/html/hpage-cisco</span><span class="Statement">'</span>
+a <span class="Identifier">gobase</span>=<span class="Statement">'</span><span class="Constant">cd $(pwd | cut -d &quot;/&quot; -f1-4)</span><span class="Statement">'</span>
+a <span class="Identifier">golnx2</span>=<span class="Statement">'</span><span class="Constant">ssh xbalaji@ctms-lnx2</span><span class="Statement">'</span>
+a <span class="Identifier">goconfmgr</span>=<span class="Statement">'</span><span class="Constant">cd  source/confmgr2/</span><span class="Statement">'</span>
+a <span class="Identifier">goconfs</span>=<span class="Statement">'</span><span class="Constant">cd  source/confmgr2/src</span><span class="Statement">'</span>
+a <span class="Identifier">goconfi</span>=<span class="Statement">'</span><span class="Constant">cd  source/confmgr2/include</span><span class="Statement">'</span>
+
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># Format  aliases     - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+a <span class="Identifier">dmpath</span>=<span class="Statement">'</span><span class="Constant">echo $MANPATH | tr &quot;:&quot; &quot;\n&quot;</span><span class="Statement">'</span>
+a <span class="Identifier">dpath</span>=<span class="Statement">'</span><span class="Constant">echo $PATH | tr &quot;:&quot; &quot;\n&quot;</span><span class="Statement">'</span>
+a <span class="Identifier">fin</span>=<span class="Statement">'</span><span class="Constant">finger | sort +6 -r</span><span class="Statement">'</span>
+a <span class="Identifier">psme</span>=<span class="Statement">'</span><span class="Constant">ps -u $USER -f</span><span class="Statement">'</span>
+a <span class="Identifier">pslistme</span>=<span class="Statement">'</span><span class="Constant">ps -o &quot;ppid pid args&quot; -f  -u xbalaji | cut -c1-79 | sort | less</span><span class="Statement">'</span>
+a <span class="Identifier">myps</span>=<span class="Statement">'</span><span class="Constant">/usr/ucb/ps</span><span class="Statement">'</span>
+a <span class="Identifier">whatsmyip</span>=<span class="Statement">'</span><span class="Constant">lynx -dump checkip.dyndns.org | grep IP | cut -d &quot;:&quot; -f2-</span><span class="Statement">'</span>
+a <span class="Identifier">genenvhtml</span>=<span class="Statement">'</span><span class="Constant">vim7 -S /users/xbalaji/.vim/utils/vim-genhtml.vim</span><span class="Statement">'</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># DDTS    aliases     - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+<span class="Comment"># look at ~ddts/etc/cache_conf for possible keywords and width</span>
+a <span class="Identifier">mybugs</span>=<span class="Statement">&quot;</span><span class="Constant">findbug -u xbalaji -SNAOWHIPM |  sortbug Severity Status |bugval -s '%10s %.2s %.2s %.65s</span><span class="Special">\n</span><span class="Constant">' Identifier Status Severity Headline</span><span class="Statement">&quot;</span>
+a <span class="Identifier">mybigbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findbug -u xbalaji -SNAOWHIPM |  sortbug Severity Status | summarybug</span><span class="Statement">&quot;</span>
+a <span class="Identifier">mybugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">mySbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s S  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myAbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s A  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myWbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s W  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myHbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s H  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myPbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s P  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myMbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s M  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myCbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s C  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myObugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s O  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myRbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s R  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myVbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s V  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myJbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s J  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Engineer] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myUnVerifiedBugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s R  -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Submitter] = 'xbalaji'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">mymgrbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM  -o Engineer,Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-8.8s %-53.53s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Engineer,Headline </span><span class="Special">\&quot;</span><span class="Constant">[DE-manager] = 'adhingra'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">mymgrbugs2</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM  -o Engineer,Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-8.8s %-53.53s</span><span class="Special">\n</span><span class="Special">\&quot;</span><span class="Constant"> -w Identifier,Status,Severity,DE-priority,Engineer,Headline </span><span class="Special">\&quot;</span><span class="Constant">[DE-manager] = 'adhingra'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">davtgbugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">  -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Attribute] = 'da-vtg' or [Attribute] = 'DA-VTG'</span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">ctmsde1bugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">  -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Product] = 'dirty_harry' AND [DE-priority] &lt; 2 </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">ctmsde12bugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">  -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Product] = 'dirty_harry' AND [DE-priority] &lt;= 2 </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">ctmssev12bugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">  -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Product] = 'dirty_harry' AND [Severity] &lt;= 2 </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">ctmssev123bugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM -o Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %1.1s %1.1s %1.1s %-63.63s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">  -w Identifier,Status,Severity,DE-priority,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Product] = 'dirty_harry' AND [Severity] &lt;= 3 </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">ctms183bugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM -o DE-priority,Severity -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %-1.1s %-1.1s %-1.1s %-8.8s %-8.8s %-53.53s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">  -w Identifier,Severity,DE-priority,Status,Engineer,Submitter,Headline </span><span class="Special">\&quot;</span><span class="Constant">[Product] = 'dirty_harry' AND [To-be-fixed] = '1.8.3' </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myteambugs</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s SNAOWHIPM -o Engineer,Severity   -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %-8.8s %-1.1s %-1.1s %-1.1s %-55.55s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">   -w Identifier,Engineer,Severity,Status,DE-priority,Headline   </span><span class="Special">\&quot;</span><span class="Constant"> ([DE-manager] = 'xbalaji'    or [Engineer] = 'xbalaji'  or [Engineer] = 'dosu'      or [Engineer] = 'ckannan'  or [Engineer] = 'liuhong'   or [Engineer] = 'mrexroad' or [Engineer] = 'omtripat'  or [Engineer] = 'pinapate' or [Engineer] = 'sagomez'   or [Engineer] = 'stevech'  or [Engineer] = 'cforden'   or [Engineer] = 'madahiya' or [Engineer] = 'nickhuan'  ) </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+
+<span class="Comment"># dpai stuff</span>
+a <span class="Identifier">myteamut</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s RMV -o Engineer,Severity   -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %-8.8s %-1.1s %-55.55s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">   -w Identifier,Engineer,Status,Headline   </span><span class="Special">\&quot;</span><span class="Constant"> (([DE-manager] = 'xbalaji'    or [Engineer] = 'xbalaji'  or [Engineer] = 'dosu'      or [Engineer] = 'ckannan'  or [Engineer] = 'liuhong'   or [Engineer] = 'mrexroad' or [Engineer] = 'omtripat'  or [Engineer] = 'pinapate' or [Engineer] = 'sagomez'   or [Engineer] = 'stevech'  or [Engineer] = 'cforden'   or [Engineer] = 'madahiya' or [Engineer] = 'nickhuan' ) and  (not ((exists ([Attachment-title] like  '*nit-?es*'  ))  or (exists ([Note-title] like '*nit-?es*'     )))) ) </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myteamcr</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s RMV -o Engineer,Severity   -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %-8.8s %-1.1s %-55.55s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">   -w Identifier,Engineer,Status,Headline   </span><span class="Special">\&quot;</span><span class="Constant"> (([DE-manager] = 'xbalaji'    or [Engineer] = 'xbalaji'  or [Engineer] = 'dosu'      or [Engineer] = 'ckannan'  or [Engineer] = 'liuhong'   or [Engineer] = 'mrexroad' or [Engineer] = 'omtripat'  or [Engineer] = 'pinapate' or [Engineer] = 'sagomez'   or [Engineer] = 'stevech'  or [Engineer] = 'cforden'   or [Engineer] = 'madahiya' or [Engineer] = 'nickhuan' ) and  (not ((exists ([Attachment-title] like  '*ode-?evie*'))  or (exists ([Note-title] like '*ode-?evie*'   )))) ) </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myteamsa</span>=<span class="Statement">&quot;</span><span class="Constant">findcr -p CSC.general -s RMV -o Engineer,Severity   -f </span><span class="Special">\&quot;</span><span class="Constant">%-10.10s %-8.8s %-1.1s %-55.55s</span><span class="Special">\\</span><span class="Constant">n</span><span class="Special">\&quot;</span><span class="Constant">   -w Identifier,Engineer,Status,Headline   </span><span class="Special">\&quot;</span><span class="Constant"> (([DE-manager] = 'xbalaji'    or [Engineer] = 'xbalaji'  or [Engineer] = 'dosu'      or [Engineer] = 'ckannan'  or [Engineer] = 'liuhong'   or [Engineer] = 'mrexroad' or [Engineer] = 'omtripat'  or [Engineer] = 'pinapate' or [Engineer] = 'sagomez'   or [Engineer] = 'stevech'  or [Engineer] = 'cforden'   or [Engineer] = 'madahiya' or [Engineer] = 'nickhuan' ) and  (not ((exists ([Attachment-title] like  '*atic-?nalysi*'))  or (exists ([Note-title] like '*atic-?nalysi*'   )))) ) </span><span class="Special">\&quot;</span><span class="Statement">&quot;</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># command aliases     - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+a <span class="Identifier">fortune</span>=<span class="Statement">'</span><span class="Constant">$HOME/utils/dev/shells/fortune-01.sh</span><span class="Statement">'</span>
+
+a <span class="Identifier">bprint1</span>=<span class="Statement">&quot;</span><span class="Constant">enscript  -Ec --header='</span><span class="Special">\$</span><span class="Constant">N $% of $= printed by %N on %W'</span><span class="Statement">&quot;</span>
+a <span class="Identifier">bprint2</span>=<span class="Statement">&quot;</span><span class="Constant">enscript -2r -Ec --header='</span><span class="Special">\$</span><span class="Constant">N $% of $= printed by %N on %W'</span><span class="Statement">&quot;</span>
+a <span class="Identifier">cprint1</span>=<span class="Statement">&quot;</span><span class="Constant">enscript  -Ec --header='</span><span class="PreProc">$n</span><span class="Constant"> $% of $=| Printed by %N| on %W'</span><span class="Statement">&quot;</span>
+a <span class="Identifier">cprint2</span>=<span class="Statement">&quot;</span><span class="Constant">enscript -2r -Ec --header='</span><span class="PreProc">$n</span><span class="Constant"> $% of $=| Printed by %N| on %W'</span><span class="Statement">&quot;</span>
+a <span class="Identifier">bp1ps</span>=<span class="Statement">&quot;</span><span class="Constant">enscript -p </span><span class="PreProc">$HOME</span><span class="Constant">/prt.ps -Ec --header='</span><span class="PreProc">$n</span><span class="Constant">     \</span>
+<span class="Constant">                     $% of $=| Printed by %N| on %W'</span><span class="Statement">&quot;</span>
+a <span class="Identifier">bp2ps</span>=<span class="Statement">&quot;</span><span class="Constant">enscript -p </span><span class="PreProc">$HOME</span><span class="Constant">/prt.ps -2r -Ec --header='</span><span class="PreProc">$n</span><span class="Constant"> \</span>
+<span class="Constant">                     $% of $=| Printed by %N| on %W'</span><span class="Statement">&quot;</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># General XTERM       - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+
+<span class="Comment"># on any ncd give your title and display number</span>
+a ancd-<span class="Identifier">term</span>=<span class="Statement">&quot;</span><span class="Constant">cxterm -sb -sl 512 -bg white -fg black -bd red -fn  \</span>
+<span class="Constant">  -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1 </span><span class="Statement">&quot;</span>
+a ancd-<span class="Identifier">rterm</span>=<span class="Statement">&quot;</span><span class="Constant">cxterm -sb -sl 512 -bg black -fg white -bd red -fn \</span>
+<span class="Constant">  -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1 </span><span class="Statement">&quot;</span>
+a <span class="Identifier">axterm</span>=<span class="Statement">&quot;</span><span class="Constant">cxterm -sb -sl 512 -bg white -fg black -bd red -fn user9x17</span><span class="Statement">&quot;</span>
+a <span class="Identifier">abxterm</span>=<span class="Statement">&quot;</span><span class="Constant">cxterm -sb -sl 512 -bg black -fg white -bd red -fn user9x17</span><span class="Statement">&quot;</span>
+a my-<span class="Identifier">xterm</span>=<span class="Statement">&quot;</span><span class="Constant">myxterm -sb -sl 512 -fg black -bg white -bd red -fn \</span>
+<span class="Constant">  -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1</span><span class="Statement">&quot;</span>
+a my-<span class="Identifier">rxterm</span>=<span class="Statement">&quot;</span><span class="Constant">myxterm -sb -sl 512 -bg black -fg white -bd red -fn \</span>
+<span class="Constant">  -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1</span><span class="Statement">&quot;</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># General EMACS       - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+a <span class="Identifier">myemacs</span>=<span class="Statement">&quot;</span><span class="Constant">emacs -bg black -fg white -bd red -fn user9x17</span><span class="Statement">&quot;</span>
+
+a <span class="Identifier">mypcvnc</span>=<span class="Statement">'</span><span class="Constant">vncviewer 128.107.147.72 -geometry 1140x860+0+0</span><span class="Statement">'</span>
+a <span class="Identifier">mylabvnc</span>=<span class="Statement">'</span><span class="Constant">vncviewer 172.19.163.86  -geometry 1140x860+0+0</span><span class="Statement">'</span>
+a <span class="Identifier">myxvnc</span>=<span class="Statement">&quot;</span><span class="Constant">vncviewer nubu-cde2:1 -geometry 1140x860+0+0     \</span>
+<span class="Constant">         -shared -passwd ~/.vnc/passwd</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myxvnc1</span>=<span class="Statement">&quot;</span><span class="Constant">vncviewer nubu-cde1:1 -geometry 1140x860+0+0     \</span>
+<span class="Constant">         -shared -passwd ~/.vnc/passwd</span><span class="Statement">&quot;</span>
+a <span class="Identifier">myvncsrv</span>=vncserver
+a <span class="Identifier">myvncserver</span>=<span class="Statement">'</span><span class="Constant">myvncsrv -cc 3 -alwaysshared -pn -geometry 1500x850 -ac -logo -s 1</span><span class="Statement">'</span>
+<span class="Comment">#a myvncserver='myvncsrv -cc 3 -alwaysshared -pn -geometry 1280x1024 -ac -logo -s 1'</span>
+a <span class="Identifier">myvncserver2</span>=<span class="Statement">'</span><span class="Constant">myvncsrv -cc 3 -alwaysshared -pn -geometry 1024x768 -ac -logo -s 1</span><span class="Statement">'</span>
+a <span class="Identifier">myvncs2</span>=<span class="Statement">'</span><span class="Constant">Xvnc -cc 3 -alwaysshared -pn -geometry 1024x768 -ac -logo -s 1</span><span class="Statement">'</span>
+
+
+
+a <span class="Identifier">mytags</span>=<span class="Statement">'</span><span class="Constant">ctags -CdStT *.[ch]</span><span class="Statement">'</span> <span class="Comment"># generate ctags for files of interest...</span>
+a <span class="Identifier">mytags</span>=<span class="Statement">'</span><span class="Constant">\rm -f tags;find $PWD -type f -name &quot;*.[cChHsS]&quot; -exec ctags -uCdStT {} \;</span><span class="Statement">'</span>
+a <span class="Identifier">mytags2</span>=<span class="Statement">'</span><span class="Constant">/usr/bin/ctags --if0=yes --line-directives=yes --links=yes --recurse=yes --tag-relative=no --c-types=+cdefgmnpstuvx src inc *</span><span class="Statement">'</span>
+a <span class="Identifier">mytags3</span>=<span class="Statement">'</span><span class="Constant">\rm -f tags;find $PWD -type f -name &quot;*.[cChHsS]&quot; -exec /usr/local/bin/ctags --append=yes --if0=yes --line-directives=yes --links=yes --recurse=yes --tag-relative=no --c-types=+cdefgmnpstuvx {} \; </span><span class="Statement">'</span>
+a <span class="Identifier">mytags4</span>=<span class="Statement">'</span><span class="Constant">pushd .; cd source; find $PWD/confmgr2 $PWD/common -type f  -name &quot;*.[chC]&quot; -o -name &quot;*.cpp&quot;  | /usr/bin/ctags --sort=yes --language-force=C++ --if0=yes --line-directives=yes --links=yes --tag-relative=no --C++-kinds=+cdefgmnpstuvx --fields=+iaS  --extra=+q --verbose=yes --totals=yes -L -; popd</span><span class="Statement">'</span>
+a <span class="Identifier">mytags5</span>=<span class="Statement">'</span><span class="Constant">pushd .; cd source; find $PWD/confmgr2 $PWD/common $PWD/cc $PWD/transport -type f  -name &quot;*.[chC]&quot; -o -name &quot;*.cpp&quot;  | /usr/bin/ctags --if0=yes --line-directives=yes --links=yes --tag-relative=no --C++-kinds=+cdefgmnpstuvx --verbose=yes --totals=yes -L -; popd</span><span class="Statement">'</span>
+
+
+<span class="Comment"># TSBU/CTMS specific</span>
+<span class="Comment">#a SA='/auto/ses/bin/static_iosbranch'</span>
+<span class="Comment">#a SA='/auto/ses/bin/static_ctms'</span>
+a <span class="Identifier">SA</span>=<span class="Statement">'</span><span class="Constant">/auto/ses/bin/static_ctms -disable_flexelint</span><span class="Statement">'</span>
+a lstsbu-<span class="Identifier">binaries</span>=<span class="Statement">'</span><span class="Constant">(gobase; cd source; ls -l confmgr2/bin/confmgr cc/ccs/bin/ccs switching/bin/switching  keyExchange/bin/keyExchange  transport/RTP/src/MediaProcessor pmgmt/bin/dhparent2)</span><span class="Statement">'</span>
+a cre-<span class="Identifier">confmgrtar</span>=<span class="Statement">&quot;</span><span class="Constant">tar cvfz confmgr.tgz --exclude='.svn*' --exclude='*.o' confmgr2/</span><span class="Statement">&quot;</span>
+a auto-<span class="Identifier">access</span>=<span class="Statement">'</span><span class="Constant">scp  /users/xbalaji/.ssh/id_rsa.pub root@ctms-hp9:/root/.ssh/authorized_keys</span><span class="Statement">'</span>
+<span class="Comment">#a scpconfmgr='scp bin/confmgr root@ctms-hp9:/usr/local/dh/bin'</span>
+<span class="Comment">#a scphints='scp ~/pub/wed-ctms/hints/ctms-hints.txt root@ctms-hp9:'</span>
+</pre>
+</body>
+</html>

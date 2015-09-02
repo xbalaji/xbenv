@@ -1,0 +1,864 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.pinerc.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+.PreProc { color: #8080ff; font-weight: normal; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+.Type { color: #00ff00; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment">#</span>
+<span class="Comment"># Cisco Pine config for Exchange created by /usr/cisco/bin/pinexch</span>
+<span class="Comment">#</span>
+<span class="Type">user-domain</span>=cisco.com
+<span class="Type">default-fcc</span>=
+<span class="Type">postponed-folder</span>=
+<span class="Type">rsh-open-timeout</span>=0
+<span class="Type">folder-collections</span>=Exchange {email.cisco.com/user=xbalaji}[],
+    Local mail/[]
+<span class="Type">inbox-path</span>={mail.cisco.com/user=xbalaji}INBOX
+<span class="Type">smtp-server</span>=outbound.cisco.com
+<span class="Comment">#</span>
+<span class="Comment"># End Cisco Pine config for Exchange</span>
+<span class="Comment">#</span>
+<span class="Comment">#</span>
+<span class="Comment"># Cisco Pine config for Exchange created by /usr/cisco/bin/pinexch</span>
+<span class="Comment">#</span>
+<span class="Comment">#user-domain=cisco.com</span>
+<span class="Comment">#default-fcc=&quot;{email.cisco.com}Sent Items&quot;</span>
+<span class="Comment">#postponed-folder=&quot;{email.cisco.com}Drafts&quot;</span>
+<span class="Comment">#rsh-open-timeout=0</span>
+<span class="Comment">#folder-collections=nsmail/[]</span>
+<span class="Comment">#inbox-path={email.cisco.com}INBOX</span>
+<span class="Comment">#smtp-server=outbound.cisco.com</span>
+<span class="Comment">#</span>
+<span class="Comment"># End Cisco Pine config for Exchange</span>
+<span class="Comment">#</span>
+<span class="Comment"># Updated by Pine(tm) 4.21, copyright 1989-1999 University of Washington.</span>
+<span class="Comment">#</span>
+<span class="Comment"># Pine configuration file -- customize as needed.</span>
+<span class="Comment">#</span>
+<span class="Comment"># This file sets the configuration options used by Pine and PC-Pine.  If you</span>
+<span class="Comment"># are using Pine on a Unix system, there may be a system-wide configuration</span>
+<span class="Comment"># file which sets the defaults for these variables.  There are comments in</span>
+<span class="Comment"># this file to explain each variable, but if you have questions about</span>
+<span class="Comment"># specific settings see the section on configuration options in the Pine</span>
+<span class="Comment"># notes.  On Unix, run pine -conf to see how system defaults have been set.</span>
+<span class="Comment"># For variables that accept multiple values, list elements are separated</span>
+<span class="Comment"># by commas.  A line beginning with a space or tab is considered to be a</span>
+<span class="Comment"># continuation of the previous line.  For a variable to be unset its value</span>
+<span class="Comment"># must be blank.  To set a variable to the empty string its value should</span>
+<span class="Comment"># be &quot;&quot;.  You can override system defaults by setting a variable to the</span>
+<span class="Comment"># empty string.  Switch variables are set to either &quot;yes&quot; or &quot;no&quot;, and</span>
+<span class="Comment"># default to &quot;no&quot;.</span>
+<span class="Comment"># Lines beginning with &quot;#&quot; are comments, and ignored by Pine.</span>
+
+
+<span class="Comment"># Over-rides your full name from Unix password file. Required for PC-Pine.</span>
+<span class="Type">personal-name</span>=
+
+<span class="Comment"># Sets domain part of From: and local addresses in outgoing mail.</span>
+<span class="Comment">#user-domain=</span>
+
+<span class="Comment"># List of SMTP servers for sending mail. If blank: Unix Pine uses sendmail.</span>
+<span class="Comment">#smtp-server=imop.cisco.com</span>
+
+<span class="Comment"># NNTP server for posting news. Also sets news-collections for news reading.</span>
+<span class="Type">nntp-server</span>=
+
+<span class="Comment"># Path of (local or remote) INBOX, e.g. ={mail.somewhere.edu}inbox</span>
+<span class="Comment"># Normal Unix default is the local INBOX (usually /usr/spool/mail/$USER).</span>
+<span class="Comment">#inbox-path={mira-sjc5-c.cisco.com}inbox</span>
+
+<span class="Comment"># List of incoming msg folders besides INBOX, e.g. ={host2}inbox, {host3}inbox</span>
+<span class="Comment"># Syntax: optnl-label {optnl-imap-host-name}folder-path</span>
+<span class="Type">incoming-folders</span>=
+
+<span class="Comment"># List of directories where saved-message folders may be. First one is</span>
+<span class="Comment"># the default for Saves. Example: Main {host1}mail/[], Desktop mail\[]</span>
+<span class="Comment"># Syntax: optnl-label {optnl-imap-hostname}optnl-directory-path[]</span>
+<span class="Comment">#folder-collections=&quot;Local Folders&quot; nsmail/[]</span>
+
+<span class="Comment"># List, only needed if nntp-server not set, or news is on a different host</span>
+<span class="Comment"># than used for NNTP posting. Examples: News *[] or News *{host3/nntp}[]</span>
+<span class="Comment"># Syntax: optnl-label *{news-host/protocol}[]</span>
+<span class="Type">news-collections</span>=&quot;News on usenet.cisco.com/nntp&quot; {usenet.cisco.com/nntp}#news.[]
+
+<span class="Comment"># List of folder pairs; the first indicates a folder to archive, and the</span>
+<span class="Comment"># second indicates the folder read messages in the first should</span>
+<span class="Comment"># be moved to.</span>
+<span class="Type">incoming-archive-folders</span>=/users/xbalaji/nsmail
+
+<span class="Comment"># List of context and folder pairs, delimited by a space, to be offered for</span>
+<span class="Comment"># pruning each month.  For example: {host1}mail/[] mumble</span>
+<span class="Type">pruned-folders</span>=&quot;&quot;
+
+<span class="Comment"># Over-rides default path for sent-mail folder, e.g. =old-mail (using first</span>
+<span class="Comment"># folder collection dir) or ={host2}sent-mail or =&quot;&quot; (to suppress saving).</span>
+<span class="Comment"># Default: sent-mail (Unix) or SENTMAIL.MTX (PC) in default folder collection.</span>
+<span class="Comment">#default-fcc=/users/xbalaji/nsmail/Sent</span>
+
+<span class="Comment"># Over-rides default path for saved-msg folder, e.g. =saved-messages (using first</span>
+<span class="Comment"># folder collection dir) or ={host2}saved-mail or =&quot;&quot; (to suppress saving).</span>
+<span class="Comment"># Default: saved-messages (Unix) or SAVEMAIL.MTX (PC) in default folder collection.</span>
+<span class="Type">default-saved-msg-folder</span>=
+
+<span class="Comment"># Over-rides default path for postponed messages folder, e.g. =pm (which uses</span>
+<span class="Comment"># first folder collection dir) or ={host4}pm (using home dir on host4).</span>
+<span class="Comment"># Default: postponed-msgs (Unix) or POSTPOND.MTX (PC) in default fldr coltn.</span>
+<span class="Comment">#postponed-folder=</span>
+
+<span class="Comment"># If set, specifies where already-read messages will be moved upon quitting.</span>
+<span class="Type">read-message-folder</span>=
+
+<span class="Comment"># If set, specifies where form letters should be stored.</span>
+<span class="Type">form-letter-folder</span>=
+
+<span class="Comment"># Over-rides default path for signature file. Default is ~/.signature</span>
+<span class="Type">signature-file</span>=/users/xbalaji/nsmail/.sign-01.txt
+
+<span class="Comment"># List of file or path names for global/shared addressbook(s).</span>
+<span class="Comment"># Default: none</span>
+<span class="Comment"># Syntax: optnl-label path-name</span>
+<span class="Type">global-address-book</span>=
+
+<span class="Comment"># List of file or path names for personal addressbook(s).</span>
+<span class="Comment"># Default: ~/.addressbook (Unix) or \PINE\ADDRBOOK (PC)</span>
+<span class="Comment"># Syntax: optnl-label path-name</span>
+<span class="Type">address-book</span>=Addr-book-01 /users/xbalaji/nsmail/.addressbook
+
+<span class="Comment"># List of features; see Pine's Setup/options menu for the current set.</span>
+<span class="Comment"># e.g. feature-list= select-without-confirm, signature-at-bottom</span>
+<span class="Comment"># Default condition for all of the features is no-.</span>
+<span class="Type">feature-list</span>=<span class="PreProc">compose-rejects-unqualified-addrs</span>,
+    <span class="PreProc">enable-alternate-editor-cmd</span>,
+    <span class="PreProc">enable-search-and-replace</span>,
+    <span class="PreProc">enable-sigdashes</span>,
+    <span class="PreProc">quell-dead-letter-on-cancel</span>,
+    <span class="PreProc">quell-user-lookup-in-passwd-file</span>,
+    <span class="PreProc">enable-reply-indent-string-editing</span>,
+    <span class="PreProc">include-header-in-reply</span>,
+    <span class="PreProc">reply-always-uses-reply-to</span>,
+    <span class="PreProc">signature-at-bottom</span>,
+    <span class="PreProc">combined-subdirectory-display</span>,
+    <span class="PreProc">combined-folder-display</span>,
+    <span class="PreProc">expanded-view-of-folders</span>,
+    <span class="PreProc">separate-folder-and-directory-entries</span>,
+    <span class="PreProc">combined-addrbook-display</span>,
+    <span class="PreProc">expanded-view-of-addressbooks</span>,
+    <span class="PreProc">enable-msg-view-attachments</span>,
+    <span class="PreProc">enable-msg-view-urls</span>,
+    <span class="PreProc">enable-tab-completion</span>,
+    <span class="PreProc">enable-unix-pipe-cmd</span>,
+    <span class="PreProc">enable-bounce-cmd</span>,
+    <span class="PreProc">show-selected-in-boldface</span>,
+    <span class="PreProc">enable-flag-cmd</span>,
+    <span class="PreProc">enable-aggregate-command-set</span>,
+    <span class="PreProc">enable-full-header-cmd</span>,
+    <span class="PreProc">enable-jump-shortcut</span>,
+    <span class="PreProc">enable-partial-match-lists</span>,
+    <span class="PreProc">enable-suspend</span>,
+    <span class="PreProc">enable-arrow-navigation-relaxed</span>,
+    <span class="PreProc">enable-arrow-navigation</span>,
+    <span class="PreProc">include-attachments-in-reply</span>,
+    <span class="PreProc">compose-cut-from-cursor</span>,
+    <span class="PreProc">enable-msg-view-addresses</span>,
+    <span class="PreProc">enable-msg-view-forced-arrows</span>,
+    <span class="PreProc">print-offers-custom-cmd-prompt</span>,
+    <span class="PreProc">print-index-enabled</span>,
+    <span class="PreProc">print-formfeed-between-messages</span>,
+    <span class="PreProc">enable-verbose-smtp-posting</span>,
+    <span class="PreProc">enable-delivery-status-notification</span>,
+    <span class="PreProc">mark-for-cc</span>,
+    <span class="PreProc">delete-skips-deleted</span>,
+    no-enable-mouse-in-xterm,
+    no-enable-newmail-in-xterm-icon,
+    <span class="PreProc">save-will-advance</span>,
+    <span class="PreProc">enable-msg-view-web-hostnames</span>,
+    <span class="PreProc">prefer-plain-text</span>,
+    <span class="PreProc">fcc-only-without-confirm</span>,
+    <span class="PreProc">thread-index-shows-important-color</span>,
+    <span class="PreProc">expose-hidden-config</span>,
+    <span class="PreProc">allow-changing-from</span>,
+    <span class="PreProc">quell-empty-directories</span>,
+    <span class="PreProc">enable-print-via-y-command</span>,
+    warn-if-blank-to-and-cc-and-newsgroups,
+    enhanced-fancy-thread-support,
+    <span class="PreProc">pass-control-characters-as-is</span>,
+    <span class="PreProc">enable-full-header-and-text</span>,
+    <span class="PreProc">enable-dot-files</span>,
+    <span class="PreProc">scramble-message-id</span>,
+    <span class="PreProc">slash-collapses-entire-thread</span>,
+    <span class="PreProc">ldap-result-to-addrbook-add</span>,
+    no-enable-alternate-editor-implicitly,
+    <span class="PreProc">tab-visits-next-new-message-only</span>,
+    <span class="PreProc">enable-incoming-folders</span>,
+    <span class="PreProc">enable-dot-folders</span>
+
+<span class="Comment"># Pine executes these keys upon startup (e.g. to view msg 13: i,j,1,3,CR,v)</span>
+<span class="Type">initial-keystroke-list</span>=
+
+<span class="Comment"># Only show these headers (by default) when composing messages</span>
+<span class="Type">default-composer-hdrs</span>=
+
+<span class="Comment"># Add these customized headers (and possible default values) when composing</span>
+<span class="Type">customized-hdrs</span>=Priority:,
+    X-Test-Message:,
+    Reply-To:,
+    Return-Receipt-To:
+
+<span class="Comment"># When viewing messages, include this list of headers</span>
+<span class="Type">viewer-hdrs</span>=
+
+<span class="Comment"># Determines default folder name for Saves...</span>
+<span class="Comment"># Choices: default-folder, by-sender, by-from, by-recipient, last-folder-used.</span>
+<span class="Comment"># Default: &quot;default-folder&quot;, i.e. &quot;saved-messages&quot; (Unix) or &quot;SAVEMAIL&quot; (PC).</span>
+<span class="Type">saved-msg-name-rule</span>=default-folder
+
+<span class="Comment"># Determines default name for Fcc...</span>
+<span class="Comment"># Choices: default-fcc, by-recipient, last-fcc-used.</span>
+<span class="Comment"># Default: &quot;default-fcc&quot; (see also &quot;default-fcc=&quot; variable.)</span>
+<span class="Type">fcc-name-rule</span>=<span class="Type">default-fcc</span>
+
+<span class="Comment"># Sets presentation order of messages in Index. Choices:</span>
+<span class="Comment"># subject, from, arrival, date, size. Default: &quot;arrival&quot;.</span>
+<span class="Type">sort-key</span>=Date
+
+<span class="Comment"># Sets presentation order of address book entries. Choices: dont-sort,</span>
+<span class="Comment"># fullname-with-lists-last, fullname, nickname-with-lists-last, nickname</span>
+<span class="Comment"># Default: &quot;fullname-with-lists-last&quot;.</span>
+<span class="Type">addrbook-sort-rule</span>=nickname-with-lists-last
+
+<span class="Comment"># Sets presentation order of folder list entries. Choices: ,</span>
+<span class="Comment"># </span>
+<span class="Comment"># Default: &quot;alpha-with-directories-last&quot;.</span>
+<span class="Type">folder-sort-rule</span>=
+
+<span class="Comment"># Sets the default folder and collectionoffered at the Goto Command's prompt.</span>
+<span class="Type">goto-default-rule</span>=inbox-or-folder-in-recent-collection
+
+<span class="Comment"># Sets message which cursor begins on. Choices: first-unseen, first-recent,</span>
+<span class="Comment"># first, last. Default: &quot;first-unseen&quot;.</span>
+<span class="Type">incoming-startup-rule</span>=
+
+<span class="Comment"># Reflects capabilities of the display you have. Default: US-ASCII.</span>
+<span class="Comment"># Typical alternatives include ISO-8859-x, (x is a number between 1 and 9).</span>
+<span class="Type">character-set</span>=
+
+<span class="Comment"># Specifies the program invoked by ^_ in the Composer,</span>
+<span class="Comment"># or the &quot;enable-alternate-editor-implicitly&quot; feature.</span>
+<span class="Type">editor</span>=/usr/cisco/packages/vim/vim-7.2/bin/vim -X
+
+<span class="Comment"># Specifies the program invoked by ^T in the Composer.</span>
+<span class="Type">speller</span>=/usr/local/bin/ispell
+
+<span class="Comment"># Specifies the column of the screen where the composer should wrap.</span>
+<span class="Type">composer-wrap-column</span>=75
+
+<span class="Comment"># Specifies the string to insert when replying to a message.</span>
+<span class="Type">reply-indent-string</span>=|
+
+<span class="Comment"># Specifies the introduction to insert when replying to a message.</span>
+<span class="Type">reply-leadin</span>=On _DAYDATE_, _SMARTDATETIME_, _FROM_ wrote
+
+<span class="Comment"># Specifies the string to use when sending a  message with no to or cc.</span>
+<span class="Type">empty-header-message</span>=Balaji Venkataraman
+
+<span class="Comment"># Program to view images (e.g. GIF or TIFF attachments).</span>
+<span class="Type">image-viewer</span>=xview
+
+<span class="Comment"># If &quot;user-domain&quot; not set, strips hostname in FROM address. (Unix only)</span>
+<span class="Type">use-only-domain-name</span>=
+
+<span class="Comment"># Your default printer selection</span>
+<span class="Type">printer</span>=Bldg-22 Printer [] enscript -2 -r
+
+<span class="Comment"># List of special print commands</span>
+<span class="Type">personal-print-command</span>=Bldg-22 Printer [] enscript -2 -r
+
+<span class="Comment"># Which category default print command is in</span>
+<span class="Type">personal-print-category</span>=3
+
+<span class="Comment"># Set by Pine; controls beginning-of-month sent-mail pruning.</span>
+<span class="Type">last-time-prune-questioned</span>=113.1
+
+<span class="Comment"># Set by Pine; controls display of &quot;new version&quot; message.</span>
+<span class="Type">last-version-used</span>=6.00
+
+<span class="Comment"># This names the path to an alternative program, and any necessary arguments,</span>
+<span class="Comment"># to be used in posting mail messages.  Example:</span>
+<span class="Comment">#                    /usr/lib/sendmail -oem -t -oi</span>
+<span class="Comment"># or,</span>
+<span class="Comment">#                    /usr/local/bin/sendit.sh</span>
+<span class="Comment"># The latter a script found in Pine distribution's contrib/util directory.</span>
+<span class="Comment"># NOTE: The program MUST read the message to be posted on standard input,</span>
+<span class="Comment">#       AND operate in the style of sendmail's &quot;-t&quot; option.</span>
+<span class="Type">sendmail-path</span>=
+
+<span class="Comment"># This names the root of the tree to which the user is restricted when reading</span>
+<span class="Comment"># and writing folders and files.  For example, on Unix ~/work confines the</span>
+<span class="Comment"># user to the subtree beginning with their work subdirectory.</span>
+<span class="Comment"># (Note: this alone is not sufficient for preventing access.  You will also</span>
+<span class="Comment"># need to restrict shell access and so on, see Pine Technical Notes.)</span>
+<span class="Comment"># Default: not set (so no restriction)</span>
+<span class="Type">operating-dir</span>=
+
+<span class="Comment"># This variable takes a list of programs that message text is piped into</span>
+<span class="Comment"># after MIME decoding, prior to display.</span>
+<span class="Type">display-filters</span>=
+
+<span class="Comment"># This defines a program that message text is piped into before MIME</span>
+<span class="Comment"># encoding, prior to sending</span>
+<span class="Type">sending-filters</span>=
+
+<span class="Comment"># A list of alternate addresses the user is known by</span>
+<span class="Type">alt-addresses</span>=
+
+<span class="Comment"># This is a list of formats for address books.  Each entry in the list is made</span>
+<span class="Comment"># up of space-delimited tokens telling which fields are displayed and in</span>
+<span class="Comment"># which order.  See help text</span>
+<span class="Type">addressbook-formats</span>=
+
+<span class="Comment"># This gives a format for displaying the index.  It is made</span>
+<span class="Comment"># up of space-delimited tokens telling which fields are displayed and in</span>
+<span class="Comment"># which order.  See help text</span>
+<span class="Type">index-format</span>=
+
+<span class="Comment"># The number of lines of overlap when scrolling through message text</span>
+<span class="Type">viewer-overlap</span>=
+
+<span class="Comment"># Number of lines from top and bottom of screen where single</span>
+<span class="Comment"># line scrolling occurs.</span>
+<span class="Type">scroll-margin</span>=
+
+<span class="Comment"># The number of seconds to sleep after writing a status message</span>
+<span class="Type">status-message-delay</span>=
+
+<span class="Comment"># The approximate number of seconds between checks for new mail</span>
+<span class="Type">mail-check-interval</span>=10
+
+<span class="Comment"># Full path and name of NEWSRC file</span>
+<span class="Type">newsrc-path</span>=/users/xbalaji/nsmail/.newsrc
+
+<span class="Comment"># Path and filename of news configation's active file.</span>
+<span class="Comment"># The default is typically &quot;/usr/lib/news/active&quot;.</span>
+<span class="Type">news-active-file-path</span>=
+
+<span class="Comment"># Directory containing system's news data.</span>
+<span class="Comment"># The default is typically &quot;/usr/spool/news&quot;</span>
+<span class="Type">news-spool-directory</span>=
+
+<span class="Comment"># Path and filename of the program used to upload text from your terminal</span>
+<span class="Comment"># emulator's into Pine's composer.</span>
+<span class="Type">upload-command</span>=
+
+<span class="Comment"># Text sent to terminal emulator prior to invoking the program defined by</span>
+<span class="Comment"># the upload-command variable.</span>
+<span class="Comment"># Note: _FILE_ will be replaced with the temporary file used in the upload.</span>
+<span class="Type">upload-command-prefix</span>=
+
+<span class="Comment"># Path and filename of the program used to download text via your terminal</span>
+<span class="Comment"># emulator from Pine's export and save commands.</span>
+<span class="Type">download-command</span>=
+
+<span class="Comment"># Text sent to terminal emulator prior to invoking the program defined by</span>
+<span class="Comment"># the download-command variable.</span>
+<span class="Comment"># Note: _FILE_ will be replaced with the temporary file used in the downlaod.</span>
+<span class="Type">download-command-prefix</span>=
+
+<span class="Comment"># Sets the search path for the mailcap cofiguration file.</span>
+<span class="Comment"># NOTE: colon delimited under UNIX, semi-colon delimited under DOS/Windows/OS2.</span>
+<span class="Type">mailcap-search-path</span>=
+
+<span class="Comment"># Sets the search path for the mimetypes cofiguration file.</span>
+<span class="Comment"># NOTE: colon delimited under UNIX, semi-colon delimited under DOS/Windows/OS2.</span>
+<span class="Type">mimetype-search-path</span>=
+
+<span class="Comment"># If no user input for this many hours, Pine will exit if in an idle loop</span>
+<span class="Comment"># waiting for a new command.  If set to zero (the default), then there will</span>
+<span class="Comment"># be no timeout.</span>
+<span class="Type">user-input-timeout</span>=
+
+<span class="Comment"># Sets the time in seconds that Pine will attempt to open a network</span>
+<span class="Comment"># connection.  The default is 30, the minimum is 5, and the maximum is</span>
+<span class="Comment"># system defined (typically 75).</span>
+<span class="Type">tcp-open-timeout</span>=
+
+<span class="Comment"># Sets the time in seconds that Pine will attempt to open a UNIX remote</span>
+<span class="Comment"># shell connection.  The default is 15, min is 5, and max is unlimited.</span>
+<span class="Comment"># Zero disables rsh altogether.</span>
+<span class="Comment">#rsh-open-timeout=0</span>
+
+<span class="Comment"># Sets the name of the command used to open a UNIX remote shell connection.</span>
+<span class="Comment"># The default is tyically /usr/ucb/rsh.</span>
+<span class="Type">rsh-path</span>=
+
+<span class="Comment"># Sets the format of the command used to open a UNIX remote</span>
+<span class="Comment"># shell connection.  The default is &quot;%s %s -l %s exec /etc/r%sd&quot;</span>
+<span class="Comment"># NOTE: the 4 (four) &quot;%s&quot; entries MUST exist in the provided command</span>
+<span class="Comment"># where the first is for the command's path, the second is for the</span>
+<span class="Comment"># host to connnect to, the third is for the user to connect as, and the</span>
+<span class="Comment"># fourth is for the connection method (typically &quot;imap&quot;)</span>
+<span class="Type">rsh-command</span>=
+
+<span class="Comment"># Sets the version number Pine will use as a threshold for offering</span>
+<span class="Comment"># its new version message on startup.</span>
+<span class="Type">new-version-threshold</span>=
+
+<span class="Comment"># List of programs to open Internet URLs (e.g. http or ftp references).</span>
+<span class="Type">url-viewers</span>=/users/xbalaji/bin/cnetscape _URL_,
+    /usr/local/bin/lynx _URL_,
+    /users/xbalaji/bin/cnetscape,
+    /usr/local/bin/lynx
+
+<span class="Comment"># List of mail drivers to disable. See technical notes.</span>
+<span class="Type">disable-these-drivers</span>=
+
+<span class="Comment"># Set by Pine; contains data for caching remote address books.</span>
+<span class="Type">remote-abook-metafile</span>=
+
+<span class="Comment"># How many extra copies of remote address book should be kept. Default: 3</span>
+<span class="Type">remote-abook-history</span>=
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+<span class="Type">patterns</span>=
+
+<span class="Comment"># Controls display of color</span>
+<span class="Type">color-style</span>=no-color
+
+<span class="Comment"># Sets the time in seconds that Pine will attempt to open a UNIX secure</span>
+<span class="Comment"># shell connection.  The default is 15, min is 5, and max is unlimited.</span>
+<span class="Comment"># Zero disables ssh altogether.</span>
+<span class="Type">ssh-open-timeout</span>=
+
+<span class="Comment"># Sets the name of the command used to open a UNIX secure shell connection.</span>
+<span class="Comment"># Tyically this is /usr/local/bin/ssh.</span>
+<span class="Type">ssh-path</span>=
+
+<span class="Comment"># Sets the format of the command used to open a UNIX secure</span>
+<span class="Comment"># shell connection.  The default is &quot;%s %s -l %s exec /etc/r%sd&quot;</span>
+<span class="Comment"># NOTE: the 4 (four) &quot;%s&quot; entries MUST exist in the provided command</span>
+<span class="Comment"># where the first is for the command's path, the second is for the</span>
+<span class="Comment"># host to connnect to, the third is for the user to connect as, and the</span>
+<span class="Comment"># fourth is for the connection method (typically &quot;imap&quot;)</span>
+<span class="Type">ssh-command</span>=
+
+<span class="Comment"># Minimum number of minutes between checks for remote address book changes.</span>
+<span class="Comment"># 0 means never check except when opening a remote address book.</span>
+<span class="Comment"># -1 means never check. Default: 5</span>
+<span class="Type">remote-abook-validity</span>=
+
+<span class="Comment"># Choose: black,blue,green,cyan,red,magenta,yellow,or white.</span>
+<span class="Type">normal-foreground-color</span>=
+<span class="Type">normal-background-color</span>=
+<span class="Type">reverse-foreground-color</span>=
+<span class="Type">reverse-background-color</span>=
+<span class="Type">title-foreground-color</span>=
+<span class="Type">title-background-color</span>=
+<span class="Type">status-foreground-color</span>=
+<span class="Type">status-background-color</span>=
+<span class="Type">keylabel-foreground-color</span>=
+<span class="Type">keylabel-background-color</span>=
+<span class="Type">keyname-foreground-color</span>=
+<span class="Type">keyname-background-color</span>=
+<span class="Type">selectable-item-foreground-color</span>=
+<span class="Type">selectable-item-background-color</span>=
+<span class="Type">quote1-foreground-color</span>=
+<span class="Type">quote1-background-color</span>=
+<span class="Type">quote2-foreground-color</span>=
+<span class="Type">quote2-background-color</span>=
+<span class="Type">quote3-foreground-color</span>=
+<span class="Type">quote3-background-color</span>=
+<span class="Type">prompt-foreground-color</span>=
+<span class="Type">prompt-background-color</span>=
+<span class="Type">index-to-me-foreground-color</span>=
+<span class="Type">index-to-me-background-color</span>=
+<span class="Type">index-important-foreground-color</span>=
+<span class="Type">index-important-background-color</span>=
+<span class="Type">index-deleted-foreground-color</span>=
+<span class="Type">index-deleted-background-color</span>=
+<span class="Type">index-answered-foreground-color</span>=
+<span class="Type">index-answered-background-color</span>=
+<span class="Type">index-new-foreground-color</span>=
+<span class="Type">index-new-background-color</span>=
+<span class="Type">index-recent-foreground-color</span>=
+<span class="Type">index-recent-background-color</span>=
+<span class="Type">index-unseen-foreground-color</span>=
+<span class="Type">index-unseen-background-color</span>=
+
+<span class="Comment"># When viewing messages, these are the header colors</span>
+<span class="Type">viewer-hdr-colors</span>=
+
+<span class="Comment"># Contains the actual signature contents as opposed to the signature filename.</span>
+<span class="Comment"># If defined, this overrides the signature-file. Default is undefined.</span>
+<span class="Type">literal-signature</span>=
+
+<span class="Comment"># Allows a default answer for the prune folder questions. Choices: yes-ask,</span>
+<span class="Comment"># yes-no, no-ask, no-no, ask-ask, ask-no. Default: &quot;ask-ask&quot;.</span>
+<span class="Type">pruning-rule</span>=
+
+<span class="Comment"># Network read warning timeout. The default is 15, the minimum is 5, and the</span>
+<span class="Comment"># maximum is 1000.</span>
+<span class="Type">tcp-read-warning-timeout</span>=
+
+<span class="Comment"># Network write warning timeout. The default is 0 (unset), the minimum</span>
+<span class="Comment"># is 5 (if not 0), and the maximum is 1000.</span>
+<span class="Type">tcp-write-warning-timeout</span>=
+
+<span class="Comment"># If this much time has elapsed at the time of a tcp read or write</span>
+<span class="Comment"># timeout, pine will ask if you want to break the connection.</span>
+<span class="Comment"># Default is 60 seconds, minimum is 5, maximum is 1000.</span>
+<span class="Type">tcp-query-timeout</span>=
+
+<span class="Comment"># List of SASL authenticators to disable.</span>
+<span class="Type">disable-these-authenticators</span>=
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+<span class="Type">patterns-roles</span>=
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+<span class="Type">patterns-filters</span>=
+<span class="Comment">#patterns-filters=LIT:pattern=&quot;/NICK=commits-florida/TO=flo-notification/SUBJ=Commit: florida/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-florida/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-fiddle/SUBJ=Commit: fiddle/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-fiddle/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-flo_t/TO=flo-notification/SUBJ=Commit: flo_t/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-flo_t/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-others/TO=flo-notification/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-others/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-giove/TO=giove-sw/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-others/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-pan/TO=pan-sw/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-others/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-cheyenne/TO=cheyenne-sw/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-others/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-fellowship/TO=fellowship-sw/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-others/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-redbaron/TO=redbaron-sw/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-others/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-venom/TO=venom-sw/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/commits-others/NOTDEL=1/NOKILL=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=X-400-filter-test/ALL=X-Test-Message:/FLDTYPE=ANY/FOLDER=INBOX&quot; action=&quot;/FILTER=1/FOLDER=\/users\/xbalaji\/nsmail\/xbalaji/NOTDEL=1/NOKILL=1&quot;</span>
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+<span class="Type">patterns-scores</span>=
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+<span class="Type">patterns-indexcolors</span>=
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+<span class="Type">patterns-other</span>=
+
+<span class="Comment"># Controls display of color for current index line</span>
+<span class="Type">current-indexline-style</span>=reverse-bg
+
+<span class="Comment"># List of incoming folders to be checked for new mail</span>
+
+incoming-folders-to-check=
+
+<span class="Comment"># Sets presentation order of threads in thread index. Choices:</span>
+<span class="Comment"># subject, from, arrival, date, size. Default: &quot;date&quot; (same as &quot;thread&quot;).</span>
+thread-sort-key=
+
+<span class="Comment"># Style that MESSAGE INDEX is displayed in when threading.</span>
+<span class="Type">threading-display-style</span>=
+
+<span class="Comment"># Style of THREAD INDEX or default MESSAGE INDEX when threading.</span>
+<span class="Type">threading-index-style</span>=
+
+<span class="Comment"># When threading, character used to indicate collapsed messages underneath.</span>
+<span class="Type">threading-indicator-character</span>=
+
+<span class="Comment"># When threading, character used to indicate expanded messages underneath.</span>
+<span class="Type">threading-expanded-character</span>=
+
+<span class="Comment"># When threading, character used to indicate this is the last reply</span>
+<span class="Comment"># to the parent of this message.</span>
+<span class="Type">threading-lastreply-character</span>=
+
+<span class="Comment"># Allows a user to set rules when composing messages.</span>
+
+compose-rules=
+
+<span class="Comment"># Allows a user to set rules when forwarding messages.</span>
+
+forward-rules=
+
+<span class="Comment"># Allows a user to set rules when replying messages.</span>
+
+reply-rules=
+
+<span class="Comment"># Allows a user to superseed global index format variable in designated folders.</span>
+index-rules=
+
+<span class="Comment"># Allows a user to change the form a specify field in the index-format is </span>
+<span class="Comment"># displayed.</span>
+replace-rules=
+
+<span class="Comment"># Allows a user to change the form a specify a reply-indent-string</span>
+<span class="Comment"># based of rules.</span>
+reply-indent-rules=
+
+<span class="Comment"># Allows a user to replace the reply-leadin message based on different parameters.</span>
+reply-leadin-rules=
+
+<span class="Comment"># Allows a user to replace the subject of a message in a customs based way</span>
+reply-subject-rules=
+
+<span class="Comment"># Allows a user to specify a save folder message for specific senders or folders.</span>
+save-rules=
+
+<span class="Comment"># Allows a user to specify a smtp server to be used when sending e-mail,</span>
+<span class="Comment"># according to the rules specified here.</span>
+smtp-rules=
+
+<span class="Comment"># Allows a user to specify the sort default order of a specific folder.</span>
+sort-rules=
+
+<span class="Comment"># Allows a user to specify the position of a highlighted message when opening a </span>
+<span class="Comment"># folder.</span>
+startup-rules=
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+<span class="Type">patterns-filters2</span>=
+<span class="Comment">#patterns-filters2=LIT:pattern=&quot;/NICK=other-me/!RECIP=xbalaji@cisco.com,pnn-team@cisco.com,jebbin-sw@cisco.com,xbalaji@epage.cisco.com/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;</span>
+<span class="Comment">#patterns-filters2=LIT:pattern=&quot;/NICK=commits-florida/TO=flo-notification/SUBJ=Commit: florida/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-georgia/TO=geo-notification@cisco.com/SUBJ=Commit: georgia/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-fiddle/SUBJ=Commit: fiddle/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-flo_t/TO=flo-notification/SUBJ=Commit: flo_t/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-flo-others/TO=flo-notification@cisco.com/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-geo-others/TO=geo-notification@cisco.com/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-giove/TO=giove-sw@cisco.com/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-pan/TO=pan-sw@cisco.com/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-cheyenne/TO=cheyenne-sw@cisco.com/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-fellowship/TO=fellowship-sw@cisco.com/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-redbaron/TO=redbaron-sw@cisco.com/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=commits-venom/TO=venom-sw@cisco.com/SUBJ=Commit:/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=ddts-mails/FROM=DDTS bug tracking/FLDTYPE=SPEC/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;,</span>
+<span class="Comment">#   LIT:pattern=&quot;/NICK=X-400-filter-test/ALL=X-Test-Message:/FLDTYPE=ANY/FOLDER=INBOX&quot; action=&quot;/FILTER=1&quot;</span>
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+<span class="Type">patterns-scores2</span>=
+
+<span class="Comment"># Controls display of color for the titlebar at top of screen</span>
+<span class="Type">titlebar-color-style</span>=reverse-indexline
+
+<span class="Comment"># LDAP servers for looking up addresses.</span>
+<span class="Type">ldap-servers</span>=ldap.cisco.com &quot;/base=c=Us,dom=cisco/impl=0/rhs=0/ref=0/nosub=0/type=name-or-email/srch=/time=/size=/cust=/nick=ldap_cisco2/matr=/catr=/satr=/gatr=&quot;
+
+<span class="Comment"># Controls behavior when reopening an already open folder.</span>
+folder-reopen-rule=
+
+<span class="Comment"># The approximate number of seconds between checks for new mail</span>
+maildrop-check-minimum=
+
+<span class="Comment"># For newsgroups accessed using NNTP, only messages numbered in the range</span>
+<span class="Comment"># lastmsg-range+1 to lastmsg will be considered</span>
+nntp-range=
+
+<span class="Comment"># If this much time has elapsed at the time of a tcp read or write</span>
+<span class="Comment"># timeout while checking for new mail in an incoming folder, pine will break the connection.</span>
+<span class="Comment"># Default is 5 seconds, minimum is 2, maximum is 60.</span>
+inc-fld-timeout=
+signature-foreground-color=
+signature-background-color=
+
+<span class="Comment"># When viewing messages, number of blank spaces between left display edge and text</span>
+viewer-margin-left=
+
+<span class="Comment"># When viewing messages, number of blank spaces between right display edge and text</span>
+viewer-margin-right=
+
+<span class="Comment"># When viewing messages, number of lines of quote displayed before suppressing</span>
+quote-suppression-threshold=
+
+<span class="Comment"># Sets how and when checks for new mail should happen. Choices: automatic,</span>
+<span class="Comment"># automatic-after-first-manual-check, manual-only, Default: automatic</span>
+incoming-check-rule=
+
+<span class="Comment"># Allows a user to specify the threading style of specific folders</span>
+threading-display-style-rule=
+
+<span class="Comment"># Allows a user to specify the threading index style of specific folders</span>
+threading-index-style-rule=
+
+<span class="Comment"># Specifies a comma separated list of text and regular expresions that Pine</span>
+<span class="Comment"># will highlight</span>
+special-text-color=
+
+<span class="Comment"># Specifies the string to replace quotes with when viewing a message.</span>
+quote-replace-string=
+
+<span class="Comment"># A list of keywords for use in categorizing messages</span>
+keywords=
+
+<span class="Comment"># Characters which surround keywords in SUBJKEY token.</span>
+<span class="Comment"># Default is &quot;{&quot; &quot;} &quot;</span>
+keyword-surrounding-chars=
+
+<span class="Comment"># The approximate number of seconds between checks for new mail in folders</span>
+<span class="Comment"># other than the current folder and inbox.</span>
+<span class="Comment"># Default is same as mail-check-interval</span>
+mail-check-interval-noncurrent=
+
+<span class="Comment"># Location relative to your HOME directory of the directory where your INBOX</span>
+<span class="Comment"># for the maildir format is located. Default value is &quot;Maildir&quot;. If your</span>
+<span class="Comment"># inbox is located at &quot;~/Maildir&quot; you do not need to change this value.</span>
+<span class="Comment"># A common value is also &quot;.maildir&quot;</span>
+maildir-location=
+
+<span class="Comment"># The maximum number of non-stayopen remote connections that pine will use</span>
+max-remote-connections=
+
+<span class="Comment"># A list of folders that should be left open once opened (INBOX is implicit)</span>
+stay-open-folders=
+
+<span class="Comment"># Specifies the number of dead letter files to keep when canceling.</span>
+dead-letter-files=
+
+<span class="Comment"># Sets the filename for the newmail fifo (named pipe). Unix only.</span>
+newmail-fifo-path=
+
+<span class="Comment"># Sets the width for the NewMail screen.</span>
+newmail-window-width=
+special-text-foreground-color=red
+special-text-background-color=white
+index-arrow-foreground-color=
+index-arrow-background-color=
+
+<span class="Comment"># Colors used to display keywords in the index</span>
+keyword-colors=
+
+<span class="Comment"># If set, specifies where trash is moved to in Web Alpine.</span>
+trash-folder=
+
+<span class="Comment"># Reflects capabilities of the display you have.</span>
+<span class="Comment"># If unset, the default is taken from your locale. That is usually the right</span>
+<span class="Comment"># thing to use. Typical alternatives include UTF-8, ISO-8859-x, and EUC-JP</span>
+<span class="Comment"># (where x is a number between 1 and 9).</span>
+display-character-set=
+
+<span class="Comment"># Reflects capabilities of the keyboard you have.</span>
+<span class="Comment"># If unset, the default is to use the same value</span>
+<span class="Comment"># used for the display-character-set.</span>
+keyboard-character-set=
+
+<span class="Comment"># Defaults to UTF-8. This is used for outgoing messages.</span>
+<span class="Comment"># It is usually correct to leave this unset.</span>
+posting-character-set=
+
+<span class="Comment"># Defaults to nothing, which is equivalent to US-ASCII. This is used for</span>
+<span class="Comment"># unlabeled incoming messages. It is ok to leave this unset but if you receive</span>
+<span class="Comment"># unlabeled mail that is usually in some known character set, set that here.</span>
+unknown-character-set=
+
+<span class="Comment"># When these characters appear in the middle of a word in the composer</span>
+<span class="Comment"># the forward word function will stop at the first text following (as happens</span>
+<span class="Comment"># with SPACE characters by default)</span>
+composer-word-separators=
+
+<span class="Comment"># Characters between subject and opening text in SUBJECTTEXT token.</span>
+<span class="Comment"># Default is &quot; - &quot;</span>
+opening-text-separator-chars=
+
+<span class="Comment"># Number of times per-second to update busy cue messages</span>
+busy-cue-rate=
+
+<span class="Comment"># Sets the time in seconds that Alpine will attempt to open a network</span>
+<span class="Comment"># connection when checking for new unseen messages in an incoming folder.</span>
+<span class="Comment">#  The default is 5.</span>
+incoming-check-timeout=
+
+<span class="Comment"># Sets the approximate number of seconds between checks for unseen messages</span>
+<span class="Comment"># in incoming folders. The default is 180.</span>
+incoming-check-interval=
+
+<span class="Comment"># Sets the approximate number of seconds between checks for unseen messages</span>
+<span class="Comment"># for other than local or IMAP folders. The default is 180.</span>
+incoming-check-interval-secondary=
+
+<span class="Comment"># List of incoming folders to check for unseen messages. The default if left</span>
+<span class="Comment"># blank is to check all incoming folders.</span>
+incoming-check-list=
+
+<span class="Comment"># Patterns and their actions are stored here.</span>
+patterns-search=
+title-closed-foreground-color=
+title-closed-background-color=
+meta-message-foreground-color=
+meta-message-background-color=
+incoming-unseen-foreground-color=
+incoming-unseen-background-color=
+header-general-foreground-color=
+header-general-background-color=
+index-forward-foreground-color=
+index-forward-background-color=
+index-highpriority-foreground-color=
+index-highpriority-background-color=
+index-lowpriority-foreground-color=
+index-lowpriority-background-color=
+index-subject-foreground-color=
+index-subject-background-color=
+index-from-foreground-color=
+index-from-background-color=
+index-opening-foreground-color=
+index-opening-background-color=
+
+<span class="Comment"># Public certificates are kept in files in this directory. The files should</span>
+<span class="Comment"># contain certificates in PEM format. The name of each file should look</span>
+<span class="Comment"># like &lt;emailaddress&gt;.crt. The default directory is .alpine-smime/public.</span>
+smime-public-cert-directory=
+
+<span class="Comment"># If this option is set then public certificates are kept in a single container</span>
+<span class="Comment"># &quot;file&quot; similar to a remote configuration file instead of in the</span>
+<span class="Comment"># smime-publiccert-directory. The value can be a remote or local folder</span>
+<span class="Comment"># specification like for a non-standard pinerc value. The default</span>
+<span class="Comment"># is that it is not set.</span>
+smime-public-cert-container=
+
+<span class="Comment"># Private keys are kept in files in this directory. The files are in PEM format.</span>
+<span class="Comment"># The name of a file should look like &lt;emailaddress&gt;.key.</span>
+<span class="Comment"># The default directory is .alpine-smime/private.</span>
+smime-private-key-directory=
+
+<span class="Comment"># If this option is set then private keys are kept in a single container</span>
+<span class="Comment"># &quot;file&quot; similar to a remote configuration file instead of in the</span>
+<span class="Comment"># private-key-directory. The value can be a remote or local folder</span>
+<span class="Comment"># specification like for a non-standard pinerc value. The default</span>
+<span class="Comment"># is that it is not set.</span>
+smime-private-key-container=
+
+<span class="Comment"># Certificate Authority certificates (in addition to the normal CACerts for the</span>
+<span class="Comment"># system) are kept in files in this directory. The files are in PEM format.</span>
+<span class="Comment"># Filenames should end with .crt. The default directory is .alpine-smime/ca.</span>
+smime-cacert-directory=
+
+<span class="Comment"># If this option is set then CAcerts are kept in a single container</span>
+<span class="Comment"># &quot;file&quot; similar to a remote configuration file instead of in the</span>
+<span class="Comment"># ca-cert-directory. The value can be a remote or local folder</span>
+<span class="Comment"># specification like for a non-standard pinerc value. The default</span>
+<span class="Comment"># is that it is not set.</span>
+smime-cacert-container=
+
+<span class="Comment"># RSS News feed</span>
+rss-news=
+
+<span class="Comment"># RSS Weather feed</span>
+rss-weather=
+
+<span class="Comment"># Web Alpine index table row height</span>
+wp-indexheight=
+
+<span class="Comment"># Web Alpine number of index lines in table</span>
+wp-indexlines=
+
+<span class="Comment"># Web Alpine aggregate operations tab state</span>
+wp-aggstate=
+
+<span class="Comment"># Web Alpine various aspects of cross-session state</span>
+wp-state=
+
+<span class="Comment"># Web Alpine preferred width for message display in characters</span>
+wp-columns=
+</pre>
+</body>
+</html>

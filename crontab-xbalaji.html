@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/tmp/crontab-xbalaji.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment">## /* vim: set filetype=sh : */</span>
+<span class="Comment">## use /bin/sh to run commands, no matter what /etc/passwd says</span>
+<span class="Comment">#SHELL=/bin/bash</span>
+<span class="Comment">#</span>
+<span class="Comment">## mail any output to ‘xbalaji’</span>
+<span class="Comment">#MAILTO=xbalaji</span>
+<span class="Comment">#</span>
+<span class="Comment">## include full PATH for all stuff we need to build image</span>
+<span class="Comment">#PATH=/bin:/usr/bin:/router/bin:/usr/local/ddts/bin:/usr/local/bin:/usr/local/etc:/users/xbalaji/bin:/auto/ses/bin:/usr/local/contrib/packages/cxterm/current/bin/:/users/xbalaji/utils/dev/shells:/usr/cisco/bin:/usr/atria/bin:/usr/kerberos/bin:/usr/X11R6/bin/:/usr/sbin/:/auto/ipcbu-builds/Published/CCM/UserScripts/:/sbin/:/usr/local/thirdparty/apache-ant-1.6.0/bin:.</span>
+<span class="Comment">#</span>
+<span class="Comment">## test stuff</span>
+<span class="Comment">#19 10 * * * echo $PATH &gt; $HOME/path-log</span>
+<span class="Comment">## 22 12 * * * set &gt; $HOME/set-log</span>
+<span class="Comment">#</span>
+<span class="Comment">#HOME_BIN=/users/xbalaji/bin </span>
+<span class="Comment">#UPBLDVIEW2=/users/xbalaji/bin/updatebuildview2</span>
+<span class="Comment">#</span>
+<span class="Comment">## daily build section</span>
+<span class="Comment">#35 04 * * *     $UPBLDVIEW2 -branch da_main          -v da_main-01</span>
+<span class="Comment">#50 04 * * *     $UPBLDVIEW2 -branch da_fcs           -v da_fcs-01</span>
+<span class="Comment">#</span>
+<span class="Comment">## run this every 12 hours on Mon,Tue,Wed,Thu,Fri</span>
+<span class="Comment">## 15 */12 * * 0,1,2,3,4,5,6 $HOME_BIN/CTMS-DE-1bugs.sh</span>
+<span class="Comment">## 15 */12 * * * $HOME_BIN/CTMS-DE-1bugs.sh</span>
+<span class="Comment">#</span>
+<span class="Comment">## run every 8 hours on everyday of the week</span>
+<span class="Comment">## 55 */8  * * * $HOME_BIN/CTMS-all-openbugs.sh</span>
+<span class="Comment">## 55 */8  * * * $HOME_BIN/CTMS-all-openbugs-1_4.sh</span>
+<span class="Comment">#</span>
+<span class="Comment">## get my bug list every 30 mins during the day from 8 - 10</span>
+<span class="Comment">## 10,40 08-22  * * * $HOME_BIN/CTMS-mybugs.sh</span>
+<span class="Comment">#</span>
+<span class="Comment">## back up environment, every sunday </span>
+<span class="Comment">#10 05 * * 0 $HOME_BIN/myvim -S $HOME/.vim/utils/vim-genhtml.vim</span>
+<span class="Comment">#</span>
+<span class="Comment">## clean up .ssh/known_hosts every 4 hours</span>
+<span class="Comment">## 00,30 */4 * * * \cp /dev/null $HOME/.ssh/known_hosts</span>
+<span class="Comment">#</span>
+<span class="Comment">## daily cron jobs</span>
+<span class="Comment"># 30 04  * * * \cp /dev/null $HOME/.ssh/known_hosts       # cleanup known hosts</span>
+<span class="Comment"># 55 06  * * * $HOME_BIN/CTMS-xbalaji-team.py             # team bugs</span>
+<span class="Comment"># 40 08  * * * $HOME_BIN/CTMS-mybugs.sh                   # my bugs</span>
+<span class="Comment"># 05 09  * * * $HOME/utils/dev/python/myteamdpai.py       # team dpai</span>
+<span class="Comment">##10 09  * * * $HOME_BIN/group-dpai</span>
+<span class="Comment">##12 09  * * * $HOME/utils/dev/python/reportDPAI.py</span>
+<span class="Comment">#</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.vimrc.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+.Normal { color: #ffffff; background-color: #808080; font-weight: normal; }
+.Special { color: #ff6060; font-weight: normal; }
+.Constant { color: #ff40ff; font-weight: normal; }
+.Identifier { color: #00ffff; font-weight: normal; }
+.Type { color: #00ff00; font-weight: normal; }
+.PreProc { color: #8080ff; font-weight: normal; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+.Statement { color: #ffff00; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment">&quot;this is a comment in this .vimrc file</span>
+
+<span class="Statement">set</span> <span class="PreProc">history</span>=30          <span class="Comment">&quot; history size</span>
+<span class="Statement">set</span> <span class="PreProc">et</span>                  <span class="Comment">&quot; expand tabs</span>
+<span class="Statement">set</span> <span class="PreProc">ts</span>=4                <span class="Comment">&quot; tab stop 4 columns</span>
+<span class="Statement">set</span> <span class="PreProc">ru</span>                  <span class="Comment">&quot; set ruler</span>
+<span class="Statement">set</span> <span class="PreProc">nosm</span>
+<span class="Statement">set</span> <span class="PreProc">sw</span>=4
+<span class="Statement">set</span> <span class="PreProc">path</span>=.<span class="Statement">,</span>/usr/include<span class="Statement">,</span>include<span class="Statement">,</span>common;
+
+<span class="Comment">&quot; Match Paren is a plugin, disable loading it, </span>
+<span class="Comment">&quot; use :DoMatchParen and :NoMatchParen to control after loading it</span>
+<span class="Statement">au</span> <span class="Type">VimEnter</span> * NoMatchParen
+
+<span class="Comment">&quot; ./common/logger/include</span>
+<span class="Comment">&quot; ./common/include</span>
+<span class="Comment">&quot; ./common/platform/include</span>
+<span class="Comment">&quot; ./common/cli/include</span>
+
+
+<span class="Comment">&quot;set ts=8</span>
+
+<span class="Statement">set</span> <span class="PreProc">tags</span>=./tags<span class="Statement">,</span>tags;
+<span class="Comment">&quot;set tags=./tags,/home/xbalaji/*/tags </span>
+<span class="Comment">&quot;set tags=./tags,/home/xbalaji/*/source/tags </span>
+
+<span class="Comment">&quot;set tagrelative</span>
+
+<span class="Statement">set</span> <span class="PreProc">complete</span>=.<span class="Statement">,</span>b<span class="Statement">,</span>i
+
+<span class="Comment">&quot;set mouse=a</span>
+<span class="Statement">set</span> <span class="PreProc">ai</span>
+<span class="Statement">set</span> <span class="PreProc">directory</span>=.<span class="Statement">,</span>/tmp<span class="Statement">,</span>/var/tmp<span class="Statement">,</span>.<span class="Statement">,</span>~/tmp
+<span class="Statement">set</span> <span class="PreProc">paste</span>
+
+<span class="Statement">map</span> ^N :n^M
+<span class="Statement">map</span> <span class="Special">^P</span> :N^M
+
+<span class="Statement">noremap</span> 5 %
+<span class="Statement">noremap</span> % 5
+
+<span class="Comment">&quot; fix the backspace !!!</span>
+<span class="Statement">if</span> &amp;term <span class="Statement">=~</span> <span class="Constant">&quot;xterm&quot;</span>
+    <span class="Statement">set</span> <span class="PreProc">t_kb</span>=^?
+    <span class="Statement">fixdel</span>
+<span class="Statement">endif</span>
+
+<span class="Comment">&quot; syntax file</span>
+<span class="Comment">&quot; $VIMRUNTIME/syntax/c.vim</span>
+
+
+<span class="Statement">if</span> &amp;term <span class="Statement">=~</span> <span class="Constant">&quot;xterm&quot;</span>
+<span class="Statement">if</span> <span class="Identifier">has</span><span class="Statement">(</span><span class="Constant">&quot;terminfo&quot;</span><span class="Statement">)</span>
+  <span class="Statement">set</span> <span class="PreProc">t_Co</span>=8
+  <span class="Statement">set</span> <span class="PreProc">t_Sf</span>=<span class="Special">^[</span>[3%p1%dm
+  <span class="Statement">set</span> <span class="PreProc">t_Sb</span>=<span class="Special">^[</span>[4%p1%dm
+<span class="Statement">else</span>
+  <span class="Statement">set</span> <span class="PreProc">t_Co</span>=8
+  <span class="Statement">set</span> <span class="PreProc">t_Sf</span>=<span class="Special">^[</span>[3%dm
+  <span class="Statement">set</span> <span class="PreProc">t_Sb</span>=<span class="Special">^[</span>[4%dm
+<span class="Statement">endif</span>
+<span class="Statement">endif</span>
+
+<span class="Comment">&quot;if &amp;term =~ </span><span class="Constant">&quot;xterm&quot;</span>
+<span class="Comment">&quot;if has(&quot;terminfo&quot;)</span>
+<span class="Comment">&quot;  set t_Co=16</span>
+<span class="Comment">&quot;  set t_AB=^[[%?%p1%{8}%&lt;%t%p1%{40}%+%e%p1%{92}%+%;%dm</span>
+<span class="Comment">&quot;  set t_AF=^[[%?%p1%{8}%&lt;%t%p1%{30}%+%e%p1%{82}%+%;%dm</span>
+<span class="Comment">&quot;else</span>
+<span class="Comment">&quot;  set t_Co=16</span>
+<span class="Comment">&quot;  set t_Sf=^[[3%dm</span>
+<span class="Comment">&quot;  set t_Sb=^[[4%dm</span>
+<span class="Comment">&quot;endif</span>
+<span class="Comment">&quot;endif</span>
+
+<span class="Comment">&quot; set the font</span>
+<span class="Statement">set</span> <span class="PreProc">guifont</span>=courier_new<span class="Statement">:</span>h12<span class="Statement">:</span>w7
+
+<span class="Comment">&quot; setting backgroud and foreground colors...</span>
+<span class="Comment">&quot; get a black and white screen - what I'm used to ..</span>
+<span class="Comment">&quot;hi Statement  term=bold  ctermfg=3  gui=bold  guifg=Brown</span>
+<span class="Comment">&quot;hi Normal ctermfg=white ctermbg=black</span>
+<span class="Statement">colors</span> koehler
+<span class="Statement">unlet</span> colors_name <span class="Comment">&quot;do this so you dont mess with colorscheme</span>
+<span class="Statement">hi</span> Normal     <span class="Type">ctermfg</span>=<span class="Constant">15</span>  <span class="Type">ctermbg</span>=<span class="Constant">0</span>   <span class="Type">guifg</span>=black <span class="Type">guibg</span>=white
+<span class="Statement">hi</span> Statement  <span class="Type">cterm</span>=<span class="PreProc">bold</span>  <span class="Type">ctermfg</span>=<span class="Constant">3</span>   <span class="Type">guifg</span>=Brown
+
+<span class="Statement">hi</span> Normal     <span class="Type">ctermfg</span>=<span class="Constant">15</span>  <span class="Type">ctermbg</span>=<span class="Constant">10</span>   <span class="Type">guifg</span>=black <span class="Type">guibg</span>=white
+
+<span class="Comment">&quot; enable for status line..</span>
+<span class="Statement">set</span> <span class="PreProc">laststatus</span>=2
+<span class="Statement">hi</span> StatusLine <span class="Type">cterm</span>=<span class="PreProc">standout</span> <span class="Type">ctermfg</span>=<span class="Constant">15</span> <span class="Type">ctermbg</span>=<span class="Constant">1</span> <span class="Type">guifg</span>=Green <span class="Type">guibg</span>=Red
+
+
+<span class="Statement">if</span> <span class="Identifier">has</span><span class="Statement">(</span><span class="Constant">&quot;win32&quot;</span><span class="Statement">)</span>
+                            <span class="Statement">set</span> <span class="PreProc">nocompatible</span>
+<span class="Comment">        &quot;    source $vimruntime/vimrc_example.vim</span>
+<span class="Comment">&quot;    source $vimruntime/mswin.vim</span>
+<span class="Comment">&quot;    behave mswin</span>
+    <span class="Statement">set</span> <span class="PreProc">guifont</span>=courier_new<span class="Statement">:</span>h12<span class="Statement">:</span>w7
+<span class="Statement">else</span>
+<span class="Comment">    &quot;syntax on</span>
+<span class="Comment">    &quot;syntax off</span>
+<span class="Statement">endif</span>
+
+
+
+<span class="Comment">&quot;set laststatus=2</span>
+<span class="Comment">&quot;set wildmenu</span>
+
+<span class="Statement">set</span> <span class="PreProc">ru</span>
+
+<span class="Comment">&quot;scroll multiple windows simultaneously</span>
+<span class="Comment">&quot;set scrollbind</span>
+<span class="Statement">syncbind</span>
+
+<span class="Comment">&quot; binary editing</span>
+<span class="Statement">augroup</span> Binary
+  <span class="Statement">au</span>!
+  <span class="Statement">au</span> <span class="Type">BufReadPre</span>  *.bin <span class="Statement">let</span> &amp;bin<span class="Statement">=</span><span class="Constant">1</span>
+  <span class="Statement">au</span> <span class="Type">BufReadPost</span> *.bin <span class="Statement">if</span> &amp;bin | %!xxd
+  <span class="Statement">au</span> <span class="Type">BufReadPost</span> *.bin <span class="Statement">set</span> <span class="PreProc">ft</span>=xxd | endif
+  <span class="Statement">au</span> <span class="Type">BufWritePre</span> *.bin <span class="Statement">if</span> &amp;bin | %!xxd -r
+  <span class="Statement">au</span> <span class="Type">BufWritePre</span> *.bin <span class="Statement">endif</span>
+  <span class="Statement">au</span> <span class="Type">BufWritePost</span> *.bin <span class="Statement">if</span> &amp;bin | %!xxd
+  <span class="Statement">au</span> <span class="Type">BufWritePost</span> *.bin <span class="Statement">set</span> <span class="PreProc">nomod</span> | endif
+<span class="Statement">augroup</span> END
+
+
+<span class="Comment">&quot;set rulerformat=%40(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)</span>
+ <span class="Statement">set</span> <span class="PreProc">rulerformat</span>=%50(%{strftime('%m\/%e\/%y\ %I<span class="Statement">:</span>%M\ %p')}\ %5l<span class="Statement">,</span>%-6(%c%V%)\ %P%)
+<span class="Comment">&quot;set rulerformat=%50(%{strftime('%I:%M\ %p %m\/%e\/%y ')}\ %5l,%-6(%c%V%)\ %P%)</span>
+
+<span class="Comment">&quot; add title ...</span>
+<span class="Statement">set</span> <span class="PreProc">titlestring</span>=%(\ %{$CLEARCASE_ROOT}<span class="Statement">:</span>\ %)%(\ %F%)
+
+<span class="Comment">&quot; for taglist: Taglist</span>
+<span class="Statement">filetype</span> <span class="Type">on</span>
+<span class="Comment">&quot;let Tlist_Ctags_Cmd = '/usr/local/bin/ctags --if0=yes --line-directives=yes --links=yes --recurse=yes --tag-relative=no --c-types=+cdefgmnpstuvx'</span>
+<span class="Statement">let</span> Tlist_Ctags_Cmd<span class="Statement">=</span><span class="Constant">'/usr/bin/ctags --if0=yes --line-directives=yes --links=yes --recurse=yes --tag-relative=no --C++-kinds=+cdefgmnpstuvx --verbose=yes --totals=yes '</span>
+<span class="Statement">let</span> Tlist_Inc_Winwidth <span class="Statement">=</span> <span class="Constant">0</span>
+<span class="Statement">let</span> Tlist_Display_Prototype <span class="Statement">=</span> <span class="Constant">1</span>
+<span class="Statement">let</span> Tlist_Use_Horiz_Window <span class="Statement">=</span> <span class="Constant">0</span>
+<span class="Comment">&quot;let Tlist_Use_Right_Window=1</span>
+<span class="Comment">&quot;use ':TlistAddFilesRecursive /home/xbalaji/main/source ' to build the tags</span>
+<span class="Comment">&quot;use ':TlistSessionSave ~/taglist.save' to save the current session</span>
+<span class="Comment">&quot;use ':TlistSessionLoad ~/taglist.save' to load the session</span>
+
+<span class="Comment">&quot; Tips &amp; tricks section</span>
+<span class="Comment">&quot; the following replaces the line number generated in the</span>
+<span class="Comment">&quot; html formatted 'c' or 'h' file to an anchor based on the line number</span>
+<span class="Comment">&quot;:g/\(^&lt;font color=\&quot;\#ffff00\&quot;&gt;\)\( *\)\([0-9]*\)\(&lt;\/font&gt;\)/s//&lt;a name=&quot;\3&quot;\2&gt;\1\2\3\4&lt;\/a&gt;/g</span>
+
+<span class="Comment">&quot; removing backspace</span>
+<span class="Comment">&quot; any character except CTRL+H followed by CTRL+H replace with nothing</span>
+<span class="Comment">&quot;:g/\([^^H]\)\(^H\)/s///g</span>
+
+
+<span class="Comment">&quot; BackSpaceDelete</span>
+<span class="Statement">function</span>! BackSpaceDelete<span class="Statement">()</span>
+    <span class="Statement">let</span> lnum <span class="Statement">=</span> <span class="Constant">1</span>
+    <span class="Statement">while</span> lnum <span class="Statement">&lt;</span> <span class="Identifier">line</span><span class="Statement">(</span><span class="Constant">'$'</span><span class="Statement">)</span>
+        <span class="Statement">let</span> l <span class="Statement">=</span> <span class="Identifier">getline</span><span class="Statement">(</span>lnum<span class="Statement">)</span>
+        <span class="Statement">while</span> <span class="Statement">l</span> <span class="Statement">=~</span> <span class="Constant">'[^^H]^H'</span>
+            <span class="Statement">let</span> l <span class="Statement">=</span> <span class="Identifier">substitute</span><span class="Statement">(</span>l, <span class="Constant">'[^^H]^H'</span>, <span class="Constant">''</span>, <span class="Constant">''</span><span class="Statement">)</span>
+        <span class="Statement">endwhile</span>
+        <span class="Statement">call</span> <span class="Identifier">setline</span><span class="Statement">(</span>lnum, l<span class="Statement">)</span>
+        <span class="Statement">let</span> lnum <span class="Statement">=</span> lnum <span class="Statement">+</span> <span class="Constant">1</span>
+    <span class="Statement">endwhile</span>
+<span class="Statement">endfunction</span>
+
+<span class="Statement">command</span>! <span class="Statement">-</span><span class="PreProc">nargs</span><span class="Statement">=</span><span class="Type">0</span> BSdelete <span class="Statement">call</span> <span class="Normal">BackSpaceDelete</span>()
+
+
+<span class="Comment">&quot; HomeSettings</span>
+<span class="Statement">function</span>! HomeSettings<span class="Statement">(</span>tsval<span class="Statement">)</span>
+    <span class="Statement">setlocal</span> <span class="PreProc">ts</span>=4
+<span class="Comment">    &quot;echo a:tsval</span>
+<span class="Comment">    &quot;setlocal syntax=off</span>
+<span class="Statement">endfunction</span>
+
+<span class="Comment">&quot; SubVersionSettings</span>
+<span class="Statement">function</span>! SubVersionSettings<span class="Statement">(</span>tsval<span class="Statement">)</span>
+    <span class="Statement">setlocal</span> <span class="PreProc">ts</span>=8
+<span class="Comment">    &quot; setlocal syntax=cpp</span>
+<span class="Statement">endfunction</span>
+
+<span class="Statement">function</span>! SubVersionSettings1<span class="Statement">(</span>tsval<span class="Statement">)</span>
+    <span class="Statement">setlocal</span> <span class="PreProc">ts</span>=4
+<span class="Comment">    &quot; setlocal syntax=cpp</span>
+<span class="Statement">endfunction</span>
+
+
+<span class="Comment">&quot;</span>
+<span class="Comment">&quot; increment and replace: first group the data, operate on the</span>
+<span class="Comment">&quot; particular block using functions and use </span><span class="Constant">&quot;.&quot;</span><span class="Comment"> to join the strings</span>
+<span class="Comment">&quot;</span>
+<span class="Comment">&quot;</span> <span class="PreProc">Example:</span><span class="Comment">   Async0/1,  Async0/2,   Async0/3,   Async0/4 with</span>
+<span class="Comment">&quot;            Async0/23  Async0/24,  Async0/25   Async0/26</span>
+<span class="Comment">&quot;</span>
+<span class="Comment">&quot; :g/\(Async0\/\)\(\d\)/s//\=submatch(1) . (submatch(2)+22)/gc</span>
+
+<span class="Comment">&quot; find lines that don't contain something</span>
+<span class="Comment">&quot; :g!/notthis/p</span>
+
+<span class="Comment">&quot; get the current file name, remove the path after the first 3 directories</span>
+<span class="Comment">&quot; and add tags file to the end</span>
+
+<span class="Comment">&quot;let s:cur_dir  = fnamemodify(bufname(&quot;%&quot;), </span><span class="Constant">&quot;:p&quot;</span><span class="Comment">)</span>
+<span class="Comment">&quot;let s:tag_file = substitute(s:cur_dir, '/\([^/]*\)/\([^/]*\)/\([^/]*\)/\(.*\)', '/\1/\2/\3/tags', 'g')</span>
+<span class="Comment">&quot;let &amp;tags=s:tag_file</span>
+
+
+<span class="Statement">autocmd</span> <span class="Type">BufEnter</span> /users/xbalaji/*               <span class="Statement">call</span> <span class="Normal">HomeSettings</span><span class="Statement">(</span><span class="Constant">4</span><span class="Statement">)</span>
+<span class="Statement">autocmd</span> <span class="Type">BufEnter</span> /home/xbalaji/*cpp             <span class="Statement">call</span> <span class="Normal">SubVersionSettings</span><span class="Statement">(</span><span class="Constant">8</span><span class="Statement">)</span>
+<span class="Statement">autocmd</span> <span class="Type">BufEnter</span> /home/xbalaji/*h               <span class="Statement">call</span> <span class="Normal">SubVersionSettings</span><span class="Statement">(</span><span class="Constant">8</span><span class="Statement">)</span>
+<span class="Statement">autocmd</span> <span class="Type">BufEnter</span> /home/xbalaji/main-xml/*cpp    <span class="Statement">call</span> <span class="Normal">SubVersionSettings1</span><span class="Statement">(</span><span class="Constant">4</span><span class="Statement">)</span>
+<span class="Statement">autocmd</span> <span class="Type">BufEnter</span> /home/xbalaji/main-xml/*h      <span class="Statement">call</span> <span class="Normal">SubVersionSettings1</span><span class="Statement">(</span><span class="Constant">4</span><span class="Statement">)</span>
+
+<span class="Comment">&quot; highlight anything after 80 columns.</span>
+<span class="Comment">&quot;highlight RightMargin term=reverse ctermbg=12 guifg=White guibg=Green</span>
+<span class="Comment">&quot; highlight RightMargin ctermbg=red ctermfg=white guibg=#592929</span>
+
+<span class="Comment">&quot; less straining to the eyes</span>
+<span class="Statement">highlight</span> LongLine <span class="Type">ctermbg</span>=grey <span class="Type">ctermfg</span>=black
+<span class="Statement">match</span> LongLine  <span class="Constant">/.\%&gt;80v/</span>
+
+<span class="Statement">highlight</span> VeryLongLine <span class="Type">ctermbg</span>=blue <span class="Type">ctermfg</span>=white
+<span class="Constant">2</span>match VeryLongLine  <span class="Constant">/.\%&gt;130v/</span>
+
+<span class="Statement">highlight</span> VVeryLongLine <span class="Type">ctermbg</span>=red <span class="Type">ctermfg</span>=green
+<span class="Constant">3</span>match VVeryLongLine  <span class="Constant">/.\%&gt;180v/</span>
+
+
+<span class="Comment">&quot; highlight OverLength ctermbg=red ctermfg=white guibg=#592929</span>
+<span class="Comment">&quot; match OverLength /\%81v.\+/</span>
+
+</pre>
+</body>
+</html>

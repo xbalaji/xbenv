@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.gvimrc.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+.Special { color: #ff6060; font-weight: normal; }
+.Comment { color: #00ffff; font-weight: normal; }
+.PreProc { color: #8080ff; font-weight: normal; }
+.Constant { color: #ff40ff; font-weight: normal; }
+.Identifier { color: #00ffff; font-weight: normal; }
+.Type { color: #00ff00; font-weight: normal; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Statement { color: #ffff00; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Statement">syntax</span> <span class="Type">on</span>
+
+<span class="Statement">if</span> &amp;term <span class="Statement">=~</span> <span class="Constant">&quot;xterm&quot;</span>
+<span class="Statement">if</span> <span class="Identifier">has</span><span class="Statement">(</span><span class="Constant">&quot;terminfo&quot;</span><span class="Statement">)</span>
+  <span class="Statement">set</span> <span class="PreProc">t_Co</span>=8
+  <span class="Statement">set</span> <span class="PreProc">t_Sf</span>=<span class="Special">^[</span>[3%p1%dm
+  <span class="Statement">set</span> <span class="PreProc">t_Sb</span>=<span class="Special">^[</span>[4%p1%dm
+<span class="Statement">else</span>
+  <span class="Statement">set</span> <span class="PreProc">t_Co</span>=8
+  <span class="Statement">set</span> <span class="PreProc">t_Sf</span>=<span class="Special">^[</span>[3%dm
+  <span class="Statement">set</span> <span class="PreProc">t_Sb</span>=<span class="Special">^[</span>[4%dm
+<span class="Statement">endif</span>
+<span class="Statement">endif</span>
+
+<span class="Comment">&quot;if &amp;term =~ </span><span class="Constant">&quot;xterm&quot;</span>
+<span class="Comment">&quot;if has(&quot;terminfo&quot;)</span>
+<span class="Comment">&quot;  set t_Co=16</span>
+<span class="Comment">&quot;  set t_AB=^[[%?%p1%{8}%&lt;%t%p1%{40}%+%e%p1%{92}%+%;%dm</span>
+<span class="Comment">&quot;  set t_AF=^[[%?%p1%{8}%&lt;%t%p1%{30}%+%e%p1%{82}%+%;%dm</span>
+<span class="Comment">&quot;else</span>
+<span class="Comment">&quot;  set t_Co=16</span>
+<span class="Comment">&quot;  set t_Sf=^[[3%dm</span>
+<span class="Comment">&quot;  set t_Sb=^[[4%dm</span>
+<span class="Comment">&quot;endif</span>
+<span class="Comment">&quot;endif</span>
+
+<span class="Comment">&quot;hi Statement  term=bold  ctermfg=3  gui=bold  guifg=Brown</span>
+<span class="Comment">&quot;hi Statement  term=bold  ctermfg=3   guifg=Brown</span>
+<span class="Comment">&quot;hi Statement  term=reverse ctermfg=white ctermbg=black guifg=white guibg=black</span>
+<span class="Comment">&quot; get a black and white screen - what I'm used to ..</span>
+<span class="Comment">&quot; added for cfilebrowser</span>
+<span class="Comment">&quot;hi Normal guifg=white guibg=black</span>
+<span class="Comment">&quot;hi Normal guifg=black guibg=white</span>
+<span class="Statement">hi</span> Normal <span class="Type">ctermfg</span>=white <span class="Type">ctermbg</span>=black <span class="Type">guifg</span>=white <span class="Type">guibg</span>=black
+
+<span class="Comment">&quot;hi sr</span>
+
+<span class="Comment">&quot;set the font</span>
+<span class="Statement">set</span> <span class="PreProc">guifont</span>=-adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1
+<span class="Statement">set</span> <span class="PreProc">guifont</span>=<span class="Constant">&quot;Courier 10 Pitch 12&quot;</span>
+<span class="Comment">&quot;set guifont=&quot;Monospace 12&quot;</span>
+
+<span class="Comment">&quot; do settings for windows invocation of gvim...</span>
+
+<span class="Statement">if</span> <span class="Identifier">has</span><span class="Statement">(</span><span class="Constant">&quot;win32&quot;</span><span class="Statement">)</span>
+    <span class="Statement">set</span> <span class="PreProc">nocompatible</span>
+<span class="Comment">&quot;    source $VIMRUNTIME/vimrc_example.vim</span>
+<span class="Comment">&quot;    source $VIMRUNTIME/mswin.vim</span>
+<span class="Comment">&quot;    behave mswin</span>
+    <span class="Statement">set</span> <span class="PreProc">guifont</span>=courier_new<span class="Statement">:</span>h12<span class="Statement">:</span>w7
+    <span class="Statement">set</span> <span class="PreProc">guifont</span>=<span class="Constant">&quot;Courier 10 Pitch 12&quot;</span>
+    <span class="Statement">set</span> <span class="PreProc">lines</span>=48
+<span class="Statement">endif</span>
+
+<span class="Comment">&quot;&quot;&quot;colors koehler</span>
+<span class="Statement">set</span> <span class="PreProc">columns</span>=80
+<span class="Statement">set</span> <span class="PreProc">rulerformat</span>=%55(%{strftime('%a\ %b\ %e\ %I<span class="Statement">:</span>%M\ %p')}\ %5l<span class="Statement">,</span>%-6(%c%V%)\ %P%)
+<span class="Statement">set</span> <span class="PreProc">laststatus</span>=2
+<span class="Statement">set</span> <span class="PreProc">ru</span>
+<span class="Statement">syncbind</span>
+
+<span class="Comment">&quot;set rulerformat=%40(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)</span>
+<span class="Statement">set</span> <span class="PreProc">rulerformat</span>=%50(%{strftime('%m\/%d\/%y\ %I<span class="Statement">:</span>%M\ %p')}\ %5l<span class="Statement">,</span>%-6(%c%V%)\ %P%)
+<span class="Comment">&quot;set rulerformat=%50(%{strftime('%I:%M\ %p %m\/%e\/%y ')}\ %5l,%-6(%c%V%)\ %P%)</span>
+<span class="Comment">&quot;hi StatusLine term=standout ctermfg=15 ctermbg=1 guifg=Green guibg=Red</span>
+
+<span class="Comment">&quot; remove later</span>
+<span class="Statement">hi</span> StatusLine <span class="Type">term</span>=<span class="PreProc">standout</span> <span class="Type">ctermfg</span>=<span class="Constant">15</span> <span class="Type">ctermbg</span>=<span class="Constant">1</span> <span class="Type">guifg</span>=Red <span class="Type">guibg</span>=White
+
+<span class="Statement">let</span> Tlist_Inc_Winwidth <span class="Statement">=</span> <span class="Constant">120</span>
+
+<span class="Comment">&quot; set title string...</span>
+<span class="Comment">&quot;set titlestring=%{$CLEARCASE_ROOT}</span>
+<span class="Comment">&quot;set titlestring=%t%(\ %M%)%(\ (%{expand(\&quot;%:~:.:h\&quot;)})%)%(\ %a%)</span>
+
+<span class="Statement">set</span> <span class="PreProc">titlestring</span>=%(\ %{$CLEARCASE_ROOT}<span class="Statement">:</span>\ %)%(\ %F%)
+</pre>
+</body>
+</html>

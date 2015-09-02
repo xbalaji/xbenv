@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.env-sh.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+.Error { color: #ffffff; background-color: #ff6060; font-weight: normal; }
+.Special { color: #ff6060; font-weight: normal; }
+.PreProc { color: #8080ff; font-weight: normal; }
+.Constant { color: #ff40ff; font-weight: normal; }
+.Identifier { color: #00ffff; font-weight: normal; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+.Statement { color: #ffff00; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment"># /* vim: set filetype=sh : */</span>
+<span class="Comment">################################################################</span>
+<span class="Comment"># Env. Variables - Balaji Venkataraman - xbalaji@cisco.com     #</span>
+<span class="Comment">################################################################</span>
+<span class="Comment">#!/bin/bash</span>
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># change the default umask - BalajiVenkataraman    : xbalaji   #</span>
+<span class="Comment">################################################################</span>
+<span class="Comment">#umask 077</span>
+<span class="Comment">#umask 077</span>
+<span class="Statement">umask</span> <span class="Identifier">u</span>=rwx
+
+<span class="Comment">#umask u=rwx,g=rx,o=rx</span>
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># change the default ulimit- BalajiVenkataraman    : xbalaji   #</span>
+<span class="Comment">################################################################</span>
+<span class="Statement">ulimit</span> <span class="Special">-s</span> unlimited
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># set some readln variables- BalajiVenkataraman    : xbalaji   #</span>
+<span class="Comment">################################################################</span>
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># set QDDTS before PATH    - BalajiVenkataraman    : xbalaji   #</span>
+<span class="Comment">################################################################</span>
+<span class="Identifier">QDDTS</span>=/usr/cisco
+
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># Add one path/line - easy to modify/include paths : xbalaji   #</span>
+<span class="Comment">################################################################</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/usr/local/contrib/packages/cxterm/current/bin/</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/users/xbalaji/utils/dev/shells</span><span class="Statement">&quot;</span>       <span class="Comment"># for local shell scripts</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/ws/xbalaji-sjc/python/bin</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/usr/cisco/bin</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/usr/atria/bin</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/usr/kerberos/bin</span><span class="Statement">&quot;</span>
+<span class="Comment">#PATH=&quot;$PATH:$QDDTS/bin&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/usr/X11R6/bin/</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/usr/sbin/</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/auto/ipcbu-builds/Published/CCM/UserScripts/</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/sbin/</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/usr/local/thirdparty/apache-ant-1.6.0/bin</span><span class="Statement">&quot;</span>
+<span class="Identifier">PATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$PATH</span><span class="Constant">:/auto/ses/bin</span><span class="Statement">&quot;</span> <span class="Comment"># for static analysis tools</span>
+
+
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/usr/atria/doc/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/nfs/csc/snmpv2/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/usr/share/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/usr/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/usr/local/share/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/usr/local/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/usr/X11R6/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/usr/cisco/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/usr/kerberos/man</span><span class="Statement">&quot;</span>
+<span class="Identifier">MANPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$MANPATH</span><span class="Constant">:/router/man</span><span class="Statement">&quot;</span>
+<span class="Comment">#PRINTER=&quot;sj22-2-b3-10-dup&quot;   # Preferred printer.</span>
+<span class="Comment">#PRINTER=&quot;sj22-2-b3-8-dup&quot;   # Preferred printer.</span>
+<span class="Comment">#PRINTER=&quot;sjc22-02-c305-m-dup&quot;   # Preferred printer.</span>
+<span class="Comment">#LAB_PRINTER=&quot;sj22-1-f7-7-dup&quot; # lab printer.</span>
+<span class="Identifier">PRINTER</span>=<span class="Statement">&quot;</span><span class="Constant">sjc19-01-h611-m-dup</span><span class="Statement">&quot;</span>   <span class="Comment"># Preferred printer.</span>
+<span class="Identifier">IGNOREEOF</span>=<span class="Constant">3</span>
+<span class="Identifier">HISTCONTROL</span>=ignoredups
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># Set internal shell opts   - BalajiVenkataraman    : xbalaji  #</span>
+<span class="Comment">################################################################</span>
+shopt <span class="Special">-s</span> cdspell
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># Set CDPATH easy to issue cd from any directory   : xbalaji   #</span>
+<span class="Comment">################################################################</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:.</span><span class="Statement">&quot;</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:..</span><span class="Statement">&quot;</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:../..</span><span class="Statement">&quot;</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:../../..</span><span class="Statement">&quot;</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:../../../..</span><span class="Statement">&quot;</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:../../../../..</span><span class="Statement">&quot;</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:</span><span class="PreProc">$HOME</span><span class="Statement">&quot;</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:/users</span><span class="Statement">&quot;</span>
+<span class="Identifier">CDPATH</span>=<span class="Statement">&quot;</span><span class="PreProc">$CDPATH</span><span class="Constant">:/</span><span class="Statement">&quot;</span>
+
+<span class="Identifier">SHELL</span>=<span class="Statement">'</span><span class="Constant">/usr/bin/bash</span><span class="Statement">'</span>
+<span class="Identifier">VISUAL</span>=<span class="Statement">'</span><span class="Constant">/usr/cisco/packages/vim/vim-7.2/bin/vim</span><span class="Statement">'</span>
+<span class="Identifier">PAGER</span>=<span class="Statement">'</span><span class="Constant">less</span><span class="Statement">'</span>
+<span class="Identifier">DDTSPAGER</span>=<span class="Statement">'</span><span class="Constant">less</span><span class="Statement">'</span>
+<span class="Identifier">EDITOR</span>=<span class="Statement">'</span><span class="Constant">/usr/cisco/packages/vim/vim-7.2/bin/vim</span><span class="Statement">'</span>
+<span class="Identifier">WINEDITOR</span>=<span class="Statement">'</span><span class="Constant">/usr/cisco/packages/vim/vim-7.2/bin/vim</span><span class="Statement">'</span>
+<span class="Identifier">TAGS_TYPE</span>=<span class="Statement">&quot;</span><span class="Constant">ctags</span><span class="Statement">&quot;</span>
+<span class="Identifier">SR_MGR_CONF_DIR</span>=<span class="Statement">'</span><span class="Constant">/nfs/csc/snmpv2/mibs</span><span class="Statement">'</span> <span class="Comment"># for snmp getnext etc.</span>
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># script to make sure MAKEFLAG_J value is preserved with shell #</span>
+<span class="Comment">#                - Balaji Venkataraman - xbalaji@cisco.com     #</span>
+<span class="Comment">################################################################</span>
+<span class="Statement">if </span><span class="Statement">[</span> <span class="Statement">-n</span> <span class="Statement">&quot;</span><span class="PreProc">$MAKEFLAG_J</span><span class="Statement">&quot;</span> <span class="Statement">]</span>
+<span class="Statement">then</span>
+    <span class="Identifier">cur_val</span>=<span class="Error">$(</span><span class="Special">echo </span><span class="PreProc">$MAKEFLAG_J</span><span class="Special"> </span><span class="Statement">|</span><span class="Special"> cut -c3-</span><span class="Error">)</span>
+    <span class="Statement">if </span><span class="Statement">[</span> <span class="Statement">&quot;</span><span class="PreProc">$cur_val</span><span class="Statement">&quot;</span> <span class="Statement">-gt</span> <span class="Statement">&quot;</span><span class="Constant">8</span><span class="Statement">&quot;</span> <span class="Statement">]</span>
+    <span class="Statement">then</span>
+        <span class="Statement">echo</span><span class="Constant"> MAKEFLAG_J is unaltered </span><span class="PreProc">$MAKEFLAG_J</span>
+    <span class="Statement">else</span>
+        <span class="Identifier">MAKEFLAG_J</span>=<span class="Statement">&quot;</span><span class="Constant">-j8</span><span class="Statement">&quot;</span>
+    <span class="Statement">fi</span>
+<span class="Statement">else</span>
+    <span class="Identifier">MAKEFLAG_J</span>=<span class="Statement">&quot;</span><span class="Constant">-j8</span><span class="Statement">&quot;</span>
+<span class="Statement">fi</span>
+
+<span class="Identifier">XTITLE</span>=<span class="Statement">&quot;</span><span class="Constant">  Balaji Venkataraman's   --- XTERM  ---      (xbalaji@cisco.com)</span><span class="Statement">&quot;</span>
+
+
+<span class="Identifier">PROMPT_COMMAND</span>=set_window_title
+<span class="Comment">#PS1=&quot;\d \@ [view:$(pwd | cut -d &quot;/&quot; -f4-4)] [pwd:\w]\n[\u@\H]\$&quot;</span>
+
+<span class="Comment">################################################################</span>
+<span class="Comment"># Export all Env - Balaji Venkataraman - xbalaji@cisco.com     #</span>
+<span class="Comment">################################################################</span>
+<span class="Statement">export</span><span class="Identifier"> PS1</span>
+<span class="Statement">export</span><span class="Identifier"> PATH</span>
+<span class="Statement">export</span><span class="Identifier"> TERM</span>
+<span class="Statement">export</span><span class="Identifier"> SHELL</span>
+<span class="Statement">export</span><span class="Identifier"> PAGER</span>
+<span class="Statement">export</span><span class="Identifier"> VISUAL</span>
+<span class="Statement">export</span><span class="Identifier"> EDITOR</span>
+<span class="Statement">export</span><span class="Identifier"> CDPATH</span>
+<span class="Statement">export</span><span class="Identifier"> MANPATH</span>
+<span class="Statement">export</span><span class="Identifier"> WINEDITOR</span>
+<span class="Statement">export</span><span class="Identifier"> TAGS_TYPE</span>
+<span class="Statement">export</span><span class="Identifier"> MAKEFLAG_J</span>
+<span class="Statement">export</span><span class="Identifier"> XTITLE</span>
+<span class="Statement">export</span><span class="Identifier"> SR_MGR_CONF_DIR</span>
+<span class="Statement">export</span><span class="Identifier"> CLEAR_CASE_PREFIX</span>
+<span class="Statement">export</span><span class="Identifier"> PRINTER</span>
+<span class="Statement">export</span><span class="Identifier"> IGNOREEOF</span>
+<span class="Statement">export</span><span class="Identifier"> MKID</span>
+<span class="Statement">export</span><span class="Identifier"> QDDTS</span>
+<span class="Statement">export</span><span class="Identifier"> HOSTNAME</span>
+<span class="Statement">export</span><span class="Identifier"> PROMPT_COMMAND</span>
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># Environment functions Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+<span class="Comment"># bash functions moved to .functions-sh</span>
+source <span class="PreProc">$HOME</span>/.functions-sh
+
+<span class="Comment">#################################################################</span>
+<span class="Comment"># General aliases     - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">#################################################################</span>
+<span class="Comment"># Aliases moved to .alias-sh</span>
+source <span class="PreProc">$HOME</span>/.alias-sh
+
+<span class="Comment">###################################################################</span>
+<span class="Comment"># Temporary definitions - Balaji Venkataraman - xbalaji@cisco.com #</span>
+<span class="Comment">###################################################################</span>
+
+<span class="Comment">#</span>
+<span class="Comment"># xbalaji-nt : 171.70.49.143</span>
+<span class="Statement">set</span><span class="Identifier"> horizontal-scroll-mode off</span>
+<span class="Statement">export</span><span class="Identifier"> ENV_READ_FLAG</span><span class="Statement">=</span><span class="Constant">1</span>
+
+
+<span class="Comment"># echo -n &quot;^[]2;*** STRING HERE ***^G&quot;</span>
+</pre>
+</body>
+</html>

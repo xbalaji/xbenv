@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>~/.vnc/xstartup.html</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; font-weight: normal; }
+.Statement { color: #ffff00; font-weight: normal; }
+.Identifier { color: #00ffff; font-weight: normal; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment">#!/bin/sh</span>
+
+
+<span class="Comment"># Uncomment the following two lines for normal desktop:</span>
+<span class="Statement">unset</span><span class="Identifier"> SESSION_MANAGER</span>
+<span class="Statement">exec</span> /etc/X11/xinit/xinitrc
+<span class="Comment">#exec gnome-session &amp;</span>
+<span class="Comment">#kdeinit &amp;</span>
+
+
+
+<span class="Comment">#xrdb $HOME/.Xresources</span>
+<span class="Comment">#xsetroot -solid grey</span>
+<span class="Comment">#xsetroot -solid SteelBlue4 -fg Black -bg NavyBlue</span>
+<span class="Comment">#xterm -geometry 80x24+10+10 -ls -title &quot;$VNCDESKTOP Desktop&quot; &amp;</span>
+<span class="Comment">#twm &amp;</span>
+
+<span class="Comment"># vncconfig -iconic &amp;</span>
+<span class="Comment"># vncconfig -nowin &amp;</span>
+<span class="Comment"># vncconfig -set IdleTimeout=0</span>
+xclipboard &amp;
+
+<span class="Comment"># /usr/cisco/bin/autocutsel &amp;</span>
+xhost + ;
+
+<span class="Comment">##########################################################################</span>
+<span class="Comment"># start a nice digital clock- Balaji Venkataraman   xbalaji@cisco.com    #</span>
+<span class="Comment">##########################################################################</span>
+<span class="Comment">#xclock -digital -geometry -0+0 -update 1 -bg black -fg green    \</span>
+<span class="Comment">#       -fn -adobe-courier-medium-r-normal--14-100-100-100-m-90-iso8859-1  &amp;</span>
+
+<span class="Comment">#fvwm2 &amp;</span>
+<span class="Comment">#/auto/usrcisco-sunos-5.8-sparc-32/packages/fvwm/fvwm-2.5.10/bin/fvwm2 &amp;</span>
+<span class="Comment">#dtwm &amp;</span>
+
+
+</pre>
+</body>
+</html>
